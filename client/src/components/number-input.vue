@@ -2,20 +2,29 @@
   <div class='input-group' v-on="listeners">
 
     <span class='input-group-btn'>
-      <button class='btn btn-default' type='button' @click="decrease" :disabled="disabled || readonly || !decreasable">-</button>
+      <button class='btn btn-default' type='button' @click="decrease"
+        :disabled="disabled || readonly || !decreasable">
+        -
+      </button>
     </span>
 
-    <input class='form-control' :type="type" :name="name" v-model.number="currentValue" :min="min" :max="max" :step="step" @change="change" @paste="paste" :readonly="readonly || !inputtable" :disabled="disabled || (!decreasable && !increasable)" :placeholder="placeholder" autocomplete="off">
+    <input class='form-control' :type="type" :name="name" v-model.number="currentValue" :min="min"
+      :max="max" :step="step" @change="change" @paste="paste" :readonly="readonly || !inputtable"
+      :disabled="disabled || (!decreasable && !increasable)" :placeholder="placeholder"
+      autocomplete="off">
 
     <span class='input-group-btn'>
-      <button class='btn btn-default' type='button' @click="increase" :disabled="disabled || readonly || !increasable">+</button>
+      <button class='btn btn-default' type='button' @click="increase"
+        :disabled="disabled || readonly || !increasable">
+        +
+      </button>
     </span>
 
   </div>
 </template>
 
 <script>
-const isNaN = Number.isNaN || window.isNaN;
+const { isNaN } = Number;
 const REGEXP_NUMBER = /^-?(?:\d+|\d+\.\d+|\.\d+)(?:[eE][-+]?\d+)?$/;
 const REGEXP_DECIMALS = /\.\d*(?:0|9){10}\d*$/;
 const normalizeDecimalNumber = (value, times = 100000000000) => (
