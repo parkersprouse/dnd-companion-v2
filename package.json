@@ -1,0 +1,29 @@
+{
+  "name": "dnd-companion-server",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node server",
+    "dev": "cd client && npm run build && cd .. && node server",
+    "heroku-postbuild": "cd client && npm install && npm install --only=dev && npm run build"
+  },
+  "engines": {
+    "node": "10.13.0",
+    "npm": "6.4.1"
+  },
+  "dependencies": {
+    "bcrypt": "^3.0.2",
+    "cookie-parser": "^1.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^6.1.0",
+    "express": "^4.16.4",
+    "helmet": "^3.15.0",
+    "jsonwebtoken": "^8.4.0",
+    "morgan": "^1.9.1",
+    "pg": "^7.7.1",
+    "pg-hstore": "^2.3.2",
+    "sequelize": "^4.41.2",
+    "universal-cookie": "^3.0.7",
+    "validator": "^10.9.0"
+  }
+}
