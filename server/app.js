@@ -4,10 +4,16 @@ const express = require('express');
 const helmet = require('helmet');
 const morgan = require('morgan');
 const path = require('path');
+const Sentry = require('@sentry/node');
 
+const config = require('./config');
 const endpoints = require('./endpoints');
 
 const app = express();
+
+Sentry.init({ dsn: config.sentry_url });
+app.use(Sentry.Handlers.requestHandler());
+app.use(Sentry.Handlers.errorHandler());
 
 // Setup logger
 app.use(morgan(':remote-addr - :remote-user [:date[clf]] ":method :url HTTP/:http-version" :status :res[content-length] :response-time ms'));
@@ -22,7 +28,7 @@ app.options('*', cors()); // Pre-flight
 // Parse application/json
 app.use(express.json());
 
-app.use(cookie_parser('MySecret'));
+app.use(cookie_parser(config.cookie_secret));
 
 // Setup our endpoints under the /api route
 app.use('/api', endpoints);
@@ -35,8 +41,5 @@ app.get('*', (req, res) => {
   // consider sending an auth token header here that needs to be sent back for a request to be accepted
   res.sendFile(path.resolve(__dirname, '..', 'client', 'dist', 'index.html'));
 });
-
-// Database setup - hard wipe and recreation
-//require('./config/setup_db')();
 
 module.exports = app;

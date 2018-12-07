@@ -1,10 +1,12 @@
+const Sentry = require('@sentry/node');
+
 module.exports = {
 
   call(promise) {
     return promise
       .then(data => [null, data])
       .catch(err => {
-        raven.captureException(err);
+        Sentry.captureException(err);
         return [err];
       });
   },
