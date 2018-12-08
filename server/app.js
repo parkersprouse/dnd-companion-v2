@@ -38,7 +38,6 @@ app.use(express.static(path.resolve(__dirname, '..', 'client', 'dist')));
 
 // Always return the main index.html, so vue-router renders the active route in the client
 app.get('*', (req, res) => {
-  // consider sending an auth token header here that needs to be sent back for a request to be accepted
   res.sendFile(path.resolve(__dirname, '..', 'client', 'dist', 'index.html'));
 });
 
