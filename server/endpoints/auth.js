@@ -6,25 +6,6 @@ const User = require('../models/user');
 
 module.exports = {
 
-  async login(req, res) {
-    const { username, password } = req.body;
-    if (!username || !password)
-      return respond(res, http_bad_request, 'Please make sure all required fields are filled out');
-
-    const [err, data] = await call(User.findOne({ where: { username: { $iLike: username } } }));
-    if (err)
-      return respond(res, http_server_error, 'There was an unknown problem when trying to log you in', err.message);
-    if (!data)
-      return respond(res, http_bad_request, 'Your username or password was incorrect');
-
-    const match = bcrypt.compareSync(password, data.pw_hash);
-    if (!match)
-      return respond(res, http_bad_request, 'Your username or password was incorrect');
-
-    res.cookie('token', buildToken(data.id), { maxAge: 1000 * 60 * 60 * 24 * 7, httpOnly: true, signed: true, secure: process.env.NODE_ENV === 'production' });
-    respond(res, http_ok);
-  },
-
   async register(req, res) {
     const { confirm_password, email, name, password, username } = req.body;
     if (!email || !password || !confirm_password || !username)
@@ -53,6 +34,30 @@ module.exports = {
 
     res.cookie('token', buildToken(data.id), { maxAge: 1000 * 60 * 60 * 24 * 7, httpOnly: true, signed: true, secure: process.env.NODE_ENV === 'production' });
     respond(res, http_ok);
+  },
+
+  async login(req, res) {
+    const { username, password } = req.body;
+    if (!username || !password)
+      return respond(res, http_bad_request, 'Please make sure all required fields are filled out');
+
+    const [err, data] = await call(User.findOne({ where: { username: { $iLike: username } } }));
+    if (err)
+      return respond(res, http_server_error, 'There was an unknown problem when trying to log you in', err.message);
+    if (!data)
+      return respond(res, http_bad_request, 'Your username or password was incorrect');
+
+    const match = bcrypt.compareSync(password, data.pw_hash);
+    if (!match)
+      return respond(res, http_bad_request, 'Your username or password was incorrect');
+
+    res.cookie('token', buildToken(data.id), { maxAge: 1000 * 60 * 60 * 24 * 7, httpOnly: true, signed: true, secure: process.env.NODE_ENV === 'production' });
+    respond(res, http_ok);
+  },
+
+  logout(req, res) {
+    res.clearCookie('token');
+    res.status(http_ok).send();
   },
 
 };

@@ -7,6 +7,7 @@ const users = require('./endpoints/users');
 
 router.post('/login', auth.login);
 router.post('/register', auth.register);
+router.post('/logout', auth.logout);
 
 router.get('/users', verifyToken, users.getAll);
 router.get('/users/me', verifyToken, users.getMe);
