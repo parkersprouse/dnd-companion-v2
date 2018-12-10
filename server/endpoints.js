@@ -8,6 +8,10 @@ const users = require('./endpoints/users');
 router.post('/login', auth.login);
 router.post('/register', auth.register);
 
+router.get('/users', verifyToken, users.getAll);
+router.get('/users/me', verifyToken, users.getMe);
 router.get('/users/:id', verifyToken, users.getByID);
+router.patch('/users', verifyToken, users.update);
+router.patch('/users/password', verifyToken, users.updatePassword);
 
 module.exports = router;

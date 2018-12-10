@@ -1,6 +1,6 @@
 const bcrypt = require('bcrypt');
 
-const { buildToken, call, respond } = require('./lib');
+const { buildToken, call, isEmail, respond } = require('./lib');
 const { db_err_duplicate, http_ok, http_bad_request, http_server_error } = require('../config/constants');
 const User = require('../models/user');
 
@@ -38,16 +38,17 @@ module.exports = {
 
     const salt = bcrypt.genSaltSync();
     const pw_hash = bcrypt.hashSync(password, salt);
-    const [err, data] = await call(Users.create({ name, email, pw_hash, username }));
+    const [err, data] = await call(User.create({ name, email, pw_hash, username }));
     if (err) {
       let message = 'There was an unknown problem when creating your account';
       if (err.name === db_err_duplicate) {
-        if (err.errors[0].path === 'username')
+        const error = err.errors[0];
+        if (error.path.indexOf('username') > -1)
           message = 'An account with that username already exists';
-        else if (err.errors[0].path === 'email')
+        else if (error.path.indexOf('email') > -1)
           message = 'An account with that e-mail address already exists';
-        return respond(res, http_bad_request, message);
       }
+      return respond(res, http_bad_request, message);
     }
 
     res.cookie('token', buildToken(data.id), { maxAge: 1000 * 60 * 60 * 24 * 7, httpOnly: true, signed: true, secure: process.env.NODE_ENV === 'production' });

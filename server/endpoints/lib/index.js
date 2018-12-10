@@ -2,6 +2,7 @@ const jwt = require('jsonwebtoken');
 const Sentry = require('@sentry/node');
 
 const config = require('../../config');
+const User = require('../../models/user');
 
 module.exports = {
 
@@ -18,27 +19,37 @@ module.exports = {
       });
   },
 
+  // W3C email regex: /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+  isEmail(text) {
+    return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(text);
+  },
+
   respond(res, status, message, content) {
     res.status(status).json({ message, content });
   },
 
-  verifyToken(req, res, next) {
+  async verifyToken(req, res, next) {
+    const unauthorized = () => {
+      res.clearCookie('token');
+      res.status(403).send();
+    }
+
     const { token } = req.signedCookies;
-    console.log(token);
     if (token) {
       try {
         const verified = jwt.verify(token, config.jwt_secret);
-        req.user_id = verified.id;
+        const [err, data] = await module.exports.call(User.findOne({ where: { id: verified.id } }));
+        if (err || !data)
+          return unauthorized();
+        req.user_obj = data.dataValues; // pass the logged in user's data to the endpoint resolver
         next();
       }
       catch(e) {
-        res.clearCookie('token');
-        res.status(403).send();
+        unauthorized();
       }
     }
     else {
-      res.clearCookie('token');
-      res.status(403).send();
+      unauthorized();
     }
   },
 
