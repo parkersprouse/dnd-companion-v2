@@ -1,7 +1,7 @@
 const bcrypt = require('bcrypt');
 
 const { buildToken, call, isEmail, respond } = require('./lib');
-const { db_err_duplicate, http_ok, http_bad_request, http_server_error } = require('../config/constants');
+const { cookie_token, db_err_duplicate, http_ok, http_bad_request, http_server_error } = require('../config/constants');
 const User = require('../models/user');
 
 module.exports = {
@@ -32,7 +32,7 @@ module.exports = {
       return respond(res, http_bad_request, message);
     }
 
-    res.cookie('token', buildToken(data.id), { maxAge: 1000 * 60 * 60 * 24 * 7, httpOnly: true, signed: true, secure: process.env.NODE_ENV === 'production' });
+    res.cookie(cookie_token, buildToken(data.id), { maxAge: 1000 * 60 * 60 * 24 * 7, httpOnly: true, signed: true, secure: process.env.NODE_ENV === 'production' });
     respond(res, http_ok);
   },
 
@@ -51,12 +51,12 @@ module.exports = {
     if (!match)
       return respond(res, http_bad_request, 'Your username or password was incorrect');
 
-    res.cookie('token', buildToken(data.id), { maxAge: 1000 * 60 * 60 * 24 * 7, httpOnly: true, signed: true, secure: process.env.NODE_ENV === 'production' });
+    res.cookie(cookie_token, buildToken(data.id), { maxAge: 1000 * 60 * 60 * 24 * 7, httpOnly: true, signed: true, secure: process.env.NODE_ENV === 'production' });
     respond(res, http_ok);
   },
 
   logout(req, res) {
-    res.clearCookie('token');
+    res.clearCookie(cookie_token);
     res.status(http_ok).send();
   },
 

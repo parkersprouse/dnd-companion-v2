@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
 const Sentry = require('@sentry/node');
 
-const { http_unauthorized } = require('../../config/constants');
+const { cookie_token, http_unauthorized } = require('../../config/constants');
 const config = require('../../config');
 const User = require('../../models/user');
 
@@ -31,7 +31,7 @@ module.exports = {
 
   async verifyToken(req, res, next) {
     const unauthorized = () => {
-      res.clearCookie('token');
+      res.clearCookie(cookie_token);
       res.status(http_unauthorized).send();
     }
 
