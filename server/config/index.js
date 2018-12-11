@@ -11,7 +11,8 @@ var config = {
   },
   cookie_secret: process.env.COOKIE_SECRET,
   jwt_secret: process.env.JWT_SECRET,
-  sentry_url: process.env.SENTRY_URL
+  sentry_url: process.env.SENTRY_URL,
+  sparkpost_api_key: process.env.SPARKPOST_API_KEY
 }
 
 module.exports = config;
