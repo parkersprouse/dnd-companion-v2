@@ -1,5 +1,5 @@
 <template>
-  <div style='width: 50%; margin-left: auto; margin-right: auto;'>
+  <div style='text-align: center; margin-top: 3rem; font-size: 2rem;'>
     Not Found
   </div>
 </template>

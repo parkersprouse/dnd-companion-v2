@@ -9,6 +9,8 @@ const Sentry = require('@sentry/node');
 const config = require('./config');
 const endpoints = require('./endpoints');
 
+//require('./event_system')();
+
 const app = express();
 
 Sentry.init({ dsn: config.sentry_url });
