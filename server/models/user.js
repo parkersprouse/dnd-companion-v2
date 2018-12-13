@@ -9,6 +9,7 @@ const attributes = {
   pw_reset_key: { type: Sequelize.TEXT }
 };
 
+// http://docs.sequelizejs.com/manual/tutorial/models-definition.html#configuration
 const table_config = {
   timestamps:      false,
   freezeTableName: true,

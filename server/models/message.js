@@ -25,6 +25,7 @@ const attributes = {
                 }
 };
 
+// http://docs.sequelizejs.com/manual/tutorial/models-definition.html#configuration
 const table_config = {
   timestamps:      true,
   freezeTableName: true,

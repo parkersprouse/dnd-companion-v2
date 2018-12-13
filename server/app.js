@@ -30,6 +30,7 @@ app.options('*', cors()); // Pre-flight
 // Parse application/json
 app.use(express.json());
 
+// Set up our cookie parser to sign cookies with our secret
 app.use(cookie_parser(config.cookie_secret));
 
 // Setup our endpoints under the /api route

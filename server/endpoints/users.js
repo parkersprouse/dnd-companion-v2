@@ -32,6 +32,29 @@ module.exports = {
     return module.exports.getByID(req, res);
   },
 
+  async resetPassword(req, res) {
+    const { pw_reset_key, pass_confirm, pass_new } = req.body;
+
+    if (!pw_reset_key)
+      return respond(res, http_bad_request, 'No reset key provided');
+    if (!pass_new || pass_new.length < 8)
+      return respond(res, http_bad_request, 'Password must be at least 8 characters');
+    if (pass_new !== pass_confirm)
+      return respond(res, http_bad_request, 'Passwords did not match');
+
+    const [match_err, match_data] = await call(User.findOne({ where: { pw_reset_key } }));
+    if (match_err || !match_data)
+      return respond(res, http_server_error);
+
+    const salt = bcrypt.genSaltSync();
+    const pw_hash = bcrypt.hashSync(pass_new, salt);
+    const [update_err, update_data] = await call(User.update({ pw_hash, pw_reset_key: null }, { where: { id: match_data.id } }));
+    if (update_err || !update_data[0])
+      return respond(res, http_server_error);
+
+    respond(res, http_ok);
+  },
+
   async update(req, res) {
     if (req.body.email && !isEmail(req.body.email))
       return respond(res, http_bad_request, 'Your e-mail must be valid');
@@ -53,21 +76,23 @@ module.exports = {
   },
 
   async updatePassword(req, res) {
-    const { password_current, password_new, password_new_confirm } = req.body;
+    const { pass_current, pass_confirm, pass_new } = req.body;
+
+    if (!pass_new || pass_new.length < 8)
+      return respond(res, http_bad_request, 'Password must be at least 8 characters');
+    if (pass_new !== pass_confirm)
+      return respond(res, http_bad_request, 'Passwords did not match');
 
     const [match_err, match_data] = await call(User.findOne({ where: { id: req.user_obj.id } }));
     if (match_err || !match_data)
       return respond(res, http_server_error);
-    const match = bcrypt.compareSync(password_current, match_data.pw_hash);
+
+    const match = bcrypt.compareSync(pass_current, match_data.pw_hash);
     if (!match)
       return respond(res, http_bad_request, 'Current password incorrect');
-    else if (!password_new || password_new !== password_new_confirm)
-      return respond(res, http_bad_request, 'Passwords did not match');
-    else if (password_new.length < 8)
-      return respond(res, http_bad_request, 'Password must be at least 8 characters');
 
     const salt = bcrypt.genSaltSync();
-    const pw_hash = bcrypt.hashSync(password_new, salt);
+    const pw_hash = bcrypt.hashSync(pass_new, salt);
     const [update_err, update_data] = await call(User.update({ pw_hash }, { where: { id: req.user_obj.id } }));
     if (update_err || !update_data[0])
       return respond(res, http_server_error);
