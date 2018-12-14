@@ -57,7 +57,7 @@ module.exports = {
 
   logout(req, res) {
     res.clearCookie(cookie_token);
-    res.status(http_ok).send();
+    respond(res, http_ok);
   },
 
 };

@@ -5,22 +5,22 @@ const attributes = {
   ability_scores:    { type: Sequelize.JSON }, // { 'charisma': { level: 13, modifier: 1 } }
   age:               { type: Sequelize.TEXT },
   alignment:         { type: Sequelize.TEXT },
-  allies:            { type: Sequelize.TEXT }, // Allies & Organizations
-  armor:             { type: Sequelize.ARRAY(Sequelize.JSON) }, // array of armor objects -- [{ name: 'Breastplate', amount: 1 }]
+  allies:            { type: Sequelize.TEXT }, // 'Allies & Organizations'
+  armor:             { type: Sequelize.ARRAY(Sequelize.JSON) }, // array of armor objects -- [{ name: 'Breastplate', amount: 1, equipped: false, desc: '', custom: false }]
   armor_class:       { type: Sequelize.TEXT },
   attunements:       { type: Sequelize.JSON }, // { amount: 1, items: ['Item'] }
   background:        { type: Sequelize.TEXT },
-  backstory:         { type: Sequelize.TEXT }, // Character Backstory
+  backstory:         { type: Sequelize.TEXT }, // 'Character Backstory'
   bonds:             { type: Sequelize.TEXT }, // 'Bonds'
   class:             { type: Sequelize.TEXT }, // class name -- allows for custom
   copper:            { type: Sequelize.TEXT },
   current_hp:        { type: Sequelize.TEXT },
   death_saves:       { type: Sequelize.JSON }, // { success: 0, failed: 2 }
   electrum:          { type: Sequelize.TEXT },
-  equipment:         { type: Sequelize.ARRAY(Sequelize.JSON) }, // array of equipment objects -- [{ name: 'Lantern', amount: 1 }]
+  equipment:         { type: Sequelize.ARRAY(Sequelize.JSON) }, // array of equipment objects -- [{ name: 'Lantern', amount: 1, desc: '', custom: false }]
   experience:        { type: Sequelize.TEXT, defaultValue: '0' },
   eye_color:         { type: Sequelize.TEXT },
-  features:          { type: Sequelize.TEXT }, // 'Features & Traits'
+  features:          { type: Sequelize.ARRAY(Sequelize.JSON) }, // [{ name: 'Rage', desc: '...', total_uses: 3, spent_uses: 1 }]
   flaws:             { type: Sequelize.TEXT }, // 'Flaws'
   gold:              { type: Sequelize.TEXT },
   hair_color:        { type: Sequelize.TEXT },
@@ -39,7 +39,7 @@ const attributes = {
   passive_wisdom:    { type: Sequelize.TEXT }, // passive perception
   personality:       { type: Sequelize.TEXT }, // 'Personality Traits'
   platinum:          { type: Sequelize.TEXT },
-  proficiencies:     { type: Sequelize.ARRAY(Sequelize.TEXT) }, // array of proficiency names -- allows for custom
+  proficiencies:     { type: Sequelize.ARRAY(Sequelize.JSON) }, // [{ name: 'Slight of Hand', double: true, skill: true }, { name: 'Light Armor' }]
   proficiency_bonus: { type: Sequelize.TEXT },
   race:              { type: Sequelize.TEXT }, // race name -- allows for custom
   silver:            { type: Sequelize.TEXT },
@@ -49,11 +49,11 @@ const attributes = {
   spell_atk_bonus:   { type: Sequelize.TEXT },
   spell_class:       { type: Sequelize.TEXT }, // 'Spellcasting Class'
   spell_save_dc:     { type: Sequelize.TEXT },
-  spells:            { type: Sequelize.ARRAY(Sequelize.JSON) }, // [{ id: 1, spells: [{ id: 3, prepared: true }], slots: 3, slots_used: 1 }]
+  spells:            { type: Sequelize.ARRAY(Sequelize.JSON) }, // [{ level: 1, spells: [{ id: 3, prepared: true }], slots: 3, slots_used: 1 }]
   subrace:           { type: Sequelize.TEXT },
   temp_hp:           { type: Sequelize.TEXT },
-  treasure:          { type: Sequelize.TEXT }, // Treasure
-  weapons:           { type: Sequelize.ARRAY(Sequelize.JSON) }, // array of weapon objects -- [{ name: 'Sword', amount: 1 }]
+  treasure:          { type: Sequelize.TEXT }, // 'Treasure'
+  weapons:           { type: Sequelize.ARRAY(Sequelize.JSON) }, // array of weapon objects -- [{ name: 'Sword', amount: 1, equipped: false, desc: '', custom: false }]
   weight:            { type: Sequelize.TEXT },
   owner_id:          {
                        type: Sequelize.INTEGER, allowNull: false,
