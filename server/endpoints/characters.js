@@ -1,4 +1,4 @@
-const { call, respond } = require('./lib');
+const { call, respond } = require('../lib');
 const { http_ok, http_bad_request, http_no_content, http_server_error } = require('../config/constants');
 const Character = require('../models/character');
 

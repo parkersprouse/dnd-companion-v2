@@ -74,4 +74,18 @@ const table_config = {
 
 const Character = db.define('characters', attributes, table_config);
 
+// Character.afterDestroy((char) => {
+//   const Game = require('./game');
+//   const { call } = require('../lib');
+
+//   const [err, data] = await call(Game.findOne({ where: { char_ids: { $contains: [Number(char.id)] } } }));
+//   if (!data)
+//     return; // No games with this char, so don't worry about it
+//   if (err)
+//     throw new Error("Failed to get character's games");
+
+//   const { char_ids } = data;
+//   char_ids.splice(char_ids.indexOf(Number(req.params.id)), 1);
+// });
+
 module.exports = Character;

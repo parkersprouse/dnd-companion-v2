@@ -1,6 +1,6 @@
 const bcrypt = require('bcrypt');
 
-const { call, isEmail, respond } = require('./lib');
+const { call, isEmail, respond } = require('../lib');
 const { db_err_duplicate, http_ok, http_bad_request, http_no_content, http_server_error } = require('../config/constants');
 const User = require('../models/user');
 

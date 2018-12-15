@@ -1,6 +1,6 @@
 const _ = require('lodash');
 
-const { respond } = require('./lib');
+const { respond } = require('../lib');
 const { http_ok, http_not_found } = require('../config/constants');
 
 // See: https://goenning.net/2016/04/14/stop-reading-json-files-with-require/ (don't worry about the title of the article)
