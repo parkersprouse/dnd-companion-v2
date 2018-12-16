@@ -13,7 +13,7 @@ module.exports = {
     respond(res, http_ok, null, chars);
   },
 
-  async getMine(req, res) {
+  async getMe(req, res) {
     const owner_id = req.user_obj.id;
     const [err, data] = await call(Character.findAll({ where: { owner_id } }));
     if (err)
@@ -67,7 +67,7 @@ module.exports = {
     const user_id = req.user_obj.id;
 
     const [find_err, find_data] = await call(Character.findOne({ where: { id: char_id } }));
-    if (find_err || !find_data || find_data.owner_id !== user_id)
+    if (find_err || !find_data || find_data.user_id !== user_id)
       return respond(res, http_server_error, 'There was a problem deleting your character');
 
     // Returns 0 or 1 to determine if row was deleted

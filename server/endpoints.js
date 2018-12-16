@@ -36,6 +36,7 @@ router.delete('/characters/:id', verifyToken, characters.delete);
 const games = require('./endpoints/games');
 router.get('/games', verifyToken, games.getAll);
 router.get('/games/me', verifyToken, games.getMe);
+router.get('/games/characters/:id', verifyToken, games.getCharacters);
 router.get('/games/:id', verifyToken, games.getByID);
 router.post('/games', verifyToken, games.create);
 router.post('/games/join', verifyToken, games.join);

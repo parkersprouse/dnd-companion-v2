@@ -2,10 +2,10 @@ const crypto = require('crypto');
 const jwt = require('jsonwebtoken');
 const Sentry = require('@sentry/node');
 
-const { cookie_token, http_bad_request, http_ok, http_unauthorized } = require('../../config/constants');
-const config = require('../../config');
-const mailer = require('../../config/mailer');
-const User = require('../../models/user');
+const { cookie_token, http_bad_request, http_ok, http_unauthorized } = require('../config/constants');
+const config = require('../config');
+const mailer = require('../config/mailer');
+const User = require('../models/user');
 
 module.exports = {
 

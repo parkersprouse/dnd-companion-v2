@@ -2,6 +2,8 @@ const crypto = require('crypto');
 
 const { call, respond } = require('../lib');
 const { http_ok, http_bad_request, http_server_error } = require('../config/constants');
+const Character = require('../models/character');
+const CharacterGameAssociation = require('../models/char_game_association');
 const Game = require('../models/game');
 
 module.exports = {
@@ -22,6 +24,17 @@ module.exports = {
     if (err)
       return respond(res, http_server_error, 'Failed to get your games');
 
+    const games = data.map((game) => game.get({ plain: true }));
+    respond(res, http_ok, null, games);
+  },
+
+  async getCharacters(req, res) {
+    const game_id = req.params.id;
+
+    const [err, data] = await call(CharacterGameAssociation.findAll({ where: { game_id }, include: ['Character'] }));
+    if (err)
+      return respond(res, http_server_error, "There was a problem finding the game's characters");
+    
     const games = data.map((game) => game.get({ plain: true }));
     respond(res, http_ok, null, games);
   },
@@ -47,7 +60,7 @@ module.exports = {
       user_id: req.user_obj.id,
       ...req.body
     };
-    const [err, data] = await call(Character.create(game_data));
+    const [err, data] = await call(Game.create(game_data));
     if (err)
       return respond(res, http_server_error, 'There was a problem when creating your game');
 
@@ -55,7 +68,42 @@ module.exports = {
   },
 
   async join(req, res) {
+    const { code, character_id } = req.body;
 
+    if (!code || !character_id)
+      return respond(res, http_bad_request, 'Please make sure all required fields are filled out');
+
+    // Make sure a game with the given code exists
+    const [find_game_err, find_game_data] = await call(Game.findOne({ where: { code } }));
+    if (find_game_err)
+      return respond(res, http_server_error, 'There was a problem joining the game');
+    if (!find_game_data)
+      return respond(res, http_bad_request, 'No game found with the provided code');
+
+    // Make sure the character with the provided ID exists and belongs to the requesting user
+    const [find_char_err, find_char_data] = await call(Character.findOne({ where: { id: character_id } }));
+    if (find_char_err)
+      return respond(res, http_server_error, 'There was a problem joining the game');
+    if (!find_char_data || find_char_data.user_id !== req.user_obj.id)
+      return respond(res, http_bad_request, 'No character found with the provided ID');
+
+    // Make sure the character isn't part of any other games
+    const [existing_game_err, existing_game_data] = await call(CharacterGameAssociation.findOne({ where: { character_id } }));
+    if (existing_game_err)
+      return respond(res, http_server_error, 'There was a problem joining the game');
+    if (existing_game_data)
+      return respond(res, http_bad_request, 'This character is already a part of another game');
+
+    const data = {
+      character_id,
+      game_id: find_game_data.id,
+      user_id: req.user_obj.id
+    };
+    const [join_err, join_data] = await call(CharacterGameAssociation.create(data));
+    if (join_err)
+      return respond(res, http_server_error, 'There was a problem joining the game');
+    
+    respond(res, http_ok, null, join_data.game_id);
   },
 
   async invite(req, res) {
@@ -78,7 +126,19 @@ module.exports = {
   },
 
   async delete(req, res) {
+    const game_id = req.params.id;
+    const user_id = req.user_obj.id;
 
+    const [find_err, find_data] = await call(Game.findOne({ where: { id: game_id } }));
+    if (find_err || !find_data || find_data.user_id !== user_id)
+      return respond(res, http_server_error, 'There was a problem deleting your game');
+
+    // Returns 0 or 1 to determine if row was deleted
+    const [delete_err, delete_data] = await call(Game.destroy({ where: { id: game_id } }));
+    if (delete_err || !delete_data)
+      return respond(res, http_server_error, 'There was a problem deleting your game');
+
+    respond(res, http_ok);
   },
 
 };
