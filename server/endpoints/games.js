@@ -63,7 +63,18 @@ module.exports = {
   },
 
   async update(req, res) {
+    const { id, name } = req.body;
 
+    if (name !== undefined && !name)
+      return respond(res, http_bad_request, 'Please make sure your game has a name');
+
+    const [err, data] = await call(Game.update(req.body, { where: { id } }));
+    if (err)
+      return respond(res, http_server_error, 'There was a problem when updating your game');
+    if (!data[0])
+      return respond(res, http_bad_request, 'No game updated, check provided ID');
+
+    respond(res, http_ok);
   },
 
   async delete(req, res) {
