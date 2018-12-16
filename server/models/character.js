@@ -54,15 +54,7 @@ const attributes = {
   temp_hp:           { type: Sequelize.TEXT },
   treasure:          { type: Sequelize.TEXT }, // 'Treasure'
   weapons:           { type: Sequelize.ARRAY(Sequelize.JSON) }, // array of weapon objects -- [{ name: 'Sword', amount: 1, equipped: false, desc: '', custom: false }]
-  weight:            { type: Sequelize.TEXT },
-  owner_id:          {
-                       type: Sequelize.INTEGER, allowNull: false,
-                       references: {
-                         model: User,
-                         key: 'id',
-                         deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE
-                       }
-                     }
+  weight:            { type: Sequelize.TEXT }
 };
 
 // http://docs.sequelizejs.com/manual/tutorial/models-definition.html#configuration
@@ -73,19 +65,6 @@ const table_config = {
 };
 
 const Character = db.define('characters', attributes, table_config);
-
-// Character.afterDestroy((char) => {
-//   const Game = require('./game');
-//   const { call } = require('../lib');
-
-//   const [err, data] = await call(Game.findOne({ where: { char_ids: { $contains: [Number(char.id)] } } }));
-//   if (!data)
-//     return; // No games with this char, so don't worry about it
-//   if (err)
-//     throw new Error("Failed to get character's games");
-
-//   const { char_ids } = data;
-//   char_ids.splice(char_ids.indexOf(Number(req.params.id)), 1);
-// });
+Character.belongsTo(User, { onDelete: 'cascade', hooks: true }); // user_id, the user who created the character
 
 module.exports = Character;

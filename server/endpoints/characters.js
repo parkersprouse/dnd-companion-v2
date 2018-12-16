@@ -39,7 +39,7 @@ module.exports = {
     if (!req.body.name)
       return respond(res, http_bad_request, 'Please make sure your character has a name');
 
-    const char_data = { owner_id: req.user_obj.id, ...req.body };
+    const char_data = { user_id: req.user_obj.id, ...req.body };
     const [err, data] = await call(Character.create(char_data));
     if (err)
       return respond(res, http_server_error, 'There was a problem when creating your character');

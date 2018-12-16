@@ -5,24 +5,7 @@ const User = require('./user');
 const attributes = {
   id:           { type: Sequelize.INTEGER, autoIncrement: true, allowNull: false, unique: true, primaryKey: true },
   message:      { type: Sequelize.TEXT, allowNull: false },
-  type:         { type: Sequelize.ENUM, allowNull: false, values: ['private', 'group', 'table'] },
-  receiver_ids: { type: Sequelize.ARRAY(Sequelize.INTEGER), allowNull: false },
-  game_id:      {
-                  type: Sequelize.INTEGER, allowNull: false,
-                  references: {
-                    model: Game,
-                    key: 'id',
-                    deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE
-                  }
-                },
-  sender_id:    {
-                  type: Sequelize.INTEGER, allowNull: false,
-                  references: {
-                    model: User,
-                    key: 'id',
-                    deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE
-                  }
-                }
+  type:         { type: Sequelize.ENUM, allowNull: false, values: ['private', 'group', 'table'] }
 };
 
 // http://docs.sequelizejs.com/manual/tutorial/models-definition.html#configuration
@@ -33,5 +16,7 @@ const table_config = {
 };
 
 const Message = db.define('messages', attributes, table_config);
+Message.belongsTo(Game, { onDelete: 'cascade', hooks: true }); // game_id, the game this message was sent in
+Message.belongsTo(User, { onDelete: 'cascade', hooks: true }); // user_id, the user who sent the message
 
 module.exports = Message;
