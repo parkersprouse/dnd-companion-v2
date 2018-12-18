@@ -1,7 +1,9 @@
 const bcrypt = require('bcrypt');
+const crypto = require('crypto');
 
 const { call, isEmail, respond } = require('../lib');
 const { db_err_duplicate, http_ok, http_bad_request, http_no_content, http_server_error } = require('../config/constants');
+const mailer = require('../config/mailer');
 const User = require('../models/user');
 
 module.exports = {
@@ -30,6 +32,37 @@ module.exports = {
   getMe(req, res) {
     req.params.id = req.user_obj.id;
     return module.exports.getByID(req, res);
+  },
+
+  async sendRecoveryEmail(req, res) {
+    if (!req.body.email || !isEmail(req.body.email))
+      return respond(res, http_bad_request, 'Please make sure you enter an e-mail address');
+
+    const [find_err, find_data] = await call(User.findOne({ where: { email: { $iLike: req.body.email } } }));
+    if (find_err)
+      return respond(res, http_bad_request, 'There was an unexpected error when attempting to send the e-mail');
+    else if (!find_data)
+      return respond(res, http_ok);
+
+    const key = crypto.randomBytes(32).toString('hex');
+    const user = find_data.get({ plain: true });
+    const [update_err, update_data] = await call(User.update({ pw_reset_key: key }, { where: { email: { $iLike: req.body.email } } }));
+    if (update_err || !update_data[0])
+      return respond(res, http_bad_request, 'There was an unexpected error when attempting to send the e-mail');
+
+    mailer({
+      subject: 'D&D Companion App Account Recovery',
+      html_content: `A request was made to recover the account information associated with this e-mail address.<br /><br />\
+                     Your username is: <b>${user.username}</b>.<br /><br />\
+                     To reset your password, visit <a href='https://dnd.parkersprouse.me/account-recovery?key=${key}'>https://dnd.parkersprouse.me/account-recovery?key=${key}</a>.`,
+      raw_content: `A request was made to recover the account information associated with this e-mail address. Your username is: ${user.username}. To reset your password, please visit https://dnd.parkersprouse.me/account-recovery?key=${key}`,
+      addresses: [req.body.email]
+    }, (success) => {
+      if (!success)
+        return respond(res, http_bad_request, 'There was an unexpected error when attempting to send the e-mail');
+    });
+
+    respond(res, http_ok);
   },
 
   async resetPassword(req, res) {

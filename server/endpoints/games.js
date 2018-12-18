@@ -1,8 +1,9 @@
 const crypto = require('crypto');
 const _ = require('lodash');
 
-const { call, respond } = require('../lib');
 const { http_ok, http_bad_request, http_server_error } = require('../config/constants');
+const mailer = require('../config/mailer');
+const { call, respond } = require('../lib');
 const Character = require('../models/character');
 const CharacterGameAssociation = require('../models/char_game_association');
 const Game = require('../models/game');
@@ -132,7 +133,30 @@ module.exports = {
   },
 
   async invite(req, res) {
+    const { code, email } = req.body;
 
+    if (!email)
+      return respond(res, http_bad_request, 'Please provide an e-mail address');
+    if (!code)
+      return respond(res, http_bad_request, 'No game code provided');
+
+    const [game_err, game_data] = await call(Game.findOne({ where: { code } }));
+    if (game_err || !game_data)
+      return respond(res, http_server_error, 'There was a problem sending your game invite');
+
+    mailer({
+      subject: 'D&D Companion App Game Invite',
+      html_content: `You've been sent an invite from <b>${req.user_obj.username}</b> to join the game "${game_data.name}" on the D&D Companion App.<br /><br />\
+                     If you'd like to join the game, visit <a href='https://dnd.parkersprouse.me/games/join?code=${code}'>https://dnd.parkersprouse.me/games/join?code=${code}</a>`,
+      raw_content: `You've been sent an invite from ${req.user_obj.username} to join the game "${game_data.name}" on the D&D Companion App. \
+                    If you'd like to join the game, visit https://dnd.parkersprouse.me/games/join?code=${code}`,
+      addresses: [email]
+    }, (success) => {
+      if (!success)
+        return respond(res, http_bad_request, 'There was an unexpected error when attempting to send the invite');
+    });
+
+    respond(res, http_ok);
   },
 
   async update(req, res) {
