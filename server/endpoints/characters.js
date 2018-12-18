@@ -14,8 +14,8 @@ module.exports = {
   },
 
   async getMe(req, res) {
-    const owner_id = req.user_obj.id;
-    const [err, data] = await call(Character.findAll({ where: { owner_id } }));
+    const user_id = req.user_obj.id;
+    const [err, data] = await call(Character.findAll({ where: { user_id } }));
     if (err)
       return respond(res, http_server_error, 'Failed to get your characters');
 
@@ -53,10 +53,17 @@ module.exports = {
     if (name !== undefined && !name)
       return respond(res, http_bad_request, 'Please make sure your character has a name');
 
-    const [err, data] = await call(Character.update(req.body, { where: { id } }));
-    if (err)
+    // Make sure the character with the provided ID exists and belongs to the requesting user
+    const [find_err, find_data] = await call(Character.findOne({ where: { id } }));
+    if (find_err)
+      return respond(res, http_server_error, 'There was a problem updating your character');
+    if (!find_data || find_data.user_id !== req.user_obj.id)
+      return respond(res, http_bad_request, 'No character found with the provided ID');
+
+    const [update_err, update_data] = await call(Character.update(req.body, { where: { id } }));
+    if (update_err)
       return respond(res, http_server_error, 'There was a problem when updating your character');
-    if (!data[0])
+    if (!update_data[0])
       return respond(res, http_bad_request, 'No character updated, check provided ID');
 
     respond(res, http_ok);
@@ -66,6 +73,7 @@ module.exports = {
     const char_id = req.params.id;
     const user_id = req.user_obj.id;
 
+    // Make sure the character with the provided ID exists and belongs to the requesting user
     const [find_err, find_data] = await call(Character.findOne({ where: { id: char_id } }));
     if (find_err || !find_data || find_data.user_id !== user_id)
       return respond(res, http_server_error, 'There was a problem deleting your character');
