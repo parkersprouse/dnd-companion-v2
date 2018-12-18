@@ -1,4 +1,5 @@
 const crypto = require('crypto');
+const _ = require('lodash');
 
 const { call, respond } = require('../lib');
 const { http_ok, http_bad_request, http_server_error } = require('../config/constants');
@@ -32,7 +33,10 @@ module.exports = {
   async getCharacters(req, res) {
     const game_id = req.params.id;
 
-    const [err, data] = await call(CharacterGameAssociation.findAll({ where: { game_id }, include: [{ model: Character, required: true }] }));
+    const [err, data] = await call(CharacterGameAssociation.findAll({
+      where: { game_id },
+      include: [{ model: Character, required: true }]
+    }));
     if (err)
       return respond(res, http_server_error, "There was a problem finding the game's characters");
     
@@ -45,13 +49,14 @@ module.exports = {
 
     const [err, data] = await call(CharacterGameAssociation.findAll({
       where: { game_id },
-      include: [{ model: User, required: true, attributes: ['email', 'username', 'name'] }]
+      attributes: ['user_id'],
+      include: [{ model: User, required: true, attributes: ['id', 'email', 'username', 'name'] }]
     }));
     if (err)
       return respond(res, http_server_error, "There was a problem finding the game's players");
-    
-    const games = data.map((game) => game.get({ plain: true }));
-    respond(res, http_ok, null, games);
+
+    const players = _.uniqBy(data.map((game) => game.get({ plain: true })), 'user_id');
+    respond(res, http_ok, null, players);
   },
 
   async getByID(req, res) {
@@ -107,7 +112,9 @@ module.exports = {
     if (existing_game_data)
       return respond(res, http_bad_request, 'This character is already a part of another game');
 
-    const [create_err, create_data] = await call(CharacterGameAssociation.create({ character_id, game_id: find_game_data.id, user_id: req.user_obj.id }));
+    const [create_err, create_data] = await call(CharacterGameAssociation.create({
+      character_id, game_id: find_game_data.id, user_id: req.user_obj.id
+    }));
     if (create_err)
       return respond(res, http_server_error, 'There was a problem joining the game');
 
