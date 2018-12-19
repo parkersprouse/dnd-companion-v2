@@ -16,6 +16,6 @@ const table_config = {
 };
 
 const Game = db.define('games', attributes, table_config);
-Game.belongsTo(User, { onDelete: 'cascade', hooks: true }); // user_id, the user who created the game
+Game.belongsTo(User, { foreignKey: { allowNull: false }, onDelete: 'cascade', hooks: true }); // user_id, the user who created the game
 
 module.exports = Game;

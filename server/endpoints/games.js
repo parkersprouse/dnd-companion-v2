@@ -3,7 +3,7 @@ const _ = require('lodash');
 
 const { http_ok, http_bad_request, http_server_error } = require('../config/constants');
 const mailer = require('../config/mailer');
-const { call, respond } = require('../lib');
+const { call, isEmail, respond } = require('../lib');
 const Character = require('../models/character');
 const CharacterGameAssociation = require('../models/char_game_association');
 const Game = require('../models/game');
@@ -119,23 +119,13 @@ module.exports = {
     if (create_err)
       return respond(res, http_server_error, 'There was a problem joining the game');
 
-    // This no longer needs to be here, but is a good example of both a transaction and a findOrCreate() call, so I'll hold it for now.
-    // const [err, data] = await call(db.transaction((t) => {
-    //   return CharacterGameAssociation.create({ character_id, game_id: find_game_data.id, user_id: req.user_obj.id }, { transaction: t })
-    //     .then(() => {
-    //       return PlayerGameAssociation.findOrCreate({ where: { game_id: find_game_data.id, user_id: req.user_obj.id }, transaction: t });
-    //     });
-    // }));
-    // if (err)
-    //   return respond(res, http_server_error, 'There was a problem joining the game');
-
     respond(res, http_ok, null, create_data.id);
   },
 
   async invite(req, res) {
     const { code, email } = req.body;
 
-    if (!email)
+    if (!email || !isEmail(email))
       return respond(res, http_bad_request, 'Please provide an e-mail address');
     if (!code)
       return respond(res, http_bad_request, 'No game code provided');

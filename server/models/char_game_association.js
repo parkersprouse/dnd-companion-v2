@@ -15,8 +15,8 @@ const table_config = {
 };
 
 const CharacterGameAssociation = db.define('character_game_assocations', attributes, table_config);
-CharacterGameAssociation.belongsTo(Character, { onDelete: 'cascade', hooks: true }); // character_id, the character who is in the game
-CharacterGameAssociation.belongsTo(Game, { onDelete: 'cascade', hooks: true }); // game_id, the game the character is in
-CharacterGameAssociation.belongsTo(User, { onDelete: 'cascade', hooks: true }); // user_id, the user who owns the character in this game
+CharacterGameAssociation.belongsTo(Character, { foreignKey: { allowNull: false }, onDelete: 'cascade', hooks: true }); // character_id, the character who is in the game
+CharacterGameAssociation.belongsTo(Game, { foreignKey: { allowNull: false }, onDelete: 'cascade', hooks: true }); // game_id, the game the character is in
+CharacterGameAssociation.belongsTo(User, { foreignKey: { allowNull: false }, onDelete: 'cascade', hooks: true }); // user_id, the user who owns the character in this game
 
 module.exports = CharacterGameAssociation;

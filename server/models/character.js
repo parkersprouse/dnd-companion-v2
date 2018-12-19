@@ -65,6 +65,6 @@ const table_config = {
 };
 
 const Character = db.define('characters', attributes, table_config);
-Character.belongsTo(User, { onDelete: 'cascade', hooks: true }); // user_id, the user who created the character
+Character.belongsTo(User, { foreignKey: { allowNull: false }, onDelete: 'cascade', hooks: true }); // user_id, the user who created the character
 
 module.exports = Character;

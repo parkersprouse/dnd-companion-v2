@@ -15,8 +15,8 @@ const table_config = {
 };
 
 const MessageReceiverAssociation = db.define('message_receiver_association', attributes, table_config);
-MessageReceiverAssociation.belongsTo(Message, { onDelete: 'cascade', hooks: true }); // message_id, the message that the person received
-MessageReceiverAssociation.belongsTo(Game, { onDelete: 'cascade', hooks: true }); // game_id, the game the message is in
-MessageReceiverAssociation.belongsTo(User, { onDelete: 'cascade', hooks: true }); // user_id, the user who received the message
+MessageReceiverAssociation.belongsTo(Message, { foreignKey: { allowNull: false }, onDelete: 'cascade', hooks: true }); // message_id, the message that the person received
+MessageReceiverAssociation.belongsTo(Game, { foreignKey: { allowNull: false }, onDelete: 'cascade', hooks: true }); // game_id, the game the message is in
+MessageReceiverAssociation.belongsTo(User, { foreignKey: { allowNull: false }, onDelete: 'cascade', hooks: true }); // user_id, the user who received the message
 
 module.exports = MessageReceiverAssociation;

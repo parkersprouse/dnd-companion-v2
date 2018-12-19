@@ -70,16 +70,15 @@ module.exports = {
   },
 
   async delete(req, res) {
-    const char_id = req.params.id;
-    const user_id = req.user_obj.id;
+    const { id } = req.params;
 
     // Make sure the character with the provided ID exists and belongs to the requesting user
-    const [find_err, find_data] = await call(Character.findOne({ where: { id: char_id } }));
-    if (find_err || !find_data || find_data.user_id !== user_id)
+    const [find_err, find_data] = await call(Character.findOne({ where: { id } }));
+    if (find_err || !find_data || find_data.user_id !== req.user_obj.id)
       return respond(res, http_server_error, 'There was a problem deleting your character');
 
     // Returns 0 or 1 to determine if row was deleted
-    const [delete_err, delete_data] = await call(Character.destroy({ where: { id: char_id } }));
+    const [delete_err, delete_data] = await call(Character.destroy({ where: { id } }));
     if (delete_err || !delete_data)
       return respond(res, http_server_error, 'There was a problem deleting your character');
 

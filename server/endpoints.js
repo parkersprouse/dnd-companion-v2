@@ -11,17 +11,6 @@ router.post('/register', auth.register);
 router.get('/logout', auth.logout);
 
 //------------------------------------------------------------------------
-// Users
-const users = require('./endpoints/users');
-router.get('/users', verifyToken, users.getAll);
-router.get('/users/me', verifyToken, users.getMe);
-router.get('/users/:id', verifyToken, users.getByID);
-router.post('/users/send_recovery_email', users.sendRecoveryEmail);
-router.patch('/users', verifyToken, users.update);
-router.patch('/users/update_password', verifyToken, users.updatePassword);
-router.patch('/users/reset_password', users.resetPassword);
-
-//------------------------------------------------------------------------
 // Characters
 const characters = require('./endpoints/characters');
 router.get('/characters', verifyToken, characters.getAll);
@@ -30,6 +19,12 @@ router.get('/characters/:id', verifyToken, characters.getByID);
 router.post('/characters', verifyToken, characters.create);
 router.patch('/characters', verifyToken, characters.update);
 router.delete('/characters/:id', verifyToken, characters.delete);
+
+//------------------------------------------------------------------------
+// D&D Data
+const dnd_data = require('./endpoints/dnd_data');
+router.get('/dnd/:data_type', dnd_data.getAll);
+router.post('/dnd/:data_type', dnd_data.getSpecific);
 
 //------------------------------------------------------------------------
 // Games
@@ -46,9 +41,22 @@ router.patch('/games', verifyToken, games.update);
 router.delete('/games/:id', verifyToken, games.delete);
 
 //------------------------------------------------------------------------
-// D&D Data
-const dnd_data = require('./endpoints/dnd_data');
-router.get('/dnd/:data_type', dnd_data.getAll);
-router.post('/dnd/:data_type', dnd_data.getSpecific);
+// Messages
+const messages = require('./endpoints/messages');
+router.get('/messages', verifyToken, messages.getAll);
+router.post('/messages', verifyToken, messages.create);
+router.patch('/messages', verifyToken, messages.update);
+router.delete('/messages/:id', verifyToken, messages.delete);
+
+//------------------------------------------------------------------------
+// Users
+const users = require('./endpoints/users');
+router.get('/users', verifyToken, users.getAll);
+router.get('/users/me', verifyToken, users.getMe);
+router.get('/users/:id', verifyToken, users.getByID);
+router.post('/users/send_recovery_email', users.sendRecoveryEmail);
+router.patch('/users', verifyToken, users.update);
+router.patch('/users/update_password', verifyToken, users.updatePassword);
+router.patch('/users/reset_password', users.resetPassword);
 
 module.exports = router;
