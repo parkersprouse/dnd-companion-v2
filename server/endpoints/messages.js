@@ -22,6 +22,22 @@ module.exports = {
     respond(res, http_ok, null, messages);
   },
 
+  async getForGame(req, res) {
+    const { game_id } = req.params;
+
+    const [err, data] = await call(MessageReceiverAssociation.findAll({
+      where: { game_id },
+      include: [
+        { model: Message, required: true, include: [{ model: Game, required: true }, { model: User, required: true, attributes: ['id', 'email', 'username', 'name'] }] },
+      ]
+    }));
+    if (err)
+      return respond(res, http_server_error, 'Failed to get all messages');
+
+    const messages = data.map((msg) => msg.get({ plain: true }));
+    respond(res, http_ok, null, messages);
+  },
+
   async create(req, res) {
     if (!req.body.message)
       return respond(res, http_bad_request, 'Please make sure your message has a body');

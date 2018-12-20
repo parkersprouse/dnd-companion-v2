@@ -44,6 +44,7 @@ router.delete('/games/:id', verifyToken, games.delete);
 // Messages
 const messages = require('./endpoints/messages');
 router.get('/messages', verifyToken, messages.getAll);
+router.get('/messages/:game_id', verifyToken, messages.getForGame);
 router.post('/messages', verifyToken, messages.create);
 router.patch('/messages', verifyToken, messages.update);
 router.delete('/messages/:id', verifyToken, messages.delete);
