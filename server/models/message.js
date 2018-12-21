@@ -3,9 +3,9 @@ const Game = require('./game');
 const User = require('./user');
 
 const attributes = {
-  id:      { type: Sequelize.INTEGER, autoIncrement: true, allowNull: false, unique: true, primaryKey: true },
-  message: { type: Sequelize.TEXT, allowNull: false },
-  type:    { type: Sequelize.ENUM, allowNull: false, values: ['private', 'group', 'table'] }
+  id:   { type: Sequelize.INTEGER, autoIncrement: true, allowNull: false, unique: true, primaryKey: true },
+  body: { type: Sequelize.TEXT, allowNull: false },
+  type: { type: Sequelize.ENUM, allowNull: false, values: ['private', 'group', 'table'] }
 };
 
 // http://docs.sequelizejs.com/manual/tutorial/models-definition.html#configuration

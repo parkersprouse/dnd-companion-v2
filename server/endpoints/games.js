@@ -20,7 +20,7 @@ module.exports = {
     respond(res, http_ok, null, games);
   },
 
-  async getMe(req, res) {
+  async getOwned(req, res) {
     const user_id = req.user_obj.id;
 
     const [err, data] = await call(Game.findAll({ where: { user_id } }));
@@ -28,6 +28,19 @@ module.exports = {
       return respond(res, http_server_error, 'Failed to get your games');
 
     const games = data.map((game) => game.get({ plain: true }));
+    respond(res, http_ok, null, games);
+  },
+
+  async getPlayed(req, res) {
+    const user_id = req.user_obj.id;
+
+    const [err, data] = await call(CharacterGameAssociation.findAll({
+      where: { user_id }
+    }));
+    if (err)
+      return respond(res, http_server_error, 'Failed to get your games');
+
+    const games = _.uniqBy(data.map((game) => game.get({ plain: true })), 'game_id');
     respond(res, http_ok, null, games);
   },
 
@@ -50,13 +63,12 @@ module.exports = {
 
     const [err, data] = await call(CharacterGameAssociation.findAll({
       where: { game_id },
-      attributes: ['user_id'],
       include: [{ model: User, required: true, attributes: ['id', 'email', 'username', 'name'] }]
     }));
     if (err)
       return respond(res, http_server_error, "There was a problem finding the game's players");
 
-    const players = _.uniqBy(data.map((game) => game.get({ plain: true })), 'user_id');
+    const players = _.uniqBy(data.map((player) => player.get({ plain: true })), 'user_id');
     respond(res, http_ok, null, players);
   },
 

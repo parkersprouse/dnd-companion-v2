@@ -30,7 +30,8 @@ router.post('/dnd/:data_type', dnd_data.getSpecific);
 // Games
 const games = require('./endpoints/games');
 router.get('/games', verifyToken, games.getAll);
-router.get('/games/me', verifyToken, games.getMe); // Games you created
+router.get('/games/own', verifyToken, games.getOwned); // Games you created
+router.get('/games/play', verifyToken, games.getPlayed); // Games you play in
 router.get('/games/characters/:id', verifyToken, games.getCharacters);
 router.get('/games/players/:id', verifyToken, games.getPlayers);
 router.get('/games/:id', verifyToken, games.getByID);
@@ -45,6 +46,7 @@ router.delete('/games/:id', verifyToken, games.delete);
 const messages = require('./endpoints/messages');
 router.get('/messages', verifyToken, messages.getAll);
 router.get('/messages/:game_id', verifyToken, messages.getForGame);
+router.get('/messages/:game_id/:user_id', verifyToken, messages.getMineForGame);
 router.post('/messages', verifyToken, messages.create);
 router.patch('/messages', verifyToken, messages.update);
 router.delete('/messages/:id', verifyToken, messages.delete);

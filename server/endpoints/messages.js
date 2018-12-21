@@ -28,18 +28,40 @@ module.exports = {
     const [err, data] = await call(MessageReceiverAssociation.findAll({
       where: { game_id },
       include: [
-        { model: Message, required: true, include: [{ model: Game, required: true }, { model: User, required: true, attributes: ['id', 'email', 'username', 'name'] }] },
+        { model: Message, required: true, include: [
+          { model: Game, required: true },
+          { model: User, required: true, attributes: ['id', 'email', 'username', 'name'] }]
+        },
       ]
     }));
     if (err)
-      return respond(res, http_server_error, 'Failed to get all messages');
+      return respond(res, http_server_error, 'Failed to get messages');
+
+    const messages = data.map((msg) => msg.get({ plain: true }));
+    respond(res, http_ok, null, messages);
+  },
+
+  async getMineForGame(req, res) {
+    const { game_id, user_id } = req.params;
+
+    const [err, data] = await call(MessageReceiverAssociation.findAll({
+      where: { game_id },
+      include: [
+        { model: Message, required: true, where: { user_id }, include: [
+          { model: Game, required: true },
+          { model: User, required: true, attributes: ['id', 'email', 'username', 'name'] }]
+        },
+      ]
+    }));
+    if (err)
+      return respond(res, http_server_error, 'Failed to get messages');
 
     const messages = data.map((msg) => msg.get({ plain: true }));
     respond(res, http_ok, null, messages);
   },
 
   async create(req, res) {
-    if (!req.body.message)
+    if (!req.body.body)
       return respond(res, http_bad_request, 'Please make sure your message has a body');
 
     const msg_data = { user_id: req.user_obj.id, ...req.body };
@@ -66,9 +88,9 @@ module.exports = {
   },
 
   async update(req, res) {
-    const { id, message } = req.body;
+    const { id, body } = req.body;
 
-    if (message !== undefined && !message)
+    if (body !== undefined && !body)
       return respond(res, http_bad_request, 'Please make sure your message has a body');
 
     // Make sure the message with the provided ID exists and belongs to the requesting user
