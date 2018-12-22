@@ -4,7 +4,7 @@
     <span class='input-group-btn'>
       <button class='btn btn-default' type='button' @click="decrease"
         :disabled="disabled || readonly || !decreasable">
-        -
+        <span class='glyphicon glyphicon-minus' aria-hidden="true"></span>
       </button>
     </span>
 
@@ -16,7 +16,7 @@
     <span class='input-group-btn'>
       <button class='btn btn-default' type='button' @click="increase"
         :disabled="disabled || readonly || !increasable">
-        +
+        <span class='glyphicon glyphicon-plus' aria-hidden="true"></span>
       </button>
     </span>
 
