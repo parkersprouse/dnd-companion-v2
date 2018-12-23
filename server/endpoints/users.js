@@ -20,7 +20,7 @@ module.exports = {
   async getByID(req, res) {
     const { id } = req.params;
 
-    const [err, data] = await call(User.findOne({ where: { id }, attributes: ['email', 'username', 'name'] }));
+    const [err, data] = await call(User.findOne({ where: { id }, attributes: ['id', 'email', 'username', 'name'] }));
     if (err)
       return respond(res, http_server_error, 'Failed to get user');
     if (!data)

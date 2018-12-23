@@ -5,10 +5,10 @@ import axios from 'axios';
 import Home from './pages/Home.vue';
 import NotFound from './pages/NotFound.vue';
 import { call } from './lib';
+import store from './store';
 
 Vue.use(Router);
 
-let user = null;
 const router = new Router({
   mode: 'history',
   base: process.env.BASE_URL,
@@ -17,14 +17,20 @@ const router = new Router({
       path: '/',
       name: 'home',
       component: Home,
-      props: { user },
     },
     {
       path: '/login',
       name: 'login',
       component: Home,
-      props: { user },
       meta: { guest: true },
+    },
+    {
+      path: '/logout',
+      name: 'logout',
+      beforeEnter: async (to, from, next) => {
+        await call(axios.get('/api/logout'));
+        next('/');
+      },
     },
     {
       path: '*',
@@ -37,8 +43,10 @@ const router = new Router({
 router.beforeEach(async (to, from, next) => {
   const [err, data] = await call(axios.get('/api/users/me'));
   if (data) {
-    console.log(data.data.content);
-    user = data.data.content;
+    store.commit('setCurrentUser', data.data.content);
+  }
+  else {
+    store.commit('setCurrentUser', null);
   }
 
   if (to.matched.some(record => record.meta.guest)) {

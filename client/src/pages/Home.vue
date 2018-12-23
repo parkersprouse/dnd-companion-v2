@@ -13,7 +13,7 @@ export default {
   props: ['user'],
   data() {
     return {
-      user_data: JSON.stringify(this.user),
+      user_data: JSON.stringify(this.$store.state.user),
     };
   },
   // mounted() {
