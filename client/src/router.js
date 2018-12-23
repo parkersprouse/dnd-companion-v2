@@ -11,7 +11,6 @@ Vue.use(Router);
 
 const router = new Router({
   mode: 'history',
-  base: process.env.BASE_URL,
   routes: [
     {
       path: '/',
@@ -41,6 +40,8 @@ const router = new Router({
 });
 
 router.beforeEach(async (to, from, next) => {
+  // If the user is logged in, `data` will contain the user's information.
+  // If the user isn't logged in, a 401 Unauthorized error will be returned.
   const [err, data] = await call(axios.get('/api/users/me'));
   if (data) {
     store.commit('setCurrentUser', data.data.content);
@@ -49,15 +50,14 @@ router.beforeEach(async (to, from, next) => {
     store.commit('setCurrentUser', null);
   }
 
-  if (to.matched.some(record => record.meta.guest)) {
-    if (data) {
-      return next('/');
-    }
+  // If the requested route is guest-only and the user is logged in
+  if (to.matched.some(record => record.meta.guest) && data) {
+    return next('/');
   }
-  else if (to.matched.some(record => record.meta.authorized)) {
-    if (err) {
-      return next({ path: '/', query: { n: to.fullPath } });
-    }
+
+  // If the requested route needs authorization and the user is not logged in
+  if (to.matched.some(record => record.meta.authorized) && err) {
+    return next({ path: '/login', query: { n: to.fullPath } });
   }
 
   next();

@@ -9,14 +9,14 @@ export default new Vuex.Store({
   strict: process.env.NODE_ENV !== 'production',
   state: {
     character: null,
-    user: null,
+    current_user: null,
   },
   mutations: {
-    setCurrentUser(state, user) {
-      state.user = user;
-    },
     setCharacter(state, char) {
       state.character = char;
-    }
+    },
+    setCurrentUser(state, user) {
+      state.current_user = user;
+    },
   },
 });
