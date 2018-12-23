@@ -1,6 +1,7 @@
 <template>
-  <div style='text-align: center; margin-top: 3rem; font-size: 2rem;'>
-    Work In Progress
+  <div>
+    <main-navbar />
+    <div>Hello friend</div>
   </div>
 </template>
 

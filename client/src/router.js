@@ -3,6 +3,7 @@ import Router from 'vue-router';
 import axios from 'axios';
 
 import Home from './pages/Home.vue';
+import Login from './pages/Login.vue';
 import NotFound from './pages/NotFound.vue';
 import { call } from './lib';
 import store from './store';
@@ -20,7 +21,7 @@ const router = new Router({
     {
       path: '/login',
       name: 'login',
-      component: Home,
+      component: Login,
       meta: { guest: true },
     },
     {
