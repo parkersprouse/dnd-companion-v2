@@ -18,5 +18,8 @@ export default new Vuex.Store({
     setCurrentUser(state, user) {
       state.current_user = user;
     },
+    updateAttribute(state, payload) {
+      state[payload.obj][payload.attribute] = payload.value;
+    },
   },
 });
