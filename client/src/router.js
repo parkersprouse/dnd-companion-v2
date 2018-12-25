@@ -4,6 +4,7 @@ import axios from 'axios';
 
 import Home from './pages/Home.vue';
 import Login from './pages/Login.vue';
+import Register from './pages/Register.vue';
 import NotFound from './pages/NotFound.vue';
 import { call } from './lib';
 import store from './store';
@@ -22,6 +23,12 @@ const router = new Router({
       path: '/login',
       name: 'login',
       component: Login,
+      meta: { guest: true },
+    },
+    {
+      path: '/register',
+      name: 'register',
+      component: Register,
       meta: { guest: true },
     },
     {

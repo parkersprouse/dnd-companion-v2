@@ -1,7 +1,6 @@
 <template>
   <div>
     <main-navbar />
-    <div>Hello friend</div>
   </div>
 </template>
 

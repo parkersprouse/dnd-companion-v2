@@ -4,6 +4,7 @@ import './assets/css/styles.scss';
 import axios from 'axios';
 import Vue from 'vue';
 import * as uiv from 'uiv';
+import Spinner from 'vue-simple-spinner';
 
 import MainNavbar from './components/MainNavbar.vue';
 import NumberInput from './components/NumberInput.vue';
@@ -16,6 +17,7 @@ Vue.use(uiv, { prefix: 'uiv' });
 
 Vue.component('main-navbar', MainNavbar);
 Vue.component('number-input', NumberInput);
+Vue.component('vue-simple-spinner', Spinner);
 Vue.prototype.$events = bus;
 Vue.prototype.$http = axios;
 
