@@ -5,6 +5,7 @@ import axios from 'axios';
 import Home from './pages/Home.vue';
 import Login from './pages/Login.vue';
 import Register from './pages/Register.vue';
+import ForgotPassword from './pages/ForgotPassword.vue';
 import NotFound from './pages/NotFound.vue';
 import { call } from './lib';
 import store from './store';
@@ -29,6 +30,12 @@ const router = new Router({
       path: '/register',
       name: 'register',
       component: Register,
+      meta: { guest: true },
+    },
+    {
+      path: '/forgot_password',
+      name: 'forgot_password',
+      component: ForgotPassword,
       meta: { guest: true },
     },
     {

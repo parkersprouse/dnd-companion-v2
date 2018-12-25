@@ -3,38 +3,36 @@
     <main-navbar />
     <div class='container'>
       <div class='page-header'>
-        <h1>Login</h1>
+        <h1>Account Recovery</h1>
+      </div>
+      <div style='margin-bottom: 1rem;'>
+        If you forgot your username or password, you can recover your username or set a new password by providing the e-mail address
+        that you registered with and following the instructions in the e-mail.
       </div>
       <div class='panel panel-default' id='login-form'>
         <div class='panel-body'>
           <form @submit.prevent='submit'>
+            <uiv-alert type='success' v-if='success'>
+              <span class='glyphicon glyphicon-ok-sign' aria-hidden='true'></span>&nbsp;
+              If there is an account associated with the provided e-mail address, you should receive a recovery e-mail shortly.
+            </uiv-alert>
             <uiv-alert type='danger' v-if='error_msg'>
               <span class='glyphicon glyphicon-exclamation-sign' aria-hidden='true'></span> {{ error_msg }}
             </uiv-alert>
             <div class='form-group'>
-              <label for='username'>Username <span class='required-label'>*</span></label>
+              <label for='email'>E-mail <span class='required-label'>*</span></label>
               <div class='input-group'>
                 <span class='input-group-addon'><span class='glyphicon glyphicon-user' aria-hidden='true'></span></span>
-                <input type='text' class='form-control' id='username' placeholder='Username' v-model='username' />
-              </div>
-            </div>
-            <div class='form-group'>
-              <label for='password'>Password <span class='required-label'>*</span></label>
-              <div class='input-group'>
-                <span class='input-group-addon'><span class='glyphicon glyphicon-lock' aria-hidden='true'></span></span>
-                <input type='password' class='form-control' id='password' placeholder='Password' v-model='password' />
+                <input type='email' class='form-control' id='email' placeholder='E-mail' v-model='email' />
               </div>
             </div>
             <div style='text-align: center;'>
               <uiv-btn :disabled='submitting' native-type='submit' type='primary'>
-                <span class='glyphicon glyphicon-log-in' aria-hidden='true'></span> Login
+                Send
               </uiv-btn>
             </div>
           </form>
         </div>
-      </div>
-      <div style='text-align: center;'>
-        <a href='/forgot_password'>Forgot Password?</a>
       </div>
     </div>
   </div>
@@ -42,23 +40,24 @@
 
 <script>
 export default {
-  name: 'login',
+  name: 'forgot_password',
   data() {
     return {
+      email: '',
       error_msg: null,
-      password: '',
       submitting: false,
-      username: '',
+      success: false,
     };
   },
   methods: {
     submit() {
       this.error_msg = null;
       this.submitting = true;
+      this.success = false;
 
-      this.$http.post('/api/login', { username: this.username, password: this.password })
+      this.$http.post('/api/users/send_recovery_email', { email: this.email })
         .then(() => {
-          window.location.href = '/';
+          this.success = true;
         })
         .catch((error) => {
           this.error_msg = error.response.data.message;
