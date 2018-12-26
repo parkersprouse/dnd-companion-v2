@@ -6,6 +6,7 @@ import Home from './pages/Home.vue';
 import Login from './pages/Login.vue';
 import Register from './pages/Register.vue';
 import ForgotPassword from './pages/ForgotPassword.vue';
+import AccountRecovery from './pages/AccountRecovery.vue';
 import NotFound from './pages/NotFound.vue';
 import { call } from './lib';
 import store from './store';
@@ -36,6 +37,12 @@ const router = new Router({
       path: '/forgot_password',
       name: 'forgot_password',
       component: ForgotPassword,
+      meta: { guest: true },
+    },
+    {
+      path: '/account_recovery',
+      name: 'account_recovery',
+      component: AccountRecovery,
       meta: { guest: true },
     },
     {

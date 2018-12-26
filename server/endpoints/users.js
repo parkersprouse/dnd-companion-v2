@@ -54,8 +54,8 @@ module.exports = {
       subject: 'D&D Companion App Account Recovery',
       html_content: `A request was made to recover the account information associated with this e-mail address.<br /><br />\
                      Your username is: <b>${user.username}</b>.<br /><br />\
-                     To reset your password, visit <a href='https://dnd.parkersprouse.me/account-recovery?key=${key}'>https://dnd.parkersprouse.me/account-recovery?key=${key}</a>.`,
-      raw_content: `A request was made to recover the account information associated with this e-mail address. Your username is: ${user.username}. To reset your password, please visit https://dnd.parkersprouse.me/account-recovery?key=${key}`,
+                     To reset your password, visit <a href='https://dnd.parkersprouse.me/account_recovery?key=${key}'>https://dnd.parkersprouse.me/account_recovery?key=${key}</a>.`,
+      raw_content: `A request was made to recover the account information associated with this e-mail address. Your username is: ${user.username}. To reset your password, please visit https://dnd.parkersprouse.me/account_recovery?key=${key}`,
       addresses: [req.body.email]
     }, (success) => {
       if (!success)
@@ -77,7 +77,7 @@ module.exports = {
 
     const [match_err, match_data] = await call(User.findOne({ where: { pw_reset_key } }));
     if (match_err || !match_data)
-      return respond(res, http_server_error);
+      return respond(res, http_server_error, 'Failed to update your password. Check the provided reset key.');
 
     const salt = bcrypt.genSaltSync();
     const pw_hash = bcrypt.hashSync(pass_new, salt);
