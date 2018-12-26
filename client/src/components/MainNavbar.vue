@@ -177,3 +177,10 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+  .navbar-default .navbar-nav > li > a:focus,
+  .navbar-default .navbar-nav > li > a:hover {
+    color: black;
+  }
+</style>
