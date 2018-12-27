@@ -8,6 +8,9 @@ import Register from './pages/Register.vue';
 import ForgotPassword from './pages/ForgotPassword.vue';
 import AccountRecovery from './pages/AccountRecovery.vue';
 import NotFound from './pages/NotFound.vue';
+
+import ArmorList from './pages/info/ArmorList.vue';
+
 import { call } from './lib';
 import store from './store';
 
@@ -44,6 +47,11 @@ const router = new Router({
       name: 'account_recovery',
       component: AccountRecovery,
       meta: { guest: true },
+    },
+    {
+      path: '/info/armor',
+      name: 'armor_list',
+      component: ArmorList,
     },
     {
       path: '/logout',
