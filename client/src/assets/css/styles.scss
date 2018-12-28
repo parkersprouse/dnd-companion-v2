@@ -24,6 +24,10 @@ body {
   margin-top: 0;
 }
 
+.info-table tr {
+  cursor: pointer;
+}
+
 .modal-body,
 .modal-footer {
   background-color: #ebf1f5;

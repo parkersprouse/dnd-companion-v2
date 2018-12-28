@@ -10,6 +10,7 @@ import AccountRecovery from './pages/AccountRecovery.vue';
 import NotFound from './pages/NotFound.vue';
 
 import ArmorList from './pages/info/ArmorList.vue';
+import EquipmentList from './pages/info/EquipmentList.vue';
 
 import { call } from './lib';
 import store from './store';
@@ -52,6 +53,11 @@ const router = new Router({
       path: '/info/armor',
       name: 'armor_list',
       component: ArmorList,
+    },
+    {
+      path: '/info/equipment',
+      name: 'equipment_list',
+      component: EquipmentList,
     },
     {
       path: '/logout',

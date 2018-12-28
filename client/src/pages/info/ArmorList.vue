@@ -96,7 +96,7 @@
 
 <script>
 import _ from 'lodash';
-import ArmorDetails from '../../components/modals/ArmorDetails.vue';
+import ArmorDetails from '../../components/info/ArmorDetails.vue';
 
 export default {
   name: 'armor_list',
@@ -184,9 +184,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-  .info-table tr {
-    cursor: pointer;
-  }
-</style>
