@@ -24,4 +24,21 @@ body {
   margin-top: 0;
 }
 
+.modal-body,
+.modal-footer {
+  background-color: #ebf1f5;
+}
+
+.modal-title {
+  font-weight: 600;
+}
+
+.modal-footer {
+  border-top: none;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+
 // rgba(0,0,0,0.14)
+// #5c7080 - blueprintjs blue-ish text
+// #ebf1f5 - blueprintjs blue-ish background color
