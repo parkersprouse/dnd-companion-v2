@@ -14,12 +14,11 @@
       <div class='row'>
         <div class='col-xs-12 col-md-6'>
           <div class='form-group'>
-            <label for='name_filter' class='control-label'>Filter</label>
             <div class='input-group'>
               <span class='input-group-addon'>
                 <span class='glyphicon glyphicon-search' aria-hidden='true'></span>
               </span>
-              <input type='text' class='form-control' id='name_filter' name='name_filter' placeholder='Filter' v-model.trim='name_filter' @input='filter' />
+              <input type='text' class='form-control' id='name_filter' name='name_filter' placeholder='Filter' v-model.trim='name_filter' />
             </div>
           </div>
         </div>
@@ -27,34 +26,34 @@
           <div class='row'>
             <div class='col-xs-4'>
               <div class='form-group'>
-                <label for='category_filter' class='control-label'>Category Filter</label>
-                <select class='form-control' id='category_filter' v-model='category_filter' @change='filter'>
-                    <option value=''>All</option>
-                    <option>Light</option>
-                    <option>Medium</option>
-                    <option>Heavy</option>
-                    <option>Shield</option>
-                  </select>
+                <select class='form-control' id='category_filter' v-model='category_filter'>
+                  <option value=''>All</option>
+                  <option>Light</option>
+                  <option>Medium</option>
+                  <option>Heavy</option>
+                  <option>Shield</option>
+                </select>
+                <p class='help-block'>Category</p>
               </div>
             </div>
             <div class='col-xs-4'>
               <div class='form-group'>
-                <label for='min_str_filter' class='control-label'>Minimum Strength</label>
-                <select class='form-control' id='min_str_filter' v-model='min_str_filter' @change='filter'>
-                    <option value=''>All</option>
-                    <option>Yes</option>
-                    <option>No</option>
-                  </select>
+                <select class='form-control' id='min_str_filter' v-model='min_str_filter'>
+                  <option value=''>All</option>
+                  <option>Yes</option>
+                  <option>No</option>
+                </select>
+                <p class='help-block'>Minimum Strength</p>
               </div>
             </div>
             <div class='col-xs-4'>
               <div class='form-group'>
-                <label for='stealth_filter' class='control-label'>Stealth Disadvantage</label>
-                <select class='form-control' id='stealth_filter' v-model='stealth_filter' @change='filter'>
-                    <option value=''>All</option>
-                    <option>Yes</option>
-                    <option>No</option>
-                  </select>
+                <select class='form-control' id='stealth_filter' v-model='stealth_filter'>
+                  <option value=''>All</option>
+                  <option>Yes</option>
+                  <option>No</option>
+                </select>
+                <p class='help-block'>Stealth Disadvantage</p>
               </div>
             </div>
           </div>
@@ -169,6 +168,18 @@ export default {
   watch: {
     selected_armor(new_value) {
       this.show_modal = !!new_value;
+    },
+    category_filter() {
+      this.filter();
+    },
+    min_str_filter() {
+      this.filter();
+    },
+    name_filter() {
+      this.filter();
+    },
+    stealth_filter() {
+      this.filter();
     },
   },
 };
