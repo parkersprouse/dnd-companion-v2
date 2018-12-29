@@ -10,7 +10,6 @@
       <div class='page-header'>
         <h1>Trinkets</h1>
       </div>
-
       <div class='row'>
         <div class='col-xs-12'>
           <div class='form-group'>
@@ -23,7 +22,6 @@
           </div>
         </div>
       </div>
-
       <div class='table-responsive'>
         <table class='table table-striped table-bordered'>
           <thead>
