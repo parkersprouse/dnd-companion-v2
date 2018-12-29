@@ -8,7 +8,7 @@
     </div>
     <div v-else class='container'>
       <div class='page-header'>
-        <h1>Equipment List</h1>
+        <h1>Equipment</h1>
       </div>
 
       <div class='row'>
@@ -82,7 +82,7 @@
     </div>
 
     <uiv-modal v-model='show_modal' :title="show_modal ? selected_equipment.name : ''" @hide='selected_equipment = null' ref='modal' id='equipment-modal'>
-      <!-- <armor-details :armor='selected_equipment' /> -->
+      <equipment-details :equipment='selected_equipment' />
       <div slot='footer'>
         <uiv-btn @click='show_modal = false'>Close</uiv-btn>
       </div>
@@ -93,13 +93,13 @@
 
 <script>
 import _ from 'lodash';
-// import ArmorDetails from '../../components/info/ArmorDetails.vue';
+import EquipmentDetails from '../../components/info/EquipmentDetails.vue';
 
 export default {
   name: 'equipment_list',
-  // components: {
-  //   'armor-details': ArmorDetails,
-  // },
+  components: {
+    'equipment-details': EquipmentDetails,
+  },
   data() {
     return {
       current_sorted_property: '',
@@ -131,7 +131,7 @@ export default {
       let filtered = _.cloneDeep(this.equipment);
 
       if (this.name_filter) {
-        filtered = _.filter(filtered, equipment => equipment.name.toLowerCase().indexOf(this.name_filter.toLowerCase()) > -1);
+        filtered = _.filter(filtered, equipment => equipment.name.toLowerCase().includes(this.name_filter.toLowerCase()));
       }
 
       if (this.category_filter) {

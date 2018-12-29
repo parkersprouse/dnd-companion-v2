@@ -8,7 +8,7 @@
     </div>
     <div v-else class='container'>
       <div class='page-header'>
-        <h1>Armor List</h1>
+        <h1>Armor</h1>
       </div>
 
       <div class='row'>
@@ -133,7 +133,7 @@ export default {
       let filtered = _.cloneDeep(this.armor);
 
       if (this.name_filter) {
-        filtered = _.filter(filtered, armor => armor.name.toLowerCase().indexOf(this.name_filter.toLowerCase()) > -1);
+        filtered = _.filter(filtered, armor => armor.name.toLowerCase().includes(this.name_filter.toLowerCase()));
       }
 
       if (this.category_filter) {

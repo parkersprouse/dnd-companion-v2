@@ -11,6 +11,7 @@ import NotFound from './pages/NotFound.vue';
 
 import ArmorList from './pages/info/ArmorList.vue';
 import EquipmentList from './pages/info/EquipmentList.vue';
+import TrinketsList from './pages/info/TrinketsList.vue';
 
 import { call } from './lib';
 import store from './store';
@@ -58,6 +59,11 @@ const router = new Router({
       path: '/info/equipment',
       name: 'equipment_list',
       component: EquipmentList,
+    },
+    {
+      path: '/info/trinkets',
+      name: 'trinket_list',
+      component: TrinketsList,
     },
     {
       path: '/logout',
