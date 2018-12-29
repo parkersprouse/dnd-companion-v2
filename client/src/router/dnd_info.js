@@ -14,4 +14,9 @@ export default [
     name: 'trinket_list',
     component: () => import('../pages/info/TrinketsList.vue'),
   },
+  {
+    path: '/info/weapons',
+    name: 'weapons_list',
+    component: () => import('../pages/info/WeaponsList.vue'),
+  },
 ];

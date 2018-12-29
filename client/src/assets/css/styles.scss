@@ -24,8 +24,16 @@ body {
   margin-top: 0;
 }
 
-.info-table tr {
+.info-table {
+  tr {
+    cursor: pointer;
+  }
+}
+
+.info-link {
   cursor: pointer;
+  text-decoration: underline;
+  text-decoration-style: dotted;
 }
 
 .modal-body,

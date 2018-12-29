@@ -102,7 +102,7 @@ export default {
   },
   data() {
     return {
-      current_sorted_property: '',
+      current_sorted_property: 'name',
       equipment: null,
       error: false,
       filtered_equipment: null,
@@ -118,7 +118,8 @@ export default {
     this.$http.get('/api/dnd/equipment')
       .then((response) => {
         // Can't do an 'or' through the endpoint, so we'll just filter it client-side
-        const equipment = _.filter(response.data.content, item => item.equipment_category === 'Adventuring Gear' || item.equipment_category === 'Mounts and Vehicles' || item.equipment_category === 'Tools');
+        let equipment = _.filter(response.data.content, item => item.equipment_category === 'Adventuring Gear' || item.equipment_category === 'Mounts and Vehicles' || item.equipment_category === 'Tools');
+        equipment = _.sortBy(equipment, ['name']);
         this.equipment = equipment;
         this.filtered_equipment = equipment;
       })

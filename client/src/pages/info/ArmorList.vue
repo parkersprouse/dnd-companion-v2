@@ -106,7 +106,7 @@ export default {
   data() {
     return {
       armor: null,
-      current_sorted_property: '',
+      current_sorted_property: 'name',
       error: false,
       filtered_armor: null,
       selected_armor: null,
@@ -121,8 +121,9 @@ export default {
   mounted() {
     this.$http.post('/api/dnd/equipment', { equipment_category: 'Armor' })
       .then((response) => {
-        this.armor = response.data.content;
-        this.filtered_armor = response.data.content;
+        const armor = _.sortBy(response.data.content, ['name']);
+        this.armor = armor;
+        this.filtered_armor = armor;
       })
       .catch(() => {
         this.error = true;
