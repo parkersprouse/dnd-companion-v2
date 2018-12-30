@@ -10,6 +10,11 @@ export default [
     component: () => import('../pages/info/EquipmentList.vue'),
   },
   {
+    path: '/info/spells',
+    name: 'spell_list',
+    component: () => import('../pages/info/SpellsList.vue'),
+  },
+  {
     path: '/info/trinkets',
     name: 'trinket_list',
     component: () => import('../pages/info/TrinketsList.vue'),

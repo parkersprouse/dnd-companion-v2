@@ -29,7 +29,7 @@
               <span class='info-link' :id='`prop${index}`'>{{ prop.name }}</span>
               <uiv-popover placement='left' :target='`#prop${index}`' :title='prop.name' trigger='hover'>
                 <template slot="popover">
-                  <weapon-property-details :property='prop.name' />
+                  <weapon-property-popup-details :property='prop.name' />
                 </template>
               </uiv-popover>
             </div>
@@ -63,12 +63,12 @@
 </template>
 
 <script>
-import WeaponPropertyDetails from './WeaponPropertyDetails.vue';
+import WeaponPropertyPopupDetails from './WeaponPropertyPopupDetails.vue';
 
 export default {
   name: 'weapon-details',
   components: {
-    'weapon-property-details': WeaponPropertyDetails,
+    'weapon-property-popup-details': WeaponPropertyPopupDetails,
   },
   props: ['weapon'],
   computed: {

@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: 'weapon-property-details',
+  name: 'weapon-property-popup-details',
   props: ['property'],
   data() {
     return {
