@@ -63,7 +63,7 @@
 </template>
 
 <script>
-import WeaponPropertyPopupDetails from './WeaponPropertyPopupDetails.vue';
+import WeaponPropertyPopupDetails from './popups/WeaponPropertyPopupDetails.vue';
 
 export default {
   name: 'weapon-details',
