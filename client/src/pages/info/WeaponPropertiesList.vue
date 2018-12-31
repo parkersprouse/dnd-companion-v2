@@ -8,7 +8,7 @@
     </div>
     <div v-else class='container'>
       <div class='page-header'>
-        <h1>Damage Types</h1>
+        <h1>Weapon Properties</h1>
       </div>
       <div class='row'>
         <div class='col-xs-12'>
@@ -24,13 +24,13 @@
       </div>
 
       <div class='flex-row'>
-        <div class='flex-column' v-for='type in filtered_damage_types' :key='type.index'>
+        <div class='flex-column' v-for='prop in filtered_weapon_properties' :key='prop.index'>
           <div class='panel panel-default'>
             <div class='panel-heading'>
-              <h3 class='panel-title'>{{ type.name }}</h3>
+              <h3 class='panel-title'>{{ prop.name }}</h3>
             </div>
             <div class='panel-body'>
-              <p v-for='entry in type.desc' :key='entry'>{{ entry }}</p>
+              <p v-for='entry in prop.desc' :key='entry'>{{ entry }}</p>
             </div>
           </div>
         </div>
@@ -44,22 +44,22 @@
 import _ from 'lodash';
 
 export default {
-  name: 'damage_types_list',
+  name: 'weapon_properties_list',
   data() {
     return {
       error: false,
-      damage_types: null,
-      filtered_damage_types: null,
+      weapon_properties: null,
+      filtered_weapon_properties: null,
 
       name_filter: '',
     };
   },
   mounted() {
-    this.$http.get('/api/dnd/damage_types')
+    this.$http.get('/api/dnd/weapon_properties')
       .then((response) => {
-        const damage_types = _.sortBy(response.data.content, ['name']);
-        this.damage_types = damage_types;
-        this.filtered_damage_types = damage_types;
+        const weapon_properties = _.sortBy(response.data.content, ['name']);
+        this.weapon_properties = weapon_properties;
+        this.filtered_weapon_properties = weapon_properties;
       })
       .catch(() => {
         this.error = true;
@@ -67,13 +67,13 @@ export default {
   },
   methods: {
     filter() {
-      let filtered = _.cloneDeep(this.damage_types);
+      let filtered = _.cloneDeep(this.weapon_properties);
 
       if (this.name_filter) {
-        filtered = _.filter(filtered, type => type.name.toLowerCase().includes(this.name_filter.toLowerCase()));
+        filtered = _.filter(filtered, prop => prop.name.toLowerCase().includes(this.name_filter.toLowerCase()));
       }
 
-      this.filtered_damage_types = _.cloneDeep(filtered);
+      this.filtered_weapon_properties = _.cloneDeep(filtered);
     },
   },
   watch: {

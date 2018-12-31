@@ -8,7 +8,7 @@
     </div>
     <div v-else class='container'>
       <div class='page-header'>
-        <h1>Damage Types</h1>
+        <h1>Skills</h1>
       </div>
       <div class='row'>
         <div class='col-xs-12'>
@@ -24,13 +24,13 @@
       </div>
 
       <div class='flex-row'>
-        <div class='flex-column' v-for='type in filtered_damage_types' :key='type.index'>
+        <div class='flex-column' v-for='skill in filtered_skills' :key='skill.index'>
           <div class='panel panel-default'>
             <div class='panel-heading'>
-              <h3 class='panel-title'>{{ type.name }}</h3>
+              <h3 class='panel-title'>{{ skill.name }} ({{ skill.ability_score.name }})</h3>
             </div>
             <div class='panel-body'>
-              <p v-for='entry in type.desc' :key='entry'>{{ entry }}</p>
+              <p v-for='entry in skill.desc' :key='entry'>{{ entry }}</p>
             </div>
           </div>
         </div>
@@ -44,22 +44,22 @@
 import _ from 'lodash';
 
 export default {
-  name: 'damage_types_list',
+  name: 'skills_list',
   data() {
     return {
       error: false,
-      damage_types: null,
-      filtered_damage_types: null,
+      skills: null,
+      filtered_skills: null,
 
       name_filter: '',
     };
   },
   mounted() {
-    this.$http.get('/api/dnd/damage_types')
+    this.$http.get('/api/dnd/skills')
       .then((response) => {
-        const damage_types = _.sortBy(response.data.content, ['name']);
-        this.damage_types = damage_types;
-        this.filtered_damage_types = damage_types;
+        const skills = _.sortBy(response.data.content, ['name']);
+        this.skills = skills;
+        this.filtered_skills = skills;
       })
       .catch(() => {
         this.error = true;
@@ -67,13 +67,18 @@ export default {
   },
   methods: {
     filter() {
-      let filtered = _.cloneDeep(this.damage_types);
+      let filtered = _.cloneDeep(this.skills);
 
       if (this.name_filter) {
-        filtered = _.filter(filtered, type => type.name.toLowerCase().includes(this.name_filter.toLowerCase()));
+        filtered = _.filter(filtered, (skill) => {
+          const lower_filter = this.name_filter.toLowerCase();
+          const name_includes = skill.name.toLowerCase().includes(lower_filter);
+          const ability_includes = skill.ability_score.name.toLowerCase().includes(lower_filter);
+          return name_includes || ability_includes;
+        });
       }
 
-      this.filtered_damage_types = _.cloneDeep(filtered);
+      this.filtered_skills = _.cloneDeep(filtered);
     },
   },
   watch: {

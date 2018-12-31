@@ -13,7 +13,7 @@ module.exports = {
     'brace-style': 'off',
     'consistent-return': 'off',
     'max-len': 'off',
-    'camelcase': 'off',
+    camelcase: 'off',
   },
   parserOptions: {
     parser: 'babel-eslint',

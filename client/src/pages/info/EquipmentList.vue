@@ -118,7 +118,12 @@ export default {
     this.$http.get('/api/dnd/equipment')
       .then((response) => {
         // Can't do an 'or' through the endpoint, so we'll just filter it client-side
-        let equipment = _.filter(response.data.content, equipment => equipment.equipment_category === 'Adventuring Gear' || equipment.equipment_category === 'Mounts and Vehicles' || equipment.equipment_category === 'Tools');
+        let equipment = _.filter(response.data.content, (item) => {
+          const adventure = item.equipment_category === 'Adventuring Gear';
+          const mounts = item.equipment_category === 'Mounts and Vehicles';
+          const tools = item.equipment_category === 'Tools';
+          return adventure || mounts || tools;
+        });
         equipment = _.sortBy(equipment, ['name']);
         this.equipment = equipment;
         this.filtered_equipment = equipment;
@@ -140,7 +145,12 @@ export default {
       }
 
       if (this.subcategory_filter) {
-        filtered = _.filter(filtered, equipment => equipment.gear_category === this.subcategory_filter || equipment.vehicle_category === this.subcategory_filter || equipment.tool_category === this.subcategory_filter);
+        filtered = _.filter(filtered, (equipment) => {
+          const is_gear = equipment.gear_category === this.subcategory_filter;
+          const is_vehicle = equipment.vehicle_category === this.subcategory_filter;
+          const is_tool = equipment.tool_category === this.subcategory_filter;
+          return is_gear || is_vehicle || is_tool;
+        });
       }
 
       this.filtered_equipment = _.cloneDeep(filtered);

@@ -25,6 +25,11 @@ export default [
     component: () => import('../pages/info/LanguagesList.vue'),
   },
   {
+    path: '/info/skills',
+    name: 'skills_list',
+    component: () => import('../pages/info/SkillsList.vue'),
+  },
+  {
     path: '/info/spells',
     name: 'spell_list',
     component: () => import('../pages/info/SpellsList.vue'),
@@ -33,6 +38,11 @@ export default [
     path: '/info/trinkets',
     name: 'trinket_list',
     component: () => import('../pages/info/TrinketsList.vue'),
+  },
+  {
+    path: '/info/weapon_properties',
+    name: 'weapon_properties_list',
+    component: () => import('../pages/info/WeaponPropertiesList.vue'),
   },
   {
     path: '/info/weapons',

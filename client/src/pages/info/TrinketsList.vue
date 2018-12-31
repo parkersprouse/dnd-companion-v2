@@ -71,7 +71,12 @@ export default {
       let filtered = _.cloneDeep(this.trinkets);
 
       if (this.name_filter) {
-        filtered = _.filter(filtered, trinket => trinket.desc.toLowerCase().includes(this.name_filter.toLowerCase()) || trinket.roll.includes(this.name_filter));
+        filtered = _.filter(filtered, (trinket) => {
+          const lower_filter = this.name_filter.toLowerCase();
+          const name_includes = trinket.desc.toLowerCase().includes(lower_filter);
+          const roll_includes = trinket.roll.includes(lower_filter);
+          return name_includes || roll_includes;
+        });
       }
 
       this.filtered_trinkets = _.cloneDeep(filtered);

@@ -74,7 +74,6 @@ export default {
       }
 
       this.filtered_conditions = _.cloneDeep(filtered);
-      this.current_sorted_property = '';
     },
   },
   watch: {
