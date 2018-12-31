@@ -72,12 +72,12 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for='item in filtered_armor' :key='item.id' @click='selected_armor = item'>
-              <td>{{ item.name }}</td>
-              <td>{{ item.armor_category  }}</td>
-              <td>{{ `${item.armor_class.base} ${item.armor_class.dex_bonus ? ' + dex. modifier' : ''} ${item.armor_class.max_bonus ? ` (max ${item.armor_class.max_bonus})` : ''}` }}</td>
-              <td>{{ item.str_minimum || '-' }}</td>
-              <td>{{ item.stealth_disadvantage ? 'Disadvantage' : '-' }}</td>
+            <tr v-for='armor in filtered_armor' :key='armor.index' @click='selected_armor = armor'>
+              <td>{{ armor.name }}</td>
+              <td>{{ armor.armor_category  }}</td>
+              <td>{{ `${armor.armor_class.base} ${armor.armor_class.dex_bonus ? ' + dex. modifier' : ''} ${armor.armor_class.max_bonus ? ` (max ${armor.armor_class.max_bonus})` : ''}` }}</td>
+              <td>{{ armor.str_minimum || '-' }}</td>
+              <td>{{ armor.stealth_disadvantage ? 'Disadvantage' : '-' }}</td>
             </tr>
           </tbody>
         </table>

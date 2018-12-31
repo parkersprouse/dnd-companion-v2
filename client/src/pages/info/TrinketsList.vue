@@ -31,9 +31,9 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for='item in filtered_trinkets' :key='item.roll'>
-              <td>{{ item.roll }}</td>
-              <td>{{ item.desc  }}</td>
+            <tr v-for='trinket in filtered_trinkets' :key='trinket.roll'>
+              <td>{{ trinket.roll }}</td>
+              <td>{{ trinket.desc  }}</td>
             </tr>
           </tbody>
         </table>

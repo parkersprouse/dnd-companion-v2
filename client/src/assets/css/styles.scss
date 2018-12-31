@@ -28,6 +28,14 @@ body {
   tr {
     cursor: pointer;
   }
+
+  &.no-modal {
+    tbody {
+      tr {
+        cursor: initial;
+      }
+    }
+  }
 }
 
 .info-link {

@@ -92,14 +92,14 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for='item in filtered_spells' :key='item.roll' @click='selected_spell = item'>
-              <td>{{ item.level || 'Cantrip' }}</td>
-              <td>{{ item.name }}</td>
-              <td>{{ item.range }}</td>
-              <td>{{ renderClasses(item) }}</td>
-              <td>{{ item.school.name }}</td>
-              <td>{{ item.casting_time }}</td>
-              <td>{{ item.duration }}</td>
+            <tr v-for='spell in filtered_spells' :key='spell.index' @click='selected_spell = spell'>
+              <td>{{ spell.level || 'Cantrip' }}</td>
+              <td>{{ spell.name }}</td>
+              <td>{{ spell.range }}</td>
+              <td>{{ renderClasses(spell) }}</td>
+              <td>{{ spell.school.name }}</td>
+              <td>{{ spell.casting_time }}</td>
+              <td>{{ spell.duration }}</td>
             </tr>
           </tbody>
         </table>
@@ -176,8 +176,8 @@ export default {
 
       this.filtered_spells = _.cloneDeep(filtered);
     },
-    renderClasses(item) {
-      return _.join(_.map(item.classes, sc => sc.name), ', ');
+    renderClasses(spell) {
+      return _.join(_.map(spell.classes, sc => sc.name), ', ');
     },
     sortBy(property) {
       let sorted = _.cloneDeep(this.filtered_spells);

@@ -10,9 +10,19 @@ export default [
     component: () => import('../pages/info/ConditionsList.vue'),
   },
   {
+    path: '/info/damage_types',
+    name: 'damage_types_list',
+    component: () => import('../pages/info/DamageTypesList.vue'),
+  },
+  {
     path: '/info/equipment',
     name: 'equipment_list',
     component: () => import('../pages/info/EquipmentList.vue'),
+  },
+  {
+    path: '/info/languages',
+    name: 'language_list',
+    component: () => import('../pages/info/LanguagesList.vue'),
   },
   {
     path: '/info/spells',

@@ -23,7 +23,7 @@
 	"index": 4,
 	"name": "Giant",
 	"type": "Standard",
-	"typical_speakers": ["Ogres", "Giants"],
+	"typical_speakers": ["Giants", "Ogres"],
 	"script": "Dwarvish",
 	"url": "/api/db/languages/4"
 }, {
@@ -72,15 +72,14 @@
 	"index": 11,
 	"name": "Draconic",
 	"type": "Exotic",
-	"typical_speakers": ["Dragons", "Dragonborn"],
+	"typical_speakers": ["Dragonborn", "Dragons"],
 	"script": "Draconic",
 	"url": "/api/db/languages/11"
 }, {
 	"index": 12,
 	"name": "Deep Speech",
 	"type": "Exotic",
-	"typical_speakers": ["Mindflayers", "Beholders"],
-	"script": "none",
+	"typical_speakers": ["Beholders", "Mindflayers"],
 	"url": "/api/db/languages/12"
 }, {
 	"index": 13,
@@ -93,7 +92,7 @@
 	"index": 14,
 	"name": "Primordial",
 	"type": "Exotic",
-	"typical_speakers": ["Elementa;s"],
+	"typical_speakers": ["Elementals"],
 	"script": "Dwarvish",
 	"url": "/api/db/languages/14"
 }, {

@@ -8,7 +8,7 @@
     </div>
     <div v-else class='container'>
       <div class='page-header'>
-        <h1>Conditions</h1>
+        <h1>Damage Types</h1>
       </div>
       <div class='row'>
         <div class='col-xs-12'>
@@ -24,13 +24,13 @@
       </div>
 
       <div class='flex-row'>
-        <div class='flex-column' v-for='condition in filtered_conditions' :key='condition.index'>
+        <div class='flex-column' v-for='type in filtered_damage_types' :key='type.index'>
           <div class='panel panel-default'>
             <div class='panel-heading'>
-              <h3 class='panel-title'>{{ condition.name }}</h3>
+              <h3 class='panel-title'>{{ type.name }}</h3>
             </div>
             <div class='panel-body'>
-              <p v-for='entry in condition.desc' :key='entry'>{{ entry }}</p>
+              <p v-for='entry in type.desc' :key='entry'>{{ entry }}</p>
             </div>
           </div>
         </div>
@@ -44,22 +44,22 @@
 import _ from 'lodash';
 
 export default {
-  name: 'conditions_list',
+  name: 'damage_types_list',
   data() {
     return {
       error: false,
-      conditions: null,
-      filtered_conditions: null,
+      damage_types: null,
+      filtered_damage_types: null,
 
       name_filter: '',
     };
   },
   mounted() {
-    this.$http.get('/api/dnd/conditions')
+    this.$http.get('/api/dnd/damage_types')
       .then((response) => {
-        const conditions = _.sortBy(response.data.content, ['name']);
-        this.conditions = conditions;
-        this.filtered_conditions = conditions;
+        const damage_types = _.sortBy(response.data.content, ['name']);
+        this.damage_types = damage_types;
+        this.filtered_damage_types = damage_types;
       })
       .catch(() => {
         this.error = true;
@@ -67,13 +67,13 @@ export default {
   },
   methods: {
     filter() {
-      let filtered = _.cloneDeep(this.conditions);
+      let filtered = _.cloneDeep(this.damage_types);
 
       if (this.name_filter) {
-        filtered = _.filter(filtered, condition => condition.name.toLowerCase().includes(this.name_filter.toLowerCase()));
+        filtered = _.filter(filtered, type => type.name.toLowerCase().includes(this.name_filter.toLowerCase()));
       }
 
-      this.filtered_conditions = _.cloneDeep(filtered);
+      this.filtered_damage_types = _.cloneDeep(filtered);
       this.current_sorted_property = '';
     },
   },

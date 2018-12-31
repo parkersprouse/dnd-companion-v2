@@ -78,12 +78,12 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for='item in filtered_weapons' :key='item.id' @click='selected_weapon = item'>
-              <td>{{ item.name }}</td>
-              <td>{{ item.weapon_category  }}</td>
-              <td>{{ item.weapon_range }}</td>
-              <td>{{ renderDamage(item) }}</td>
-              <td>{{ renderProperties(item) }}</td>
+            <tr v-for='weapon in filtered_weapons' :key='weapon.index' @click='selected_weapon = weapon'>
+              <td>{{ weapon.name }}</td>
+              <td>{{ weapon.weapon_category  }}</td>
+              <td>{{ weapon.weapon_range }}</td>
+              <td>{{ renderDamage(weapon) }}</td>
+              <td>{{ renderProperties(weapon) }}</td>
             </tr>
           </tbody>
         </table>
@@ -161,20 +161,20 @@ export default {
       this.filtered_weapons = _.cloneDeep(filtered);
       this.current_sorted_property = '';
     },
-    renderDamage(item) {
+    renderDamage(weapon) {
       let weapon_damage = '-';
-      if (item.damage && item.damage.damage_type) {
-        if (item.damage.dice_value === 0) {
-          weapon_damage = `${item.damage.dice_count} ${item.damage.damage_type.name}`;
+      if (weapon.damage && weapon.damage.damage_type) {
+        if (weapon.damage.dice_value === 0) {
+          weapon_damage = `${weapon.damage.dice_count} ${weapon.damage.damage_type.name}`;
         }
         else {
-          weapon_damage = `${item.damage.dice_count}d${item.damage.dice_value} ${item.damage.damage_type.name}`;
+          weapon_damage = `${weapon.damage.dice_count}d${weapon.damage.dice_value} ${weapon.damage.damage_type.name}`;
         }
       }
       return weapon_damage;
     },
-    renderProperties(item) {
-      return _.join(_.map(item.properties, prop => prop.name), ', ');
+    renderProperties(weapon) {
+      return _.join(_.map(weapon.properties, prop => prop.name), ', ');
     },
     sortBy(property) {
       let sorted = _.cloneDeep(this.filtered_weapons);

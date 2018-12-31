@@ -71,10 +71,10 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for='item in filtered_equipment' :key='item.id' @click='selected_equipment = item'>
-              <td>{{ item.name }}</td>
-              <td>{{ item.equipment_category  }}</td>
-              <td>{{ item.gear_category || item.vehicle_category || item.tool_category }}</td>
+            <tr v-for='equipment in filtered_equipment' :key='equipment.index' @click='selected_equipment = equipment'>
+              <td>{{ equipment.name }}</td>
+              <td>{{ equipment.equipment_category  }}</td>
+              <td>{{ equipment.gear_category || equipment.vehicle_category || equipment.tool_category }}</td>
             </tr>
           </tbody>
         </table>
@@ -118,7 +118,7 @@ export default {
     this.$http.get('/api/dnd/equipment')
       .then((response) => {
         // Can't do an 'or' through the endpoint, so we'll just filter it client-side
-        let equipment = _.filter(response.data.content, item => item.equipment_category === 'Adventuring Gear' || item.equipment_category === 'Mounts and Vehicles' || item.equipment_category === 'Tools');
+        let equipment = _.filter(response.data.content, equipment => equipment.equipment_category === 'Adventuring Gear' || equipment.equipment_category === 'Mounts and Vehicles' || equipment.equipment_category === 'Tools');
         equipment = _.sortBy(equipment, ['name']);
         this.equipment = equipment;
         this.filtered_equipment = equipment;
