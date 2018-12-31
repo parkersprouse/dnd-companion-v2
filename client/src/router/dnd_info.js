@@ -25,6 +25,11 @@ export default [
     component: () => import('../pages/info/LanguagesList.vue'),
   },
   {
+    path: '/info/proficiencies',
+    name: 'proficiencies_list',
+    component: () => import('../pages/info/ProficienciesList.vue'),
+  },
+  {
     path: '/info/skills',
     name: 'skills_list',
     component: () => import('../pages/info/SkillsList.vue'),

@@ -107,13 +107,13 @@
               </a>
             </li>
             <li>
-              <a role='button' href='/info/weapons'>
-                <span class='glyphicon glyphicon-list-alt' aria-hidden='true'></span> Weapons
+              <a role='button' href='/info/weapon_properties'>
+                <span class='glyphicon glyphicon-list-alt' aria-hidden='true'></span> Weapon Properties
               </a>
             </li>
             <li>
-              <a role='button' href='/info/weapon_properties'>
-                <span class='glyphicon glyphicon-list-alt' aria-hidden='true'></span> Weapon Properties
+              <a role='button' href='/info/weapons'>
+                <span class='glyphicon glyphicon-list-alt' aria-hidden='true'></span> Weapons
               </a>
             </li>
           </template>
