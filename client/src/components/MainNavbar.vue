@@ -77,11 +77,6 @@
               </a>
             </li>
             <li>
-              <a role='button' href='/info/features'>
-                <span class='glyphicon glyphicon-list-alt' aria-hidden='true'></span> Features
-              </a>
-            </li>
-            <li>
               <a role='button' href='/info/languages'>
                 <span class='glyphicon glyphicon-list-alt' aria-hidden='true'></span> Languages
               </a>
@@ -104,11 +99,6 @@
             <li>
               <a role='button' href='/info/spells'>
                 <span class='glyphicon glyphicon-list-alt' aria-hidden='true'></span> Spells
-              </a>
-            </li>
-            <li>
-              <a role='button' href='/info/traits'>
-                <span class='glyphicon glyphicon-list-alt' aria-hidden='true'></span> Traits
               </a>
             </li>
             <li>

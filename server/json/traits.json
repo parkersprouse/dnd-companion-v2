@@ -1,288 +1,389 @@
-[{
-	"index": 1,
-	"name": "Darkvision (Dwarf)",
-	"race": {
-		"url": "/api/db/races/1",
-		"name": "Dwarf"
-	},
-	"desc": [
-		"Accustomed to life underground, you have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can’t discern color in darkness, only shades of gray."
-	],
-	"url": "/api/db/traits/1"
-}, {
-	"index": 2,
-	"name": "Dwarven Resilience",
-	"race": {
-		"url": "/api/db/races/1",
-		"name": "Dwarf"
-	},
-	"desc": [
-		"You have advantage on saving throws against poison, and you have resistance against poison damage."
-	],
-	"url": "/api/db/traits/2"
-}, {
-	"index": 3,
-	"name": "Stonecunning",
-	"race": {
-		"url": "/api/db/races/1",
-		"name": "Dwarf"
-	},
-	"desc": [
-		"Whenever you make an Intelligence (History) check related to the origin of stonework, you are considered proficient in the History skill and add double your proficiency bonus to the check, instead of your normal proficiency bonus."
-	],
-	"url": "/api/db/traits/3"
-}, {
-	"index": 4,
-	"name": "Dwarven Toughness",
-	"race": {
-		"url": "/api/db/subraces/1",
-		"name": "Hill Dwarf"
-	},
-	"desc": [
-		"Your hit point maximum increases by 1, and it increases by 1 every time you gain a level."
-	],
-	"url": "/api/db/traits/4"
-}, {
-	"index": 5,
-	"name": "Darkvision (Elf)",
-	"race": {
-		"url": "/api/db/races/2",
-		"name": "Elf"
-	},
-	"desc": [
-		"Accustomed to twilit forests and the night sky, you have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can’t discern color in darkness, only shades of gray."
-	],
-	"url": "/api/db/traits/5"
-}, {
-	"index": 6,
-	"name": "Fey Ancestry",
-	"race": {
-		"url": "/api/db/races/2",
-		"name": "Elf"
-	},
-	"desc": [
-		"You have advantage on saving throws against being charmed, and magic can’t put you to sleep."
-	],
-	"url": "/api/db/traits/6"
-}, {
-	"index": 7,
-	"name": "Trance",
-	"race": {
-		"url": "/api/db/races/2",
-		"name": "Elf"
-	},
-	"desc": [
-		"Elves don’t need to sleep. Instead, they meditate deeply, remaining semiconscious, for 4 hours a day. (The Common word for such meditation is \"trance.\")",
-		"While meditating, you can dream after a fashion; such dreams are actually mental exercises that have become reflexive through years of practice. After resting in this way, you gain the same benefit that a human does from 8 hours of sleep."
-	],
-	"url": "/api/db/traits/7"
-}, {
-  "index": 8,
-	"name": "High Elf Cantrip: Light",
-	"race": {
-		"url": "/api/db/subraces/2",
-		"name": "High Elf"
-	},
-	"desc": [
-		"You know the Light cantrip from the wizard spell list. Intelligence is your spellcasting ability for it.",
-		"You touch one object that is no larger than 10 feet in any dimension. Until the spell ends, the object sheds bright light in a 20-foot radius and dim light for an additional 20 feet. The light can be colored as you like. Completely covering the object with something opaque blocks the light. The spell ends if you cast it again or dismiss it as an action.",
-		"If you target an object held or worn by a hostile creature, that creature must succeed on a dexterity saving throw to avoid the spell."
-	],
-	"url": "/api/db/traits/8"
-}, {
-  "index": 9,
-	"name": "High Elf Cantrip: Mage Hand",
-	"race": {
-		"url": "/api/db/subraces/2",
-		"name": "High Elf"
-	},
-	"desc": [
-		"You know the Mage Hand cantrip from the wizard spell list. Intelligence is your spellcasting ability for it.",
-		"A spectral, floating hand appears at a point you choose within range. The hand lasts for the duration or until you dismiss it as an action. The hand vanishes if it is ever more than 30 feet away from you or if you cast this spell again.",
-		"You can use your action to control the hand. You can use the hand to manipulate an object, open an unlocked door or container, stow or retrieve an item from an open container, or pour the contents out of a vial. You can move the hand up to 30 feet each time you use it.",
-		"The hand can’t attack, activate magic items, or carry more than 10 pounds."
-	],
-	"url": "/api/db/traits/9"
-}, {
-  "index": 10,
-	"name": "High Elf Cantrip: Mending",
-	"race": {
-		"url": "/api/db/subraces/2",
-		"name": "High Elf"
-	},
-	"desc": [
-		"You know the Mending cantrip from the wizard spell list. Intelligence is your spellcasting ability for it.",
-		"This spell repairs a single break or tear in an object you touch, such as a broken key, a torn cloak, or a leaking wineskin. As long as the break or tear is no longer than 1 foot in any dimension, you mend it, leaving no trace of the former damage.",
-		"This spell can physically repair a magic item or construct, but the spell can’t restore magic to such an object."
-	],
-	"url": "/api/db/traits/10"
-}, {
-  "index": 11,
-	"name": "High Elf Cantrip: Message",
-	"race": {
-		"url": "/api/db/subraces/2",
-		"name": "High Elf"
-	},
-	"desc": [
-		"You know the Message cantrip from the wizard spell list. Intelligence is your spellcasting ability for it.",
-		"You point your finger toward a creature within range and whisper a message. The target (and only the target) hears the message and can reply in a whisper that only you can hear.",
-		"You can cast this spell through solid objects if you are familiar with the target and know it is beyond the barrier. Magical silence, 1 foot of stone, 1 inch of common metal, a thin sheet of lead, or 3 feet of wood blocks the spell. The spell doesn’t have to follow a straight line and can travel freely around corners or through openings."
-	],
-	"url": "/api/db/traits/11"
-}, {
-  "index": 12,
-	"name": "High Elf Cantrip: Minor Illusion",
-	"race": {
-		"url": "/api/db/subraces/2",
-		"name": "High Elf"
-	},
-	"desc": [
-		"You know the Minor Illusion cantrip from the wizard spell list. Intelligence is your spellcasting ability for it.",
-		"You create a sound or an image of an object within range that lasts for the duration. The illusion also ends if you dismiss it as an action or cast this spell again.",
-		"If you create a sound, its volume can range from a whisper to a scream. It can be your voice, someone else’s voice, a lion’s roar, a beating of drums, or any other sound you choose. The sound continues unabated throughout the duration, or you can make discrete sounds at different times before the spell ends.",
-		"If you create an image of an object—such as a chair, muddy footprints, or a small chest—it must be no larger than a 5-foot cube. The image can’t create sound, light, smell, or any other sensory effect. Physical interaction with the image reveals it to be an illusion, because things can pass through it.",
-		"If a creature uses its action to examine the sound or image, the creature can determine that it is an illusion with a successful Intelligence (Investigation) check against your spell save DC. If a creature discerns the illusion for what it is, the illusion becomes faint to the creature."
-	],
-	"url": "/api/db/traits/12"
-}, {
-  "index": 13,
-	"name": "High Elf Cantrip: Acid Splash",
-	"race": {
-		"url": "/api/db/subraces/2",
-		"name": "High Elf"
-	},
-	"desc": [
-		"You know the Acid Splash cantrip from the wizard spell list. Intelligence is your spellcasting ability for it.",
-		"You hurl a bubble of acid. Choose one creature within range, or choose two creatures within range that are within 5 feet of each other. A target must succeed on a dexterity saving throw or take 1d6 acid damage.",
-		"This spell’s damage increases by 1d6 when you reach 5th level (2d6), 11th level (3d6), and 17th level (4d6)."
-	],
-	"url": "/api/db/traits/13"
-}, {
-  "index": 14,
-	"name": "High Elf Cantrip: Prestidigitation",
-	"race": {
-		"url": "/api/db/subraces/2",
-		"name": "High Elf"
-	},
-	"desc": [
-		"You know the Prestidigitation cantrip from the wizard spell list. Intelligence is your spellcasting ability for it.",
-		"This spell is a minor magical trick that novice spellcasters use for practice. You create one of the following magical effects within 'range':",
-		"You create an instantaneous, harmless sensory effect, such as a shower of sparks, a puff of wind, faint musical notes, or an odd odor.",
-		"You instantaneously light or snuff out a candle, a torch, or a small campfire.",
-		"You instantaneously clean or soil an object no larger than 1 cubic foot.",
-		"You chill, warm, or flavor up to 1 cubic foot of nonliving material for 1 hour.",
-		"You make a color, a small mark, or a symbol appear on an object or a surface for 1 hour.",
-		"You create a nonmagical trinket or an illusory image that can fit in your hand and that lasts until the end of your next turn.",
-		"If you cast this spell multiple times, you can have up to three of its non-instantaneous effects active at a time, and you can dismiss such an effect as an action."
-	],
-	"url": "/api/db/traits/14"
-}, {
-  "index": 15,
-	"name": "High Elf Cantrip: Ray of Frost",
-	"race": {
-		"url": "/api/db/subraces/2",
-		"name": "High Elf"
-	},
-	"desc": [
-		"You know the Ray of Frost cantrip from the wizard spell list. Intelligence is your spellcasting ability for it.",
-		"A frigid beam of blue-white light streaks toward a creature within range. Make a ranged spell attack against the target. On a hit, it takes 1d8 cold damage, and its speed is reduced by 10 feet until the start of your next turn.",
-		"The spell’s damage increases by 1d8 when you reach 5th level (2d8), 11th level (3d8), and 17th level (4d8)."
-	],
-	"url": "/api/db/traits/15"
-}, {
-  "index": 16,
-	"name": "High Elf Cantrip: Shocking Grasp",
-	"race": {
-		"url": "/api/db/subraces/2",
-		"name": "High Elf"
-	},
-	"desc": [
-		"You know the Shocking Grasp cantrip from the wizard spell list. Intelligence is your spellcasting ability for it.",
-		"Lightning springs from your hand to deliver a shock to a creature you try to touch. Make a melee spell attack against the target. You have advantage on the attack roll if the target is wearing armor made of metal. On a hit, the target takes 1d8 lightning damage, and it can’t take reactions until the start of its next turn.",
-		"The spell’s damage increases by 1d8 when you reach 5th level (2d8), 11th level (3d8), and 17th level (4d8)."
-	],
-	"url": "/api/db/traits/16"
-}, {
-  "index": 17,
-	"name": "High Elf Cantrip: True Strike",
-	"race": {
-		"url": "/api/db/subraces/2",
-		"name": "High Elf"
-	},
-	"desc": [
-		"You know the True Strike cantrip from the wizard spell list. Intelligence is your spellcasting ability for it.",
-		"You extend your hand and point a finger at a target in range. Your magic grants you a brief insight into the target’s defenses. On your next turn, you gain advantage on your first attack roll against the target, provided that this spell hasn’t ended."
-	],
-	"url": "/api/db/traits/17"
-}, {
-  "index": 18,
-	"name": "High Elf Cantrip: Chill Touch",
-	"race": {
-		"url": "/api/db/subraces/2",
-		"name": "High Elf"
-	},
-	"desc": [
-		"You know the Chill Touch cantrip from the wizard spell list. Intelligence is your spellcasting ability for it.",
-		"You create a ghostly, skeletal hand in the space of a creature within range. Make a ranged spell attack against the creature to assail it with the chill of the grave. On a hit, the target takes 1d8 necrotic damage, and it can’t regain hit points until the start of your next turn. Until then, the hand clings to the target.",
-		"If you hit an undead target, it also has disadvantage on attack rolls against you until the end of your next turn.",
-		"This spell’s damage increases by 1d8 when you reach 5th level (2d8), 11th level (3d8), and 17th level (4d8)."
-	],
-	"url": "/api/db/traits/18"
-}, {
-  "index": 19,
-	"name": "High Elf Cantrip: Dancing Lights",
-	"race": {
-		"url": "/api/db/subraces/2",
-		"name": "High Elf"
-	},
-	"desc": [
-		"You know the Dancing Lights cantrip from the wizard spell list. Intelligence is your spellcasting ability for it.",
-		"You create up to four torch-sized lights within range, making them appear as torches, lanterns, or glowing orbs that hover in the air for the duration. You can also combine the four lights into one glowing vaguely humanoid form of Medium size. Whichever form you choose, each light sheds dim light in a 10-foot radius.",
-		"As a bonus action on your turn, you can move the lights up to 60 feet to a new spot within range. A light must be within 20 feet of another light created by this spell, and a light winks out if it exceeds the spell’s range."
-	],
-	"url": "/api/db/traits/19"
-}, {
-	"index": 20,
-	"name": "Lucky",
-	"race": {
-		"url": "/api/db/races/3",
-		"name": "Halfling"
-	},
-	"desc": [
-		"When you roll a 1 on the d20 for an attack roll, ability check, or saving throw, you can reroll the die and must use the new roll."
-	],
-	"url": "/api/db/traits/20"
-}, {
-	"index": 21,
-	"name": "Brave",
-	"race": {
-		"url": "/api/db/races/3",
-		"name": "Halfling"
-	},
-	"desc": [
-		"You have advantage on saving throws against being frightened"
-	],
-	"url": "/api/db/traits/21"
-}, {
-	"index": 22,
-	"name": "Halfling Nimbleness",
-	"race": {
-		"url": "/api/db/races/3",
-		"name": "Halfling"
-	},
-	"desc": [
-		"You can move through the space of any creature that is of a size larger than yours."
-	],
-	"url": "/api/db/traits/22"
-}, {
-	"index": 23,
-	"name": "Naturally Stealthy",
-	"race": {
-		"url": "/api/db/subraces/3",
-		"name": "Lightfoot Halfling"
-	},
-	"desc": [
-		"You can attempt to hide even when you are obscured only by a creature that is at least one size larger than you."
-	],
-	"url": "/api/db/traits/23"
-}]
+[
+  {
+    "index": 1,
+    "races": [
+      {
+        "name": "Dwarf"
+      },
+      {
+        "name": "Hill Dwarf"
+      },
+      {
+        "name": "Elf"
+      },
+      {
+        "name": "High Elf"
+      },
+      {
+        "name": "Gnome"
+      },
+      {
+        "name": "Rock Gnome"
+      },
+      {
+        "name": "Half-Elf"
+      },
+      {
+        "name": "Half-Orc"
+      }
+    ],
+    "name": "Darkvision",
+    "desc": [
+      "You have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You cannot discern color in darkness, only shades of gray."
+    ]
+  },
+  {
+    "index": 2,
+    "races": [
+      {
+        "name": "Dwarf"
+      },
+      {
+        "name": "Hill Dwarf"
+      }
+    ],
+    "name": "Dwarven Resilience",
+    "desc": [
+      "You have advantage on saving throws against poison, and you have resistance against poison damage."
+    ]
+  },
+  {
+    "index": 3,
+    "races": [
+      {
+        "name": "Dwarf"
+      },
+      {
+        "name": "Hill Dwarf"
+      }
+    ],
+    "name": "Dwarven Combat Training",
+    "desc": [
+      "You have proficiency with the battleaxe, handaxe, light hammer, and warhammer."
+    ]
+  },
+  {
+    "index": 4,
+    "races": [
+      {
+        "name": "Dwarf"
+      },
+      {
+        "name": "Hill Dwarf"
+      }
+    ],
+    "name": "Stonecunning",
+    "desc": [
+      "Whenever you make an Intelligence (History) check related to the origin of stonework, you are considered proficient in the History skill and add double your proficiency bonus to the check, instead of your normal proficiency bonus."
+    ]
+  },
+  {
+    "index": 5,
+    "races": [
+      {
+        "name": "Hill Dwarf"
+      }
+    ],
+    "name": "Dwarven Toughness",
+    "desc": [
+      "Your hit point maximum increases by 1, and it increases by 1 every time you gain a level."
+    ]
+  },
+  {
+    "index": 6,
+    "races": [
+      {
+        "name": "Elf"
+      },
+      {
+        "name": "High Elf"
+      }
+    ],
+    "name": "Keen Senses",
+    "desc": [
+      "You have proficiency in the Perception skill."
+    ]
+  },
+  {
+    "index": 7,
+    "races": [
+      {
+        "name": "Elf"
+      },
+      {
+        "name": "High Elf"
+      },
+      {
+        "name": "Hlf-Elf"
+      }
+    ],
+    "name": "Fey Ancestry",
+    "desc": [
+      "You have advantage on saving throws against being charmed, and magic cannot put you to sleep."
+    ]
+  },
+  {
+    "index": 8,
+    "races": [
+      {
+        "name": "Elf"
+      },
+      {
+        "name": "High Elf"
+      }
+    ],
+    "name": "Trance",
+    "desc": [
+      "Elves do not need to sleep. Instead, they meditate deeply, remaining semiconscious, for 4 hours a day. (The Common word for such meditation is \"trance.\") While meditating, you can dream after a fasion; such dreams are actually mental exercises that have become reflexive through years of practice. After resting this way, you gain the same benefit that a human does from 8 hours of sleep."
+    ]
+  },
+  {
+    "index": 8,
+    "races": [
+      {
+        "name": "Elf"
+      },
+      {
+        "name": "High Elf"
+      }
+    ],
+    "name": "Elf Weapon Training",
+    "desc": [
+      "You have proficiency with the longsword, shortsword, shortbow, and longbow."
+    ]
+  },
+  {
+    "index": 9,
+    "races": [
+      {
+        "name": "High Elf"
+      }
+    ],
+    "name": "High Elf Cantrip",
+    "desc": [
+      "You know one cantrip of your choice form the wizard spell list. Intelligence is your spellcasting ability for it."
+    ]
+  },
+  {
+    "index": 10,
+    "races": [
+      {
+        "name": "High Elf"
+      }
+    ],
+    "name": "Extra Language",
+    "desc": [
+      "You can speak, read, and write one extra language of your choice."
+    ]
+  },
+  {
+    "index": 11,
+    "races": [
+      {
+        "name": "Halfling"
+      },
+      {
+        "name": "Lightfoot Halfling"
+      }
+    ],
+    "name": "Lucky",
+    "desc": [
+      "When you roll a 1 on the d20 for an attack roll, ability check, or saving throw, you can reroll the die and must use the new roll."
+    ]
+  },
+  {
+    "index": 12,
+    "races": [
+      {
+        "name": "Halfling"
+      },
+      {
+        "name": "Lightfoot Halfling"
+      }
+    ],
+    "name": "Brave",
+    "desc": [
+      "You have advantage on saving throw against being frghtened"
+    ]
+  },
+  {
+    "index": 13,
+    "races": [
+      {
+        "name": "Halfling"
+      },
+      {
+        "name": "Lightfoot Halfling"
+      }
+    ],
+    "name": "Halfling Nimbleness",
+    "desc": [
+      "You can move through the space of any creature that is of a size larger than yours."
+    ]
+  },
+  {
+    "index": 14,
+    "races": [
+      {
+        "name": "Lightfoot Halfling"
+      }
+    ],
+    "name": "Naturally Stealthy",
+    "desc": [
+      "You can attempt to hide even when you are obscured only by a creature that is at least one size larger than you."
+    ]
+  },
+  {
+    "index": 15,
+    "races": [
+      {
+        "name": "Dragonborn"
+      }
+    ],
+    "name": "Draconic Ancestry",
+    "desc": [
+      "You have draconic ancestry. Choose one type of dragon from the Draconic Ancestry table. Your breath weapon and damage resistance are determined by the dragon type, as shown in the table."
+    ]
+  },
+  {
+    "index": 16,
+    "races": [
+      {
+        "name": "Dragonborn"
+      }
+    ],
+    "name": "Breath Weapon",
+    "desc": [
+      "You can use your action to exhale destructive energy. Your draconic ancestry determines the size, shape, and damage type of the exhalation.",
+      "When you use your breath weapon, each creature in the area of the exhalation must make a saving throw, the type of which is determined by your draconic ancesry. The DC for this saving throw equals 8 + your Constitution modifier + your proficiency bonus. A creature takes 2d6 damage on a failed save, and half as much damage on a successful one. The damage increases to 2d6 at 6th level, 3d6 at 11th level, and 5d6 at 16th level.",
+      "After you use your breath weapon, you cannot use it again until you complete a short or long rest."
+    ]
+  },
+  {
+    "index": 17,
+    "races": [
+      {
+        "name": "Dragonborn"
+      }
+    ],
+    "name": "Damage Resistance",
+    "desc": [
+      "You have resistance to the damage type associated with your draconic ancestry."
+    ]
+  },
+  {
+    "index": 18,
+    "races": [
+      {
+        "name": "Gnome"
+      },
+      {
+        "name": "Rock Gnome"
+      }
+    ],
+    "name": "Gnome Cunning",
+    "desc": [
+      "You have advantage on all Intelligence, Wisdom, and Charisma saving throws against magic."
+    ]
+  },
+  {
+    "index": 19,
+    "races": [
+      {
+        "name": "Rock Gnome"
+      }
+    ],
+    "name": "Artificer's Lore",
+    "desc": [
+      "Whenever you make an Intelligence (History) check related to magic items, alchemical objects, or technologoical devices, you can add twice your proficiency bonus, instead of any proficiency bonus you normally apply."
+    ]
+  },
+  {
+    "index": 20,
+    "races": [
+      {
+        "name": "Rock Gnome"
+      }
+    ],
+    "name": "Tinker",
+    "desc": [
+      "You have proficiency with artisan's tools (tinker's tools). Using those tools ,you can spend 1 hour and 10 gp worth of materials to construct a Tiny clockwork device (AC 5, 1 hp). The devices ceases to function after 24 hours (unless you spend 1 hour repairing it to keep the device functioning), or when you use your action to dismantle it; t that time, you can reclaim the materils used to create it. You can have up to three such devices active at a time.",
+      "When you create a device, choose one of the following options:",
+      "Clockwork Toy: This toy is a clockwork animal, monster, or person, such as a frog, mouse, bird, dragon, or soldier. When placed on the ground, the toy moves 5 feet across the ground on each of your turns in a random direction. It makes noises as appropriate to the creature it represents.",
+      "Fire Starter: The device produces a miniature flame, which you can use to light a candle, torch, or campfire. Using the device requires your action.",
+      "Music Box: When opened, this music box plays a single song t a moderate volume. The box stops playing when it reaches the song's end or when it is closed."
+    ]
+  },
+  {
+    "index": 21,
+    "races": [
+      {
+        "name": "Half-Elf"
+      }
+    ],
+    "name": "Skill Versatility",
+    "desc": [
+      "You gain proficiency in two skills of your choice."
+    ]
+  },
+  {
+    "index": 22,
+    "races": [
+      {
+        "name": "Half-Orc"
+      }
+    ],
+    "name": "Menacing",
+    "desc": [
+      "You gain proficiency in the Intimidation skill."
+    ]
+  },
+  {
+    "index": 23,
+    "races": [
+      {
+        "name": "Half-Orc"
+      }
+    ],
+    "name": "Relentless Endurance",
+    "desc": [
+      "When you are reduced to 0 hit points but not killed outright, you can drop to 1 hit point instead. you cannot use this feature again until you finish a long rest."
+    ]
+  },
+  {
+    "index": 24,
+    "races": [
+      {
+        "name": "Half-Orc"
+      }
+    ],
+    "name": "Savage Attacks",
+    "desc": [
+      "When you score a critical hit with a melee weapon attack, you can roll one of the weapon's damage dice one additional time and add it to the extra damge of the critical hit."
+    ]
+  },
+  {
+    "index": 25,
+    "races": [
+      {
+        "name": "Tiefling"
+      }
+    ],
+    "name": "Hellish Resistance",
+    "desc": [
+      "You have resistance to fire damage."
+    ]
+  },
+  {
+    "index": 26,
+    "races": [
+      {
+        "name": "Tiefling"
+      }
+    ],
+    "name": "Internal Legacy",
+    "desc": [
+      "You know the thaumaturgy cantrip. When you reach 3rd level, you can cast the hellish rebuke spell as a 2nd-level spell once with this trait and regain the ability to do so when you finish a long rest. When you reach 5h level, you can cast the darkness spell once with this trait and regain the ability to do so when you finish a long rest. Charisma is your spellcasting ability for these spells."
+    ]
+  }
+]
