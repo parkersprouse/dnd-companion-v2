@@ -5,6 +5,11 @@ export default [
     component: () => import('../pages/info/ArmorList.vue'),
   },
   {
+    path: '/info/conditions',
+    name: 'condition_list',
+    component: () => import('../pages/info/ConditionsList.vue'),
+  },
+  {
     path: '/info/equipment',
     name: 'equipment_list',
     component: () => import('../pages/info/EquipmentList.vue'),

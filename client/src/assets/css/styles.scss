@@ -55,3 +55,28 @@ body {
 // #5c7080 - blueprintjs blue-ish text
 // #ebf1f5 - blueprintjs blue-ish background color
 // rgba(191,204,214,.2) - blueprintjs table row background color
+
+// Flexbox rows/columns //
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  > .panel {
+    height: 100%;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .flex-column {
+    width: 49%;
+  }
+}
