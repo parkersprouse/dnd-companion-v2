@@ -11,7 +11,7 @@
         <h1>Skills</h1>
       </div>
       <div class='row'>
-        <div class='col-xs-12'>
+        <div class='col-xs-12 col-md-6'>
           <div class='form-group'>
             <div class='input-group'>
               <span class='input-group-addon'>
@@ -19,6 +19,20 @@
               </span>
               <input type='text' class='form-control' id='name_filter' name='name_filter' placeholder='Filter' v-model.trim='name_filter' />
             </div>
+          </div>
+        </div>
+        <div class='col-xs-12 col-md-6'>
+          <div class='form-group'>
+            <select class='form-control' id='ability_filter' v-model='ability_filter'>
+              <option value=''>All</option>
+              <option>Charisma</option>
+              <option>Constitution</option>
+              <option>Dexterity</option>
+              <option>Intelligence</option>
+              <option>Strength</option>
+              <option>Wisdom</option>
+            </select>
+            <p class='help-block'>Ability Score</p>
           </div>
         </div>
       </div>
@@ -51,6 +65,7 @@ export default {
       skills: null,
       filtered_skills: null,
 
+      ability_filter: '',
       name_filter: '',
     };
   },
@@ -78,10 +93,20 @@ export default {
         });
       }
 
+      if (this.ability_filter) {
+        filtered = _.filter(filtered, (skill) => {
+          const lower_ability = skill.ability_score.name.toLowerCase();
+          return this.ability_filter.toLowerCase().includes(lower_ability);
+        });
+      }
+
       this.filtered_skills = _.cloneDeep(filtered);
     },
   },
   watch: {
+    ability_filter() {
+      this.filter();
+    },
     name_filter() {
       this.filter();
     },
