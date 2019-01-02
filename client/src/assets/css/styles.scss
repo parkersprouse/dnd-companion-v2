@@ -5,6 +5,10 @@
   outline: none !important;
 }
 
+// rgba(0,0,0,0.14)
+// #5c7080 - blueprintjs blue-ish text
+// #ebf1f5 - blueprintjs blue-ish background color
+// rgba(191,204,214,.2) - blueprintjs table row background color
 body {
   font-family: -apple-system, 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Open Sans', 'Helvetica Neue', sans-serif;
 }
@@ -58,11 +62,6 @@ body {
   border-bottom-left-radius: 6px;
   border-bottom-right-radius: 6px;
 }
-
-// rgba(0,0,0,0.14)
-// #5c7080 - blueprintjs blue-ish text
-// #ebf1f5 - blueprintjs blue-ish background color
-// rgba(191,204,214,.2) - blueprintjs table row background color
 
 // Flexbox rows/columns //
 .flex-row {

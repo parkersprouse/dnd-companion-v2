@@ -24,13 +24,23 @@
       </div>
 
       <div class='flex-row'>
-        <div class='flex-column' v-for='klass in filtered_classes' :key='klass.index'>
+        <div class='flex-column' v-for='entry in filtered_classes' :key='entry.index'>
           <div class='panel panel-default'>
             <div class='panel-heading'>
-              <h3 class='panel-title'>{{ klass.name }}</h3>
+              <h3 class='panel-title'>{{ entry.name }}</h3>
             </div>
             <div class='panel-body'>
-              {{ JSON.stringify(klass) }}
+              <p>Hit Dice: d{{ entry.hit_die }}</p>
+              <p>Default Proficiencies: {{ renderDefaultProficiencies(entry) }}</p>
+              <p>
+                Proficiency Choices:
+                <span style='display: block;' v-for='(item, index) in entry.proficiency_choices' :key='index'>
+                  <strong>Choose {{ item.choose }} from:</strong><br/>{{ renderProficiencyChoices(item) }}
+                </span>
+              </p>
+              <p>Saving Throw Proficiencies: {{ renderSavingThrows(entry) }}</p>
+              <p>Subclasses: {{ renderSubclasses(entry) }}</p>
+              <p>Spellcasting Class: {{ entry.spellcasting.class || 'N/A' }}</p>
             </div>
           </div>
         </div>
@@ -74,6 +84,18 @@ export default {
       }
 
       this.filtered_classes = _.cloneDeep(filtered);
+    },
+    renderDefaultProficiencies(entry) {
+      return _.join(_.map(entry.proficiencies, p => p.name), ', ');
+    },
+    renderProficiencyChoices(item) {
+      return _.join(_.map(item.from, p => p.name), ', ');
+    },
+    renderSavingThrows(entry) {
+      return _.join(_.map(entry.saving_throws, s => s.name), ', ');
+    },
+    renderSubclasses(entry) {
+      return _.join(_.map(entry.subclasses, s => s.name), ', ');
     },
   },
   watch: {
