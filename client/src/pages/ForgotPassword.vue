@@ -13,21 +13,21 @@
         <div class='panel-body'>
           <form @submit.prevent='submit'>
             <uiv-alert type='success' v-if='success'>
-              <span class='glyphicon glyphicon-ok-sign' aria-hidden='true'></span>&nbsp;
+              <span v-html='feather.icons["check-circle"].toSvg()'></span>&nbsp;
               If there is an account associated with the provided e-mail address, you should receive a recovery e-mail shortly.
             </uiv-alert>
             <uiv-alert type='danger' v-if='error_msg'>
-              <span class='glyphicon glyphicon-exclamation-sign' aria-hidden='true'></span> {{ error_msg }}
+              <span v-html='feather.icons["alert-octagon"].toSvg()'></span> {{ error_msg }}
             </uiv-alert>
             <div class='form-group'>
               <label for='email'>E-mail <span class='required-label'>*</span></label>
               <div class='input-group'>
-                <span class='input-group-addon'><span class='glyphicon glyphicon-user' aria-hidden='true'></span></span>
+                <span class='input-group-addon'><span v-html='feather.icons.mail.toSvg()'></span></span>
                 <input type='email' class='form-control' id='email' placeholder='E-mail' v-model='email' />
               </div>
             </div>
             <div style='text-align: center;'>
-              <uiv-btn :disabled='submitting' native-type='submit' type='primary'>
+              <uiv-btn block :disabled='submitting' native-type='submit' type='primary'>
                 Send
               </uiv-btn>
             </div>
@@ -39,12 +39,15 @@
 </template>
 
 <script>
+import feather from 'feather-icons';
+
 export default {
   name: 'forgot_password',
   data() {
     return {
       email: '',
       error_msg: null,
+      feather,
       submitting: false,
       success: false,
     };

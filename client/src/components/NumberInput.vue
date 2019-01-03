@@ -4,7 +4,7 @@
     <span class='input-group-btn'>
       <button class='btn btn-default' type='button' @click="decrease"
         :disabled="disabled || readonly || !decreasable">
-        <span class='glyphicon glyphicon-minus' aria-hidden="true"></span>
+        <span v-html='feather.icons.minus.toSvg()'></span>
       </button>
     </span>
 
@@ -16,7 +16,7 @@
     <span class='input-group-btn'>
       <button class='btn btn-default' type='button' @click="increase"
         :disabled="disabled || readonly || !increasable">
-        <span class='glyphicon glyphicon-plus' aria-hidden="true"></span>
+        <span v-html='feather.icons.plus.toSvg()'></span>
       </button>
     </span>
 
@@ -24,6 +24,8 @@
 </template>
 
 <script>
+import feather from 'feather-icons';
+
 const { isNaN } = Number;
 const REGEXP_NUMBER = /^-?(?:\d+|\d+\.\d+|\.\d+)(?:[eE][-+]?\d+)?$/;
 const REGEXP_DECIMALS = /\.\d*(?:0|9){10}\d*$/;
@@ -37,6 +39,7 @@ export default {
   data() {
     return {
       currentValue: NaN,
+      feather,
     };
   },
 

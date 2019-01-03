@@ -3,7 +3,7 @@
     <main-navbar />
     <div v-if='error' class='container'>
       <uiv-alert type='danger'>
-        <span class='glyphicon glyphicon-exclamation-sign' aria-hidden='true'></span> There was a problem retrieving the info
+        <span v-html='feather.icons["alert-octagon"].toSvg()'></span> There was a problem retrieving the info
       </uiv-alert>
     </div>
     <div v-else class='container'>
@@ -16,7 +16,7 @@
           <div class='form-group'>
             <div class='input-group'>
               <span class='input-group-addon'>
-                <span class='glyphicon glyphicon-search' aria-hidden='true'></span>
+                <span v-html='feather.icons.search.toSvg()'></span>
               </span>
               <input type='text' class='form-control' id='name_filter' name='name_filter' placeholder='Filter' v-model.trim='name_filter' />
             </div>
@@ -96,6 +96,7 @@
 
 <script>
 import _ from 'lodash';
+import feather from 'feather-icons';
 import ArmorDetails from '../../components/info/ArmorDetails.vue';
 
 export default {
@@ -108,6 +109,7 @@ export default {
       armor: null,
       current_sorted_property: 'name',
       error: false,
+      feather,
       filtered_armor: null,
       selected_armor: null,
       show_modal: false,
