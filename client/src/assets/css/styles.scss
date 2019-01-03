@@ -63,6 +63,21 @@ body {
   border-bottom-right-radius: 6px;
 }
 
+// Feather icons
+.feather {
+  display: inline-block;
+  height: 16px;
+  vertical-align: text-top;
+  width: 16px;
+}
+
+.input-group-addon {
+  .feather {
+    height: 20px;
+    width: 20px;
+  }
+}
+
 // Flexbox rows/columns //
 .flex-row {
   display: flex;

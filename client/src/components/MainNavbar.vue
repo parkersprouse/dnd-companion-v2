@@ -4,7 +4,7 @@
       <uiv-navbar-nav>
         <li>
           <a role='button' href='/'>
-            <span class='glyphicon glyphicon-home' aria-hidden='true'></span> Home
+            <span v-html='feather.icons.home.toSvg()'></span> Home
           </a>
         </li>
         <uiv-dropdown tag='li' v-if='authenticated'>
@@ -14,12 +14,12 @@
           <template slot='dropdown'>
             <li>
               <a role='button' href='/characters'>
-                <span class='glyphicon glyphicon-th-list' aria-hidden='true'></span> My Characters
+                <span v-html='feather.icons.list.toSvg()'></span> My Characters
               </a>
             </li>
             <li>
               <a role='button' href='/characters/new'>
-                <span class='glyphicon glyphicon-plus-sign' aria-hidden='true'></span> Create Character
+                <span v-html='feather.icons["file-plus"].toSvg()'></span> Create Character
               </a>
             </li>
           </template>
@@ -31,17 +31,17 @@
           <template slot='dropdown'>
             <li>
               <a role='button' href='/games'>
-                <span class='glyphicon glyphicon-th-list' aria-hidden='true'></span> My Games
+                <span v-html='feather.icons.list.toSvg()'></span> My Games
               </a>
             </li>
             <li>
               <a role='button' href='/games/new'>
-                <span class='glyphicon glyphicon-plus-sign' aria-hidden='true'></span> Create Game
+                <span v-html='feather.icons["file-plus"].toSvg()'></span> Create Game
               </a>
             </li>
             <li>
               <a role='button' href='/games/join'>
-                <span class='glyphicon glyphicon-play-circle' aria-hidden='true'></span> Join Game
+                <span v-html='feather.icons["plus-circle"].toSvg()'></span> Join Game
               </a>
             </li>
           </template>
@@ -53,67 +53,67 @@
           <template slot='dropdown'>
             <li>
               <a role='button' href='/info/armor'>
-                <span class='glyphicon glyphicon-list-alt' aria-hidden='true'></span> Armor
+                <span v-html='feather.icons.list.toSvg()'></span> Armor
               </a>
             </li>
             <li>
               <a role='button' href='/info/classes'>
-                <span class='glyphicon glyphicon-list-alt' aria-hidden='true'></span> Classes
+                <span v-html='feather.icons.list.toSvg()'></span> Classes
               </a>
             </li>
             <li>
               <a role='button' href='/info/conditions'>
-                <span class='glyphicon glyphicon-list-alt' aria-hidden='true'></span> Conditions
+                <span v-html='feather.icons.list.toSvg()'></span> Conditions
               </a>
             </li>
             <li>
               <a role='button' href='/info/damage_types'>
-                <span class='glyphicon glyphicon-list-alt' aria-hidden='true'></span> Damage Types
+                <span v-html='feather.icons.list.toSvg()'></span> Damage Types
               </a>
             </li>
             <li>
               <a role='button' href='/info/equipment'>
-                <span class='glyphicon glyphicon-list-alt' aria-hidden='true'></span> Equipment
+                <span v-html='feather.icons.list.toSvg()'></span> Equipment
               </a>
             </li>
             <li>
               <a role='button' href='/info/languages'>
-                <span class='glyphicon glyphicon-list-alt' aria-hidden='true'></span> Languages
+                <span v-html='feather.icons.list.toSvg()'></span> Languages
               </a>
             </li>
             <li>
               <a role='button' href='/info/proficiencies'>
-                <span class='glyphicon glyphicon-list-alt' aria-hidden='true'></span> Proficiencies
+                <span v-html='feather.icons.list.toSvg()'></span> Proficiencies
               </a>
             </li>
             <li>
               <a role='button' href='/info/races'>
-                <span class='glyphicon glyphicon-list-alt' aria-hidden='true'></span> Races
+                <span v-html='feather.icons.list.toSvg()'></span> Races
               </a>
             </li>
             <li>
               <a role='button' href='/info/skills'>
-                <span class='glyphicon glyphicon-list-alt' aria-hidden='true'></span> Skills
+                <span v-html='feather.icons.list.toSvg()'></span> Skills
               </a>
             </li>
             <li>
               <a role='button' href='/info/spells'>
-                <span class='glyphicon glyphicon-list-alt' aria-hidden='true'></span> Spells
+                <span v-html='feather.icons.list.toSvg()'></span> Spells
               </a>
             </li>
             <li>
               <a role='button' href='/info/trinkets'>
-                <span class='glyphicon glyphicon-list-alt' aria-hidden='true'></span> Trinkets
+                <span v-html='feather.icons.list.toSvg()'></span> Trinkets
               </a>
             </li>
             <li>
               <a role='button' href='/info/weapon_properties'>
-                <span class='glyphicon glyphicon-list-alt' aria-hidden='true'></span> Weapon Properties
+                <span v-html='feather.icons.list.toSvg()'></span> Weapon Properties
               </a>
             </li>
             <li>
               <a role='button' href='/info/weapons'>
-                <span class='glyphicon glyphicon-list-alt' aria-hidden='true'></span> Weapons
+                <span v-html='feather.icons.list.toSvg()'></span> Weapons
               </a>
             </li>
           </template>
@@ -122,17 +122,17 @@
       <uiv-navbar-nav right v-if='authenticated'>
         <uiv-dropdown tag='li'>
           <a class='dropdown-toggle' role='button'>
-            <span class='glyphicon glyphicon-user' aria-hidden='true'></span> {{ username }} <span class='caret'></span>
+            <span v-html='feather.icons.user.toSvg()'></span> {{ username }} <span class='caret'></span>
           </a>
           <template slot='dropdown'>
             <li>
               <a role='button' href='/profile'>
-                <span class='glyphicon glyphicon-cog' aria-hidden='true'></span> Edit Profile
+                <span v-html='feather.icons.settings.toSvg()'></span> Edit Profile
               </a>
             </li>
             <li>
               <a role='button' href='/logout'>
-                <span class='glyphicon glyphicon-log-out' aria-hidden='true'></span> Logout
+                <span v-html='feather.icons["log-out"].toSvg()'></span> Logout
               </a>
             </li>
           </template>
@@ -141,12 +141,12 @@
       <uiv-navbar-nav right v-else>
         <li>
           <a role='button' href='/login'>
-            <span class='glyphicon glyphicon-log-in' aria-hidden='true'></span> Login
+            <span v-html='feather.icons["log-in"].toSvg()'></span> Login
           </a>
         </li>
         <li>
           <a role='button' href='/register'>
-            <span class='glyphicon glyphicon-plus-sign' aria-hidden='true'></span> Register
+            <span v-html='feather.icons["user-plus"].toSvg()'></span> Register
           </a>
         </li>
       </uiv-navbar-nav>
@@ -155,8 +155,15 @@
 </template>
 
 <script>
+import feather from 'feather-icons';
+
 export default {
   name: 'main-navbar',
+  data() {
+    return {
+      feather,
+    };
+  },
   computed: {
     authenticated() {
       return !!this.$store.state.current_user;
