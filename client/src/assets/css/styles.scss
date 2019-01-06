@@ -44,10 +44,20 @@ body {
   }
 }
 
-.info-link {
+.class-info {
+  .list-group-item {
+    border: none;
+    padding-bottom: 7px;
+    padding-top: 7px;
+  }
+}
+
+.info-link,
+.info-link:hover,
+.info-link:focus {
   cursor: pointer;
-  text-decoration: underline;
-  text-decoration-style: dotted;
+  text-decoration: underline !important;
+  text-decoration-style: dotted !important;
 }
 
 .modal-body,
