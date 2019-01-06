@@ -30,17 +30,87 @@
               <h3 class='panel-title'>{{ entry.name }}</h3>
             </div>
             <div class='panel-body'>
-              <p>Hit Dice: d{{ entry.hit_die }}</p>
-              <p>Default Proficiencies: {{ renderDefaultProficiencies(entry) }}</p>
-              <p>
-                Proficiency Choices:
-                <span style='display: block;' v-for='(item, index) in entry.proficiency_choices' :key='index'>
-                  <strong>Choose {{ item.choose }} from:</strong><br/>{{ renderProficiencyChoices(item) }}
-                </span>
-              </p>
-              <p>Saving Throw Proficiencies: {{ renderSavingThrows(entry) }}</p>
-              <p>Subclasses: {{ renderSubclasses(entry) }}</p>
-              <p>Spellcasting Class: {{ entry.spellcasting.class || 'N/A' }}</p>
+
+              <div class='flex-row'>
+                <div class='flex-column'>
+                  <div class='panel panel-default'>
+                    <div class='panel-heading'>
+                      <h3 class='panel-title'>Hit Dice</h3>
+                    </div>
+                    <div class='panel-body'>
+                      d{{ entry.hit_die }}
+                    </div>
+                  </div>
+                </div>
+                <div class='flex-column'>
+                  <div class='panel panel-default'>
+                    <div class='panel-heading'>
+                      <h3 class='panel-title'>Spellcasting Class</h3>
+                    </div>
+                    <div class='panel-body'>
+                      {{ entry.spellcasting.class || 'N/A' }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class='flex-row'>
+                <div class='flex-column'>
+                  <div class='panel panel-default'>
+                    <div class='panel-heading'>
+                      <h3 class='panel-title'>Default Proficiencies</h3>
+                    </div>
+                    <div class='panel-body'>
+                      <ul>
+                        <li v-for='item in entry.proficiencies' :key='item.name'>{{ item.name }}</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class='flex-column'>
+                  <div class='panel panel-default'>
+                    <div class='panel-heading'>
+                      <h3 class='panel-title'>Proficiency Choices</h3>
+                    </div>
+                    <div class='panel-body'>
+                      <div v-for='(item, index) in entry.proficiency_choices' :key='index'>
+                        <strong>Choose {{ item.choose }} from:</strong>
+                        <ul>
+                          <li v-for='choice in item.from' :key='choice.name'>{{ choice.name }}</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class='flex-row'>
+                <div class='flex-column'>
+                  <div class='panel panel-default'>
+                    <div class='panel-heading'>
+                      <h3 class='panel-title'>Saving Throw Proficiencies</h3>
+                    </div>
+                    <div class='panel-body'>
+                      <ul>
+                        <li v-for='item in entry.saving_throws' :key='item.name'>{{ item.name }}</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class='flex-column'>
+                  <div class='panel panel-default'>
+                    <div class='panel-heading'>
+                      <h3 class='panel-title'>Subclasses</h3>
+                    </div>
+                    <div class='panel-body'>
+                      <ul>
+                        <li v-for='item in entry.subclasses' :key='item.name'>{{ item.name }}</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
             </div>
           </div>
         </div>
@@ -86,18 +156,6 @@ export default {
       }
 
       this.filtered_classes = _.cloneDeep(filtered);
-    },
-    renderDefaultProficiencies(entry) {
-      return _.join(_.map(entry.proficiencies, p => p.name), ', ');
-    },
-    renderProficiencyChoices(item) {
-      return _.join(_.map(item.from, p => p.name), ', ');
-    },
-    renderSavingThrows(entry) {
-      return _.join(_.map(entry.saving_throws, s => s.name), ', ');
-    },
-    renderSubclasses(entry) {
-      return _.join(_.map(entry.subclasses, s => s.name), ', ');
     },
   },
   watch: {
