@@ -34,9 +34,7 @@
               <div class='flex-row'>
                 <div class='flex-column'>
                   <div class='panel panel-default'>
-                    <div class='panel-heading'>
-                      <h3 class='panel-title'>Hit Dice</h3>
-                    </div>
+                    <div class='panel-heading'>Hit Dice</div>
                     <div class='panel-body'>
                       d{{ entry.hit_die }}
                     </div>
@@ -44,9 +42,7 @@
                 </div>
                 <div class='flex-column'>
                   <div class='panel panel-default'>
-                    <div class='panel-heading'>
-                      <h3 class='panel-title'>Spellcasting Class</h3>
-                    </div>
+                    <div class='panel-heading'>Spellcasting Class</div>
                     <div class='panel-body'>
                       {{ entry.spellcasting.class || 'N/A' }}
                     </div>
@@ -57,28 +53,17 @@
               <div class='flex-row'>
                 <div class='flex-column'>
                   <div class='panel panel-default'>
-                    <div class='panel-heading'>
-                      <h3 class='panel-title'>Default Proficiencies</h3>
-                    </div>
-                    <div class='panel-body'>
-                      <ul>
-                        <li v-for='item in entry.proficiencies' :key='item.name'>{{ item.name }}</li>
-                      </ul>
-                    </div>
+                    <div class='panel-heading'>Saving Throw Proficiencies</div>
+                    <ul class='list-group'>
+                      <li class='list-group-item' v-for='item in entry.saving_throws' :key='item.name'>{{ item.name }}</li>
+                    </ul>
                   </div>
                 </div>
                 <div class='flex-column'>
                   <div class='panel panel-default'>
-                    <div class='panel-heading'>
-                      <h3 class='panel-title'>Proficiency Choices</h3>
-                    </div>
-                    <div class='panel-body'>
-                      <div v-for='(item, index) in entry.proficiency_choices' :key='index'>
-                        <strong>Choose {{ item.choose }} from:</strong>
-                        <ul>
-                          <li v-for='choice in item.from' :key='choice.name'>{{ choice.name }}</li>
-                        </ul>
-                      </div>
+                    <div class='panel-heading'>Subclasses</div>
+                    <div class='list-group'>
+                      <a href='#' class='list-group-item' v-for='item in entry.subclasses' :key='item.name'>{{ item.name }}</a>
                     </div>
                   </div>
                 </div>
@@ -87,25 +72,22 @@
               <div class='flex-row'>
                 <div class='flex-column'>
                   <div class='panel panel-default'>
-                    <div class='panel-heading'>
-                      <h3 class='panel-title'>Saving Throw Proficiencies</h3>
-                    </div>
-                    <div class='panel-body'>
-                      <ul>
-                        <li v-for='item in entry.saving_throws' :key='item.name'>{{ item.name }}</li>
-                      </ul>
-                    </div>
+                    <div class='panel-heading'>Default Proficiencies</div>
+                    <ul class='list-group'>
+                      <li class='list-group-item' v-for='item in entry.proficiencies' :key='item.name'>{{ item.name }}</li>
+                    </ul>
                   </div>
                 </div>
                 <div class='flex-column'>
                   <div class='panel panel-default'>
-                    <div class='panel-heading'>
-                      <h3 class='panel-title'>Subclasses</h3>
-                    </div>
+                    <div class='panel-heading'>Proficiency Choices</div>
                     <div class='panel-body'>
-                      <ul>
-                        <li v-for='item in entry.subclasses' :key='item.name'>{{ item.name }}</li>
-                      </ul>
+                      <div v-for='(item, index) in entry.proficiency_choices' :key='index'>
+                        <strong>Choose {{ item.choose }} from:</strong>
+                        <ul>
+                          <li v-for='choice in item.from' :key='choice.name'>{{ choice.name }}</li>
+                        </ul>
+                      </div>
                     </div>
                   </div>
                 </div>
