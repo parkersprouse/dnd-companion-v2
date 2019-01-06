@@ -89,7 +89,7 @@
                       <li class='list-group-item' v-for='choice in item.from' :key='choice.name'>
                         <div v-if='isSkill(choice)'>
                           <span class='info-link' :id='`${entry.name}_skill${sanitize(choice.name)}`'>{{ choice.name }}</span>
-                          <uiv-popover placement='left' :target='`#${entry.name}_skill${sanitize(choice.name)}`' :title='choice.name' trigger='hover'>
+                          <uiv-popover placement='right' :target='`#${entry.name}_skill${sanitize(choice.name)}`' :title='choice.name' trigger='hover'>
                             <template slot='popover'>
                               <skill-popup-details :skill='choice.name' />
                             </template>
