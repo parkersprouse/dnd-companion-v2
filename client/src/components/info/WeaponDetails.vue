@@ -27,7 +27,7 @@
           <dd>
             <div v-for='(prop, index) in weapon.properties' :key='index'>
               <span class='info-link' :id='`prop${index}`'>{{ prop.name }}</span>
-              <uiv-popover placement='left' :target='`#prop${index}`' :title='prop.name' trigger='hover'>
+              <uiv-popover placement='right' :target='`#prop${index}`' :title='prop.name' trigger='hover'>
                 <template slot='popover'>
                   <weapon-property-popup-details :property='prop.name' />
                 </template>
