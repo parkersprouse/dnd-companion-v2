@@ -20,6 +20,12 @@ const router = new Router({
       component: () => import('../pages/Home.vue'),
     },
     {
+      path: '/profile',
+      name: 'profile',
+      component: () => import('../pages/Profile.vue'),
+      meta: { authorized: true },
+    },
+    {
       path: '*',
       name: 'not-found',
       component: () => import('../pages/NotFound.vue'),
