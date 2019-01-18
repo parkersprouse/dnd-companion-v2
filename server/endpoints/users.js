@@ -85,14 +85,24 @@ module.exports = {
   },
 
   async update(req, res) {
-    if (req.body.email && !isEmail(req.body.email))
+    if (!req.body.email || !isEmail(req.body.email))
       return respond(res, http_bad_request, 'Your e-mail must be valid');
+    if (!req.body.username)
+      return respond(res, http_bad_request, 'You must have a username');
 
-    const [err] = await call(User.update(req.body, { where: { id: req.user_obj.id } }));
-    if (err) {
+    const [match_err, match_data] = await call(User.findOne({ where: { id: req.user_obj.id } }));
+    if (match_err || !match_data)
+      return respond(res, http_server_error, 'There was an unknown problem when updating your account');
+
+    const match = bcrypt.compareSync(req.body.current_password, match_data.pw_hash);
+    if (!match)
+      return respond(res, http_bad_request, 'Current password incorrect');
+
+    const [update_err] = await call(User.update(req.body, { where: { id: req.user_obj.id } }));
+    if (update_err) {
       let message = 'There was an unknown problem when updating your account';
-      if (err.name === db_err_duplicate) {
-        const error = err.errors[0];
+      if (update_err.name === db_err_duplicate) {
+        const error = update_err.errors[0];
         if (error.path.indexOf('username') > -1)
           message = 'An account with that username already exists';
         else if (error.path.indexOf('email') > -1)
@@ -105,23 +115,23 @@ module.exports = {
   },
 
   async updatePassword(req, res) {
-    const { pass_current, pass_confirm, pass_new } = req.body;
+    const { current_password, new_password_confirm, new_password } = req.body;
 
-    if (!pass_new || pass_new.length < 8)
+    if (!new_password || new_password.length < 8)
       return respond(res, http_bad_request, 'Password must be at least 8 characters');
-    if (pass_new !== pass_confirm)
+    if (new_password !== new_password_confirm)
       return respond(res, http_bad_request, 'Passwords did not match');
 
     const [match_err, match_data] = await call(User.findOne({ where: { id: req.user_obj.id } }));
     if (match_err || !match_data)
       return respond(res, http_server_error);
 
-    const match = bcrypt.compareSync(pass_current, match_data.pw_hash);
+    const match = bcrypt.compareSync(current_password, match_data.pw_hash);
     if (!match)
       return respond(res, http_bad_request, 'Current password incorrect');
 
     const salt = bcrypt.genSaltSync();
-    const pw_hash = bcrypt.hashSync(pass_new, salt);
+    const pw_hash = bcrypt.hashSync(new_password, salt);
     const [update_err, update_data] = await call(User.update({ pw_hash }, { where: { id: req.user_obj.id } }));
     if (update_err || !update_data[0])
       return respond(res, http_server_error);
