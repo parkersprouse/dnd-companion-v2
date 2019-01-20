@@ -32,14 +32,14 @@
                 <div class='form-group'>
                   <label for='username'>Username <span class='required-label'>*</span></label>
                   <div class='input-group'>
-                    <span class='input-group-addon'><span v-html='feather.icons.user.toSvg()'></span></span>
+                    <span class='input-group-addon'><span v-html='feather.icons.tag.toSvg()'></span></span>
                     <input type='text' class='form-control' id='username' placeholder='Username' v-model='info.username' />
                   </div>
                 </div>
                 <div class='form-group'>
                   <label for='name'>Name</label>
                   <div class='input-group'>
-                    <span class='input-group-addon'><span v-html='feather.icons.tag.toSvg()'></span></span>
+                    <span class='input-group-addon'><span v-html='feather.icons.user.toSvg()'></span></span>
                     <input type='text' class='form-control' id='name' placeholder='Name' v-model='info.name' />
                   </div>
                 </div>

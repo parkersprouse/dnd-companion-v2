@@ -127,7 +127,7 @@
           <template slot='dropdown'>
             <li>
               <a role='button' href='/profile'>
-                <span v-html='feather.icons.settings.toSvg()'></span> Edit Profile
+                <span v-html='feather.icons.settings.toSvg()'></span> Profile
               </a>
             </li>
             <li>
