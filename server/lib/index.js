@@ -33,7 +33,7 @@ module.exports = {
   async verifyToken(req, res, next) {
     const unauthorized = () => {
       res.clearCookie(cookie_token);
-      res.status(http_unauthorized).send();
+      res.status(http_unauthorized).json();
     }
 
     const { token } = req.signedCookies;
