@@ -30,7 +30,7 @@ body {
 }
 
 .game-list-container {
-  padding-top: 2rem;
+  margin-top: 1rem;
 
   .alert {
     width: 100%;
@@ -129,24 +129,30 @@ body {
 // Flexbox rows/columns //
 .flex-row {
   display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-between;
-  width: 100%;
+  margin-left: -1rem;
+  margin-right: -1rem;
 }
 
 .flex-column {
-  display: flex;
-  flex-direction: column;
+  padding: 1rem;
   width: 100%;
 
   > .panel {
     height: 100%;
+    margin-bottom: 0;
+  }
+}
+
+@media screen and (min-width: 767px) {
+  .flex-column {
+    width: 50%;
   }
 }
 
 @media screen and (min-width: 992px) {
   .flex-column {
-    width: 49%;
+    width: 33.33%;
+    width: calc(100% / 3);
   }
 }

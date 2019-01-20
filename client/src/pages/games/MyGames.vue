@@ -5,7 +5,7 @@
       <div class='page-header'>
         <h1>My Games</h1>
       </div>
-      <uiv-tabs>
+      <uiv-tabs pills>
         <uiv-tab title='Games You Run'>
           <div class='flex-row game-list-container'>
             <uiv-alert type='danger' v-if='owned_games_err'>
