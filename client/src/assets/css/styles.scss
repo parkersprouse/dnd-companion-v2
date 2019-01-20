@@ -29,6 +29,43 @@ body {
   margin-top: 0;
 }
 
+.game-list-container {
+  padding-top: 2rem;
+
+  .alert {
+    width: 100%;
+  }
+
+  .no-games-notice {
+    font-size: 2rem;
+    text-align: center;
+    width: 100%;
+  }
+
+  .game-list-panel {
+    &:hover {
+      cursor: pointer;
+      box-shadow: 0 2px 10px 2px #dddddd;
+    }
+  
+    .game-name {
+      font-size: 2rem;
+      font-weight: bold;
+      max-width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  
+    .game-desc {
+      max-width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+}
+
 .info-table {
   tr {
     cursor: pointer;
