@@ -5,6 +5,7 @@ import axios from 'axios';
 import auth from './auth';
 import { call } from '../lib';
 import dnd_info from './dnd_info';
+import games from './games';
 import store from '../store';
 
 Vue.use(Router);
@@ -14,6 +15,7 @@ const router = new Router({
   routes: [
     ...auth,
     ...dnd_info,
+    ...games,
     {
       path: '/',
       name: 'home',

@@ -3,8 +3,9 @@
     <main-navbar />
     <div class='container'>
       <div class='page-header'>
-        <h1>Login</h1>
+        <h1>Create Game</h1>
       </div>
+
       <div class='panel panel-default single-form-panel'>
         <div class='panel-body'>
           <form @submit.prevent='submit'>
@@ -12,30 +13,28 @@
               <span v-html='feather.icons["alert-octagon"].toSvg()'></span> {{ error_msg }}
             </uiv-alert>
             <div class='form-group'>
-              <label for='username'>Username <span class='required-label'>*</span></label>
+              <label for='name'>Game Name <span class='required-label'>*</span></label>
               <div class='input-group'>
-                <span class='input-group-addon'><span v-html='feather.icons.user.toSvg()'></span></span>
-                <input type='text' class='form-control' id='username' placeholder='Username' v-model='username' />
+                <span class='input-group-addon'><span v-html='feather.icons.tag.toSvg()'></span></span>
+                <input type='text' class='form-control' id='name' placeholder='Game Name' v-model='name' />
               </div>
             </div>
             <div class='form-group'>
-              <label for='password'>Password <span class='required-label'>*</span></label>
+              <label for='description'>Game Description</label>
               <div class='input-group'>
-                <span class='input-group-addon'><span v-html='feather.icons.lock.toSvg()'></span></span>
-                <input type='password' class='form-control' id='password' placeholder='Password' v-model='password' />
+                <span class='input-group-addon'><span v-html='feather.icons["edit-3"].toSvg()'></span></span>
+                <input type='text' class='form-control' id='description' placeholder='Game Description' v-model='description' />
               </div>
             </div>
             <div style='text-align: center;'>
               <uiv-btn block :disabled='submitting' native-type='submit' type='primary'>
-                <span v-html='feather.icons["log-in"].toSvg()'></span> Login
+                <span v-html='feather.icons["check-circle"].toSvg()'></span> Create
               </uiv-btn>
             </div>
           </form>
         </div>
       </div>
-      <div style='text-align: center;'>
-        <a href='/forgot_password'>Forgot Username / Password?</a>
-      </div>
+
     </div>
   </div>
 </template>
@@ -44,24 +43,24 @@
 import feather from 'feather-icons';
 
 export default {
-  name: 'login',
+  name: 'create-game',
   data() {
     return {
-      error_msg: null,
+      description: '',
+      error_msg: '',
       feather,
-      password: '',
+      name: '',
       submitting: false,
-      username: '',
     };
   },
   methods: {
     submit() {
-      this.error_msg = null;
+      this.error_msg = '';
       this.submitting = true;
 
-      this.$http.post('/api/login', { username: this.username, password: this.password })
-        .then(() => {
-          window.location.href = this.$route.query.n || '/';
+      this.$http.post('/api/games', { description: this.description, name: this.name })
+        .then((response) => {
+          window.location.href = `/games/${response.data.content}`;
         })
         .catch((error) => {
           this.error_msg = error.response.data.message;

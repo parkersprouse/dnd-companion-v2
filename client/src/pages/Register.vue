@@ -5,7 +5,7 @@
       <div class='page-header'>
         <h1>Register</h1>
       </div>
-      <div class='panel panel-default' id='register-form'>
+      <div class='panel panel-default single-form-panel'>
         <div class='panel-body'>
           <form @submit.prevent='submit' id='register-form'>
             <uiv-alert type='danger' v-if='error_msg'>

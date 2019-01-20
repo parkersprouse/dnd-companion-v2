@@ -19,7 +19,7 @@
             </li>
             <li>
               <a role='button' href='/characters/new'>
-                <span v-html='feather.icons["file-plus"].toSvg()'></span> Create Character
+                <span v-html='feather.icons["plus-circle"].toSvg()'></span> Create Character
               </a>
             </li>
           </template>
@@ -36,12 +36,12 @@
             </li>
             <li>
               <a role='button' href='/games/new'>
-                <span v-html='feather.icons["file-plus"].toSvg()'></span> Create Game
+                <span v-html='feather.icons["plus-circle"].toSvg()'></span> Create Game
               </a>
             </li>
             <li>
               <a role='button' href='/games/join'>
-                <span v-html='feather.icons["plus-circle"].toSvg()'></span> Join Game
+                <span v-html='feather.icons["user-plus"].toSvg()'></span> Join Game
               </a>
             </li>
           </template>
