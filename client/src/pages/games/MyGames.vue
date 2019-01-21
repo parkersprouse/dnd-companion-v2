@@ -15,13 +15,7 @@
               You are not running any games
             </div>
             <div class='flex-column' v-for='game in owned_games' :key='game.id' v-else>
-              <div class='panel panel-default game-list-panel' @click='goto(game.id)'>
-                <div class='panel-body'>
-                  <div class='game-name' :title='game.name'>{{ game.name }}</div>
-                  <div class='game-desc' :title='game.description' v-if='game.description'>{{ game.description }}</div>
-                  <div class='game-desc' style='font-style: italic;' v-else>No Description</div>
-                </div>
-              </div>
+              <game-card :game='game' />
             </div>
           </div>
         </uiv-tab>
@@ -34,13 +28,7 @@
               You are not playing in any games
             </div>
             <div class='flex-column' v-for='game in played_games' :key='game.id' v-else>
-              <div class='panel panel-default game-list-panel' @click='goto(game.id)'>
-                <div class='panel-body'>
-                  <div class='game-name'>{{ game.name }}</div>
-                  <div class='game-desc' :title='game.description' v-if='game.description'>{{ game.description }}</div>
-                  <div class='game-desc' style='font-style: italic;' v-else>No Description</div>
-                </div>
-              </div>
+              <game-card :game='game' />
             </div>
           </div>
         </uiv-tab>
@@ -51,9 +39,13 @@
 
 <script>
 import feather from 'feather-icons';
+import GameListCard from '../../components/games/GameListCard.vue';
 
 export default {
   name: 'my-games',
+  components: {
+    'game-card': GameListCard,
+  },
   data() {
     return {
       feather,
@@ -79,11 +71,6 @@ export default {
       .catch(() => {
         this.played_games_err = true;
       });
-  },
-  methods: {
-    goto(id) {
-      window.location.href = `/games/${id}`;
-    },
   },
 };
 </script>
