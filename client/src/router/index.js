@@ -4,6 +4,7 @@ import axios from 'axios';
 
 import auth from './auth';
 import { call } from '../lib';
+import characters from './characters';
 import dnd_info from './dnd_info';
 import games from './games';
 import store from '../store';
@@ -14,6 +15,7 @@ const router = new Router({
   mode: 'history',
   routes: [
     ...auth,
+    ...characters,
     ...dnd_info,
     ...games,
     {

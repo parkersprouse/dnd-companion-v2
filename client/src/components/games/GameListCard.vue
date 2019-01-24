@@ -5,8 +5,8 @@
       <div class='game-desc' :title='game.description' v-if='game.description'>{{ game.description }}</div>
       <div class='game-desc' style='font-style: italic;' v-else>No Description</div>
 
-      <div v-if='players'>Players: {{ this.players.length }}</div>
-      <div v-if='characters'>Characters: {{ this.characters.length }}</div>
+      <div v-if='players'>Players: {{ players.length }}</div>
+      <div v-if='characters'>Characters: {{ characters.length }}</div>
     </div>
   </div>
 </template>
