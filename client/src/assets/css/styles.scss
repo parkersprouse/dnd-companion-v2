@@ -29,26 +29,26 @@ body {
   margin-top: 0;
 }
 
-.game-list-container {
+.list-container {
   margin-top: 1rem;
 
   .alert {
     width: 100%;
   }
 
-  .no-games-notice {
+  .empty-notice {
     font-size: 2rem;
     text-align: center;
     width: 100%;
   }
 
-  .game-list-panel {
+  .list-entry-panel {
     &:hover {
       cursor: pointer;
       box-shadow: 0 2px 10px 2px #dddddd;
     }
   
-    .game-name {
+    .list-entry-title {
       font-size: 2rem;
       font-weight: bold;
       max-width: 100%;
@@ -57,7 +57,7 @@ body {
       white-space: nowrap;
     }
   
-    .game-desc {
+    .list-entry-detail {
       max-width: 100%;
       overflow: hidden;
       text-overflow: ellipsis;

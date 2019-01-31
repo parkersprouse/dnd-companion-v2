@@ -7,11 +7,11 @@
       </div>
       <uiv-tabs pills>
         <uiv-tab title='Games You Run'>
-          <div class='flex-row game-list-container'>
+          <div class='flex-row list-container'>
             <uiv-alert type='danger' v-if='owned_games_err'>
               <span v-html='feather.icons["alert-octagon"].toSvg()'></span> Failed to get games you run
             </uiv-alert>
-            <div class='no-games-notice' v-else-if='owned_games && owned_games.length === 0'>
+            <div class='empty-notice' v-else-if='owned_games && owned_games.length === 0'>
               You are not running any games
             </div>
             <div class='flex-column' v-for='game in owned_games' :key='game.id' v-else>
@@ -20,11 +20,11 @@
           </div>
         </uiv-tab>
         <uiv-tab title='Games You Play'>
-          <div class='flex-row game-list-container'>
+          <div class='flex-row list-container'>
             <uiv-alert type='danger' v-if='played_games_err'>
               <span v-html='feather.icons["alert-octagon"].toSvg()'></span> Failed to get games you play
             </uiv-alert>
-            <div class='no-games-notice' v-else-if='played_games && played_games.length === 0'>
+            <div class='empty-notice' v-else-if='played_games && played_games.length === 0'>
               You are not playing in any games
             </div>
             <div class='flex-column' v-for='game in played_games' :key='game.id' v-else>

@@ -1,7 +1,9 @@
 <template>
-  <div class='panel panel-default game-list-panel' @click='visit'>
+  <div class='panel panel-default list-entry-panel' @click='visit'>
     <div class='panel-body'>
-      <div class='game-name' :title='char.name'>{{ char.name }}</div>
+      <div class='list-entry-title' :title='char.name'>{{ char.name }}</div>
+      <div class='list-entry-detail' :title='char.class'>Class: {{ char.class || '-' }}</div>
+      <div class='list-entry-detail' :title='char.race'>Race: {{ char.race || '-' }}</div>
     </div>
   </div>
 </template>

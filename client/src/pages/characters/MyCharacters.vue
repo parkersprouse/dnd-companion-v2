@@ -5,11 +5,11 @@
       <div class='page-header'>
         <h1>My Characters</h1>
       </div>
-      <div class='flex-row game-list-container'>
+      <div class='flex-row list-container'>
         <uiv-alert type='danger' v-if='chars_err'>
           <span v-html='feather.icons["alert-octagon"].toSvg()'></span> Failed to get your characters
         </uiv-alert>
-        <div class='no-games-notice' v-else-if='chars && chars.length === 0'>
+        <div class='empty-notice' v-else-if='chars && chars.length === 0'>
           You have no characters
         </div>
         <div class='flex-column' v-for='char in chars' :key='char.id' v-else>
