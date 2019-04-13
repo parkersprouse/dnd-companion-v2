@@ -10,6 +10,11 @@ export default [
     component: () => import('../pages/info/ClassList.vue'),
   },
   {
+    path: '/info/classes/:classname',
+    name: 'class_info',
+    component: () => import('../pages/info/ClassInfo.vue'),
+  },
+  {
     path: '/info/conditions',
     name: 'condition_list',
     component: () => import('../pages/info/ConditionsList.vue'),
