@@ -35,7 +35,8 @@ module.exports = {
     const user_id = req.user_obj.id;
 
     const [err, data] = await call(CharacterGameAssociation.findAll({
-      where: { user_id }
+      where: { user_id },
+      include: [{ model: Game, required: true }]
     }));
     if (err)
       return respond(res, http_server_error, 'Failed to get your games');
@@ -53,7 +54,7 @@ module.exports = {
     }));
     if (err)
       return respond(res, http_server_error, "There was a problem finding the game's characters");
-    
+
     const games = data.map((game) => game.get({ plain: true }));
     respond(res, http_ok, null, games);
   },

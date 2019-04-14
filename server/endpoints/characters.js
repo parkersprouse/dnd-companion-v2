@@ -17,14 +17,21 @@ module.exports = {
 
   async getMe(req, res) {
     const user_id = req.user_obj.id;
-    const [err, data] = await call(Character.findAll({
-      where: { user_id },
-      include: [{ model: Game, required: true }]
-    }));
+    const [err, data] = await call(Character.findAll({ where: { user_id } }));
     if (err)
       return respond(res, http_server_error, 'Failed to get your characters');
 
-    const chars = data.map((char) => char.get({ plain: true }));
+    const chars = [];
+    for (let i = 0; i < data.length; i++) {
+      let [game_err, game_data] = await(call(CharacterGameAssociation.findOne({
+        where: { character_id: data[i].id },
+        include: [{ model: Game, required: true }],
+      })));
+      const char = { data: data[i].get({ plain: true }) };
+      if (game_data) char.game = game_data.game;
+      chars.push(char);
+    }
+
     respond(res, http_ok, null, chars);
   },
 
