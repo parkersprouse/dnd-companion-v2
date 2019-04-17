@@ -18,9 +18,9 @@
     "feather-icons": "^4.10.0",
     "lodash": "^4.17.11",
     "pusher-js": "^4.3.1",
-    "uiv": "^0.28.0",
+    "uiv": "^0.31.5",
     "vue": "^2.5.17",
-    "vue-router": "^3.0.1",
+    "vue-router": "^3.0.5",
     "vue-simple-spinner": "^1.2.8",
     "vuex": "^3.0.1"
   },

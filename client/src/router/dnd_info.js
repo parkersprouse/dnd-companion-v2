@@ -40,6 +40,16 @@ export default [
     component: () => import('../pages/info/ProficienciesList.vue'),
   },
   {
+    path: '/info/races',
+    name: 'races_list',
+    component: () => import('../pages/info/RaceList.vue'),
+  },
+  {
+    path: '/info/races/:racename',
+    name: '/race_info',
+    component: () => import('../pages/info/RaceInfo.vue'),
+  },
+  {
     path: '/info/skills',
     name: 'skills_list',
     component: () => import('../pages/info/SkillsList.vue'),
