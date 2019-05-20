@@ -16,7 +16,7 @@ const table_config = {
 };
 
 const Message = db.define('messages', attributes, table_config);
-Message.belongsTo(Game, { foreignKey: { allowNull: false }, onDelete: 'cascade', hooks: true }); // game_id, the game this message was sent in
-Message.belongsTo(User, { foreignKey: { allowNull: false }, onDelete: 'cascade', hooks: true }); // user_id, the user who sent the message
+Message.belongsTo(Game, { foreignKey: { allowNull: false, name: 'game_id' }, onDelete: 'cascade', hooks: true }); // game_id, the game this message was sent in
+Message.belongsTo(User, { foreignKey: { allowNull: false, name: 'user_id' }, onDelete: 'cascade', hooks: true }); // user_id, the user who sent the message
 
 module.exports = Message;

@@ -10,12 +10,12 @@ const attributes = {
 
 // http://docs.sequelizejs.com/manual/tutorial/models-definition.html#configuration
 const table_config = {
-  timestamps:      false,
+  timestamps:      true,
   freezeTableName: true,
   underscored:     true
 };
 
 const Game = db.define('games', attributes, table_config);
-Game.belongsTo(User, { foreignKey: { allowNull: false }, onDelete: 'cascade', hooks: true }); // user_id, the user who created the game
+Game.belongsTo(User, { foreignKey: { allowNull: false, name: 'user_id' }, onDelete: 'cascade', hooks: true }); // user_id, the user who created the game
 
 module.exports = Game;

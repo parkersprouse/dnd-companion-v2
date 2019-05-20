@@ -3,6 +3,7 @@ const crypto = require('crypto');
 
 const { call, isEmail, respond } = require('../lib');
 const { db_err_duplicate, http_ok, http_bad_request, http_no_content, http_server_error } = require('../config/constants');
+const { Op } = require('../config/db');
 const mailer = require('../config/mailer');
 const User = require('../models/user');
 
@@ -16,7 +17,7 @@ module.exports = {
     const users = data.map((user) => user.get({ plain: true }));
     respond(res, http_ok, null, users);
   },
-  
+
   async getByID(req, res) {
     const { id } = req.params;
 
@@ -38,7 +39,7 @@ module.exports = {
     if (!req.body.email || !isEmail(req.body.email))
       return respond(res, http_bad_request, 'Please make sure you enter an e-mail address');
 
-    const [find_err, find_data] = await call(User.findOne({ where: { email: { $iLike: req.body.email } } }));
+    const [find_err, find_data] = await call(User.findOne({ where: { email: { [Op.iLike]: req.body.email } } }));
     if (find_err)
       return respond(res, http_bad_request, 'There was an unexpected error when attempting to send the e-mail');
     else if (!find_data)
@@ -46,7 +47,7 @@ module.exports = {
 
     const key = crypto.randomBytes(32).toString('hex');
     const user = find_data.get({ plain: true });
-    const [update_err, update_data] = await call(User.update({ pw_reset_key: key }, { where: { email: { $iLike: req.body.email } } }));
+    const [update_err, update_data] = await call(User.update({ pw_reset_key: key }, { where: { email: { [Op.iLike]: req.body.email } } }));
     if (update_err || !update_data[0])
       return respond(res, http_bad_request, 'There was an unexpected error when attempting to send the e-mail');
 

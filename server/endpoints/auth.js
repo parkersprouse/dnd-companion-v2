@@ -2,6 +2,7 @@ const bcrypt = require('bcrypt');
 
 const { buildToken, call, isEmail, respond } = require('../lib');
 const { cookie_token, db_err_duplicate, http_ok, http_bad_request, http_server_error } = require('../config/constants');
+const { Op } = require('../config/db');
 const User = require('../models/user');
 
 module.exports = {
@@ -41,7 +42,7 @@ module.exports = {
     if (!username || !password)
       return respond(res, http_bad_request, 'Please make sure all required fields are filled out');
 
-    const [err, data] = await call(User.findOne({ where: { username: { $iLike: username } } }));
+    const [err, data] = await call(User.findOne({ where: { username: { [Op.iLike]: username } } }));
     if (err)
       return respond(res, http_server_error, 'There was an unknown problem when trying to log you in', err.message);
     if (!data)

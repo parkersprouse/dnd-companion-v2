@@ -11,7 +11,7 @@ const attributes = {
 
 // http://docs.sequelizejs.com/manual/tutorial/models-definition.html#configuration
 const table_config = {
-  timestamps:      false,
+  timestamps:      true,
   freezeTableName: true,
   underscored:     true,
   indexes: [{

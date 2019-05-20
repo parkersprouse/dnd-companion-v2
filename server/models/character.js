@@ -59,12 +59,12 @@ const attributes = {
 
 // http://docs.sequelizejs.com/manual/tutorial/models-definition.html#configuration
 const table_config = {
-  timestamps:      false,
+  timestamps:      true,
   freezeTableName: true,
   underscored:     true
 };
 
 const Character = db.define('characters', attributes, table_config);
-Character.belongsTo(User, { foreignKey: { allowNull: false }, onDelete: 'cascade', hooks: true }); // user_id, the user who created the character
+Character.belongsTo(User, { foreignKey: { allowNull: false, name: 'user_id' }, onDelete: 'cascade', hooks: true }); // user_id, the user who created the character
 
 module.exports = Character;
