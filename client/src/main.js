@@ -1,4 +1,4 @@
-import './assets/css/bootstrap.min.css';
+import './assets/css/bootstrap_dark.min.css';
 import './assets/css/styles.scss';
 
 import axios from 'axios';

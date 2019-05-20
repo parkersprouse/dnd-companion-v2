@@ -3,12 +3,12 @@
     <main-navbar />
     <div v-if='error' class='container'>
       <uiv-alert type='danger'>
-        <span v-html='feather.icons["alert-octagon"].toSvg()'></span> There was a problem retrieving the classes
+        <span v-html='feather.icons["alert-octagon"].toSvg()'></span> There was a problem retrieving the races
       </uiv-alert>
     </div>
     <div v-else class='container class-info'>
       <div class='page-header'>
-        <h1>Classes</h1>
+        <h1>Races</h1>
       </div>
       <div class='row'>
         <div class='col-xs-12'>
@@ -24,10 +24,10 @@
       </div>
 
       <div class='flex-row'>
-        <div class='flex-column' v-for='entry in filtered_classes' :key='entry.index'>
+        <div class='flex-column' v-for='entry in filtered_races' :key='entry.index'>
           <div class='panel panel-default'>
             <div class='panel-body'>
-              <a :href='`/info/classes/${entry.name.toLowerCase()}`'>
+              <a :href='`/info/races/${entry.name.toLowerCase()}`'>
                 <h3>{{ entry.name }}</h3>
               </a>
             </div>
@@ -44,22 +44,22 @@ import _ from 'lodash';
 import feather from 'feather-icons';
 
 export default {
-  name: 'classes_list',
+  name: 'races_list',
   data() {
     return {
-      classes: null,
       error: false,
       feather,
-      filtered_classes: null,
+      filtered_races: null,
       name_filter: '',
+      races: null,
     };
   },
   mounted() {
-    this.$http.get('/api/dnd/classes')
+    this.$http.get('/api/dnd/races')
       .then((response) => {
-        const classes = _.sortBy(response.data.content, ['name']);
-        this.classes = classes;
-        this.filtered_classes = classes;
+        const races = _.sortBy(response.data.content, ['name']);
+        this.races = races;
+        this.filtered_races = races;
       })
       .catch(() => {
         this.error = true;
@@ -67,13 +67,13 @@ export default {
   },
   methods: {
     filter() {
-      let filtered = _.cloneDeep(this.classes);
+      let filtered = _.cloneDeep(this.races);
 
       if (this.name_filter) {
         filtered = _.filter(filtered, skill => skill.name.toLowerCase().includes(this.name_filter.toLowerCase()));
       }
 
-      this.filtered_classes = _.cloneDeep(filtered);
+      this.filtered_races = _.cloneDeep(filtered);
     },
   },
   watch: {

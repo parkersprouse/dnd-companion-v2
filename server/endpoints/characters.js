@@ -1,6 +1,8 @@
 const { call, respond } = require('../lib');
 const { http_ok, http_bad_request, http_no_content, http_server_error } = require('../config/constants');
 const Character = require('../models/character');
+const CharacterGameAssociation = require('../models/char_game_association');
+const Game = require('../models/game');
 
 module.exports = {
 
@@ -19,20 +21,38 @@ module.exports = {
     if (err)
       return respond(res, http_server_error, 'Failed to get your characters');
 
-    const chars = data.map((char) => char.get({ plain: true }));
+    const chars = [];
+    for (let i = 0; i < data.length; i++) {
+      let [game_err, game_data] = await(call(CharacterGameAssociation.findOne({
+        where: { character_id: data[i].id },
+        include: [{ model: Game, required: true }],
+      })));
+      const char = { data: data[i].get({ plain: true }) };
+      if (game_data) char.game = game_data.game;
+      chars.push(char);
+    }
+
     respond(res, http_ok, null, chars);
   },
 
   async getByID(req, res) {
     const { id } = req.params;
 
-    const [err, data] = await call(Character.findOne({ where: { id } }));
-    if (err)
+    const [char_err, char_data] = await call(Character.findOne({ where: { id } }));
+    if (char_err)
       return respond(res, http_server_error, 'Failed to get character');
-    if (!data)
+    if (!char_data)
       return respond(res, http_no_content, 'No character found');
 
-    respond(res, http_ok, null, data);
+    const [game_err, game_data] = await call(CharacterGameAssociation.findOne({
+      where: { character_id: char_data.id },
+      include: [{ model: Game, required: true }]
+    }));
+
+    respond(res, http_ok, null, {
+      char: char_data,
+      game: game_data ? game_data.game : null,
+    });
   },
 
   async create(req, res) {
