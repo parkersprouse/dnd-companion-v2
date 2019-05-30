@@ -1,8 +1,8 @@
 import Vue from 'vue';
-import VueAtlas from 'vue-atlas';
+import Vuetify from 'vuetify';
 import axios from 'axios';
 
-import 'vue-atlas/dist/vue-atlas.css';
+import 'vuetify/dist/vuetify.min.css';
 import './assets/styles.scss';
 
 import { bus, events } from './lib/EventBus';
@@ -10,7 +10,7 @@ import App from './App.vue';
 import router from './router';
 import store from './store';
 
-Vue.use(VueAtlas, 'en');
+Vue.use(Vuetify);
 
 Vue.prototype.$event_bus = bus;
 Vue.prototype.$events = events;
