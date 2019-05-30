@@ -19,7 +19,7 @@ app.use(Sentry.Handlers.errorHandler());
 
 // Setup logger
 app.use(morgan(':remote-addr - :remote-user [:date[clf]] ":method :url HTTP/:http-version" :status :res[content-length] :response-time ms', {
-  skip: (req, res) => req.originalUrl.includes('websocket'),
+  skip: req => req.originalUrl.includes('websocket'),
 }));
 
 // Make the app use helmet to protect it from a number of vulnerabilities

@@ -5,9 +5,9 @@ import axios from 'axios';
 import { call } from '../lib';
 import store from '../store';
 import auth from './auth';
-import characters from './characters';
-import dnd_info from './dnd_info';
-import games from './games';
+// import characters from './characters';
+// import dnd_info from './dnd_info';
+// import games from './games';
 
 Vue.use(Router);
 
@@ -15,25 +15,25 @@ const router = new Router({
   mode: 'history',
   routes: [
     ...auth,
-    ...characters,
-    ...dnd_info,
-    ...games,
+    // ...characters,
+    // ...dnd_info,
+    // ...games,
     {
       path: '/',
-      name: 'home',
-      component: () => import(/* webpackChunkName: "home" */ '../pages/Home.vue'),
+      name: 'index',
+      component: () => import(/* webpackChunkName: "index" */ '../views/Home.vue'),
     },
-    {
-      path: '/profile',
-      name: 'profile',
-      component: () => import(/* webpackChunkName: "profile" */ '../pages/Profile.vue'),
-      meta: { authorized: true },
-    },
-    {
-      path: '*',
-      name: 'not_found',
-      component: () => import(/* webpackChunkName: "not_found" */ '../pages/NotFound.vue'),
-    },
+    // {
+    //   path: '/profile',
+    //   name: 'profile',
+    //   component: () => import(/* webpackChunkName: "profile" */ '../views/Profile.vue'),
+    //   meta: { authorized: true },
+    // },
+    // {
+    //   path: '*',
+    //   name: 'not_found',
+    //   component: () => import(/* webpackChunkName: "not_found" */ '../views/NotFound.vue'),
+    // },
   ],
 });
 
