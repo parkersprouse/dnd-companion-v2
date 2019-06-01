@@ -46,7 +46,7 @@ export default [
   },
   {
     path: '/info/races/:racename',
-    name: '/race_info',
+    name: 'race_info',
     component: () => import(/* webpackChunkName: "race_info" */ '../views/info/RaceInfo.vue'),
   },
   {

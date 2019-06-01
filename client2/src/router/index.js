@@ -44,7 +44,7 @@ router.beforeEach(async (to, from, next) => {
   if (data) {
     store.commit('setCurrentUser', data.data.content);
   } else {
-    store.commit('setCurrentUser', null);
+    store.commit('setCurrentUser', {});
   }
 
   // If the requested route is guest-only and the user is logged in
