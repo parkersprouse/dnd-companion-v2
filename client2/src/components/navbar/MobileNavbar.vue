@@ -18,7 +18,7 @@
         <v-list-group v-if='user && user.username'>
           <template v-slot:activator>
             <v-list-tile>
-              <v-list-tile-avatar></v-list-tile-avatar>
+              <v-list-tile-avatar><v-icon>fa-users</v-icon></v-list-tile-avatar>
               <v-list-tile-title>Characters</v-list-tile-title>
             </v-list-tile>
           </template>
@@ -36,7 +36,7 @@
         <v-list-group v-if='user && user.username'>
           <template v-slot:activator>
             <v-list-tile>
-              <v-list-tile-avatar></v-list-tile-avatar>
+              <v-list-tile-avatar><v-icon>fa-dice-d20</v-icon></v-list-tile-avatar>
               <v-list-tile-title>Games</v-list-tile-title>
             </v-list-tile>
           </template>
@@ -58,7 +58,7 @@
         <v-list-group>
           <template v-slot:activator>
             <v-list-tile>
-              <v-list-tile-avatar></v-list-tile-avatar>
+              <v-list-tile-avatar><v-icon>fa-book</v-icon></v-list-tile-avatar>
               <v-list-tile-title>Info</v-list-tile-title>
             </v-list-tile>
           </template>
@@ -122,13 +122,13 @@
         <v-list-group v-if='user && user.username'>
           <template v-slot:activator>
             <v-list-tile>
-              <v-list-tile-avatar></v-list-tile-avatar>
+              <v-list-tile-avatar><v-icon>fa-user-circle</v-icon></v-list-tile-avatar>
               <v-list-tile-title>{{ user.username }}</v-list-tile-title>
             </v-list-tile>
           </template>
           <v-list-tile :to='{ name: "profile" }'>
-            <v-list-tile-avatar><v-icon>fa-user-circle</v-icon></v-list-tile-avatar>
-            <v-list-tile-title class='nav-link'>Profile</v-list-tile-title>
+            <v-list-tile-avatar><v-icon>fa-cog</v-icon></v-list-tile-avatar>
+            <v-list-tile-title class='nav-link'>Edit Profile</v-list-tile-title>
           </v-list-tile>
           <v-list-tile href='/logout'>
             <v-list-tile-avatar><v-icon>fa-sign-out-alt</v-icon></v-list-tile-avatar>

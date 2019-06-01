@@ -7,7 +7,9 @@
       <!-- Character Links -->
       <v-menu v-if='user && user.username' offset-y :open-on-hover='true'>
         <template v-slot:activator="{ on }">
-          <v-btn v-on='on' flat>Characters<v-icon right>fa-caret-down</v-icon></v-btn>
+          <v-btn v-on='on' flat>
+            <v-icon left>fa-users</v-icon>Characters<v-icon right>fa-caret-down</v-icon>
+          </v-btn>
         </template>
         <v-list>
           <v-list-tile :to='{ name: "my_characters" }'>
@@ -24,7 +26,9 @@
       <!-- Game Links -->
       <v-menu v-if='user && user.username' offset-y :open-on-hover='true'>
         <template v-slot:activator="{ on }">
-          <v-btn v-on='on' flat>Games<v-icon right>fa-caret-down</v-icon></v-btn>
+          <v-btn v-on='on' flat>
+            <v-icon left>fa-dice-d20</v-icon>Games<v-icon right>fa-caret-down</v-icon>
+          </v-btn>
         </template>
         <v-list>
           <v-list-tile :to='{ name: "my_games" }'>
@@ -45,7 +49,9 @@
       <!-- Info Links -->
       <v-menu offset-y :open-on-hover='true'>
         <template v-slot:activator="{ on }">
-          <v-btn v-on='on' flat>Info<v-icon right>fa-caret-down</v-icon></v-btn>
+          <v-btn v-on='on' flat>
+            <v-icon left>fa-book</v-icon>Info<v-icon right>fa-caret-down</v-icon>
+          </v-btn>
         </template>
         <v-list>
           <v-list-tile :to='{ name: "armor_list" }'>
@@ -109,13 +115,17 @@
     <!-- Profile Links -->
     <v-toolbar-items v-if='user && user.username'>
       <v-menu offset-y :open-on-hover='true'>
-        <template v-slot:activator="{ on: profile }">
-          <v-btn v-on='profile' flat>{{ user.username }}<v-icon right>fa-caret-down</v-icon></v-btn>
+        <template v-slot:activator="{ on }">
+          <v-btn v-on='on' flat>
+            <v-icon left>fa-user-circle</v-icon>
+            {{ user.username }}
+            <v-icon right>fa-caret-down</v-icon>
+          </v-btn>
         </template>
         <v-list>
           <v-list-tile :to='{ name: "profile" }'>
-            <v-list-tile-avatar><v-icon>fa-user-circle</v-icon></v-list-tile-avatar>
-            <v-list-tile-title class='nav-link'>Profile</v-list-tile-title>
+            <v-list-tile-avatar><v-icon>fa-cog</v-icon></v-list-tile-avatar>
+            <v-list-tile-title class='nav-link'>Edit Profile</v-list-tile-title>
           </v-list-tile>
           <v-list-tile href='/logout'>
             <v-list-tile-avatar><v-icon>fa-sign-out-alt</v-icon></v-list-tile-avatar>
