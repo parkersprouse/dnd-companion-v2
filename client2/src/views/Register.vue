@@ -4,8 +4,8 @@
       <v-card>
         <v-card-title primary-title>
           <div style='width: 100%;'>
-            <h3 class='headline'>Login</h3>
-            <login-form />
+            <h3 class='headline'>Register</h3>
+            <register-form />
           </div>
         </v-card-title>
       </v-card>
@@ -14,12 +14,12 @@
 </template>
 
 <script>
-import LoginForm from '../components/login/LoginForm.vue';
+import RegisterForm from '../components/register/RegisterForm.vue';
 
 export default {
-  name: 'login',
+  name: 'register',
   components: {
-    'login-form': LoginForm,
+    'register-form': RegisterForm,
   },
 };
 </script>

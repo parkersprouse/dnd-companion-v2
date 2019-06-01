@@ -9,12 +9,12 @@ export default [
     component: () => import(/* webpackChunkName: "login" */ '../views/Login.vue'),
     meta: { guest: true },
   },
-  // {
-  //   path: '/register',
-  //   name: 'register',
-  //   component: () => import(/* webpackChunkName: "register" */ '../views/Register.vue'),
-  //   meta: { guest: true },
-  // },
+  {
+    path: '/register',
+    name: 'register',
+    component: () => import(/* webpackChunkName: "register" */ '../views/Register.vue'),
+    meta: { guest: true },
+  },
   // {
   //   path: '/forgot_password',
   //   name: 'forgot_password',

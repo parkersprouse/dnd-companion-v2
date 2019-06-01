@@ -10,7 +10,12 @@ import App from './App.vue';
 import router from './router';
 import store from './store';
 
-Vue.use(Vuetify);
+Vue.use(Vuetify, {
+  iconfont: 'fa',
+  icons: {
+    'clear': 'fa-times',
+  },
+});
 
 Vue.prototype.$event_bus = bus;
 Vue.prototype.$events = events;
