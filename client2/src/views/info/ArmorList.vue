@@ -1,7 +1,9 @@
 <template>
   <v-layout>
-    <v-flex sm12 md8 offset-md2>
-
+    <div v-if='!filtered_armor' class='text-xs-center'>
+      <v-progress-circular indeterminate :size='70' :width='7'></v-progress-circular>
+    </div>
+    <v-flex v-else sm12 md8 offset-md2>
       <div id='filter-controls'>
         <div>
           <v-text-field v-model='filter_name' clearable label='Filter'
@@ -22,7 +24,6 @@
           </div>
         </div>
       </div>
-
       <v-data-table v-if='filtered_armor' class='elevation-1' :headers='headers' hide-actions
                    :items='filtered_armor' must-sort :search='filter_name'
                     sort-icon='fa-arrow-up ml-2'>
