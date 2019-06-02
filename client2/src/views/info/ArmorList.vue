@@ -1,9 +1,15 @@
 <template>
-  <v-layout>
+  <div id='info-page'>
+    <h1 style='margin-bottom: 1rem;'>Armor List</h1>
+
+    <!-- Table Loading Indicator -->
     <div v-if='!filtered_armor' class='text-xs-center'>
       <v-progress-circular indeterminate :size='70' :width='7'></v-progress-circular>
     </div>
-    <v-flex v-else sm12 md8 offset-md2>
+
+    <!-- Table Display -->
+    <div v-else>
+      <!-- Filter Controls -->
       <div id='filter-controls'>
         <div>
           <v-text-field v-model='filter_name' clearable label='Filter'
@@ -24,29 +30,22 @@
           </div>
         </div>
       </div>
+
+      <!-- Table -->
       <v-data-table v-if='filtered_armor' class='elevation-1' :headers='headers' hide-actions
                    :items='filtered_armor' must-sort :search='filter_name'
                     sort-icon='fa-arrow-up ml-2'>
         <template v-slot:items='props'>
-          <td>
-            {{ props.item.name }}
-          </td>
-          <td>
-            {{ props.item.armor_category }}
-          </td>
-          <td>
-            {{ armorClass(props.item.armor_class) }}
-          </td>
-          <td>
-            {{ props.item.str_minimum || '-' }}
-          </td>
-          <td>
-            {{ props.item.stealth_disadvantage ? 'Disadvantage' : '-' }}
-          </td>
+          <td>{{ props.item.name }}</td>
+          <td>{{ props.item.armor_category }}</td>
+          <td>{{ armorClass(props.item.armor_class) }}</td>
+          <td>{{ props.item.str_minimum || '-' }}</td>
+          <td>{{ props.item.stealth_disadvantage ? 'Disadvantage' : '-' }}</td>
         </template>
       </v-data-table>
-    </v-flex>
-  </v-layout>
+    </div>
+
+  </div>
 </template>
 
 <script>
@@ -131,11 +130,11 @@ export default {
     },
     headers() {
       return [
-        { text: 'Name', value: 'name' },
-        { text: 'Category', value: 'armor_category' },
-        { text: 'Armor Class', value: 'armor_class.base' },
-        { text: 'Min. Strength', value: 'str_minimum' },
-        { text: 'Stealth', value: 'stealth_disadvantage' },
+        { text: 'Name', value: 'name', class: 'info-table-column-header' },
+        { text: 'Category', value: 'armor_category', class: 'info-table-column-header' },
+        { text: 'Armor Class', value: 'armor_class.base', class: 'info-table-column-header' },
+        { text: 'Min. Strength', value: 'str_minimum', class: 'info-table-column-header' },
+        { text: 'Stealth', value: 'stealth_disadvantage', class: 'info-table-column-header' },
       ];
     },
   },
@@ -152,40 +151,3 @@ export default {
   },
 };
 </script>
-
-<style lang='scss' scoped>
-#filter-controls {
-  display: flex;
-  flex-wrap: wrap;
-
-  > div:first-child,
-  > div:last-child {
-    width: 100%;
-
-    > div {
-      width: 100%;
-    }
-  }
-
-  > div:last-child {
-    display: flex;
-    flex-wrap: wrap;
-  }
-
-  @media screen and (min-width: 768px) {
-    > div:first-child {
-      width: 50%;
-    }
-
-    > div:last-child {
-      width: 50%;
-
-      > div {
-        width: 33.33%;
-        width: calc(100% / 3);
-        padding-left: 1rem;
-      }
-    }
-  }
-}
-</style>

@@ -5,3 +5,49 @@ html {
 .v-icon {
   font-size: 16px;
 }
+
+.w-full {
+  width: 100% !important;
+}
+
+#info-page {
+  .info-table-column-header {
+    font-weight: bold !important;
+    text-transform: uppercase !important;
+  }
+
+  #filter-controls {
+    display: flex;
+    flex-wrap: wrap;
+
+    > div:first-child,
+    > div:last-child {
+      width: 100%;
+
+      > div {
+        width: 100%;
+      }
+    }
+
+    > div:last-child {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    @media screen and (min-width: 768px) {
+      > div:first-child {
+        width: 50%;
+      }
+
+      > div:last-child {
+        width: 50%;
+
+        > div {
+          width: 33.33%;
+          width: calc(100% / 3);
+          padding-left: 1rem;
+        }
+      }
+    }
+  }
+}
