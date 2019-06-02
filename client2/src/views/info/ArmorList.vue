@@ -25,21 +25,21 @@
 
       <v-data-table v-if='filtered_armor' class='elevation-1' :headers='headers' hide-actions
                    :items='filtered_armor' must-sort :search='filter_name'
-                    sort-icon='fa-arrow-up mr-2'>
+                    sort-icon='fa-arrow-up ml-2'>
         <template v-slot:items='props'>
-          <td class='text-xs-center'>
+          <td>
             {{ props.item.name }}
           </td>
-          <td class='text-xs-center'>
+          <td>
             {{ props.item.armor_category }}
           </td>
-          <td class='text-xs-center'>
+          <td>
             {{ armorClass(props.item.armor_class) }}
           </td>
-          <td class='text-xs-center'>
+          <td>
             {{ props.item.str_minimum || '-' }}
           </td>
-          <td class='text-xs-center'>
+          <td>
             {{ props.item.stealth_disadvantage ? 'Disadvantage' : '-' }}
           </td>
         </template>
@@ -130,11 +130,11 @@ export default {
     },
     headers() {
       return [
-        { text: 'Name', value: 'name', align: 'center' },
-        { text: 'Category', value: 'armor_category', align: 'center' },
-        { text: 'Armor Class', value: 'armor_class.base', align: 'center' },
-        { text: 'Min. Strength', value: 'str_minimum', align: 'center' },
-        { text: 'Stealth', value: 'stealth_disadvantage', align: 'center' },
+        { text: 'Name', value: 'name' },
+        { text: 'Category', value: 'armor_category' },
+        { text: 'Armor Class', value: 'armor_class.base' },
+        { text: 'Min. Strength', value: 'str_minimum' },
+        { text: 'Stealth', value: 'stealth_disadvantage' },
       ];
     },
   },
