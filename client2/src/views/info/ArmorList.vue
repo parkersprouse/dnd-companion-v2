@@ -15,7 +15,7 @@
           <v-text-field v-model='filter_name' clearable label='Filter'
                         prepend-inner-icon='fa-search'></v-text-field>
         </div>
-        <div>
+        <div class='onethird'>
           <div>
             <v-select v-model='filter_category' :items='filter_category_opts' label='Armor Category'
                       menu-props='offsetY'></v-select>
@@ -36,23 +36,31 @@
                    :items='filtered_armor' must-sort :search='filter_name'
                     sort-icon='fa-arrow-up ml-2'>
         <template v-slot:items='props'>
-          <td>{{ props.item.name }}</td>
-          <td>{{ props.item.armor_category }}</td>
-          <td>{{ armorClass(props.item.armor_class) }}</td>
-          <td>{{ props.item.str_minimum || '-' }}</td>
-          <td>{{ props.item.stealth_disadvantage ? 'Disadvantage' : '-' }}</td>
+          <tr class='info-table-row' @click.stop='showItem(props.item)'>
+            <td>{{ props.item.name }}</td>
+            <td>{{ props.item.armor_category }}</td>
+            <td>{{ armorClass(props.item.armor_class) }}</td>
+            <td>{{ props.item.str_minimum || '-' }}</td>
+            <td>{{ props.item.stealth_disadvantage ? 'Disadvantage' : '-' }}</td>
+          </tr>
         </template>
       </v-data-table>
     </div>
+
+    <armor-dialog v-model='shown_item' />
 
   </div>
 </template>
 
 <script>
 import _ from 'lodash';
+import ArmorDialog from '../../components/info/ArmorDialog.vue';
 
 export default {
   name: 'armor_list',
+  components: {
+    'armor-dialog': ArmorDialog,
+  },
   data() {
     return {
       armor: null,
@@ -61,6 +69,7 @@ export default {
       filter_stealth: '',
       filter_strength: '',
       filtered_armor: null,
+      shown_item: null,
     };
   },
   mounted() {
@@ -102,6 +111,9 @@ export default {
       }
 
       this.filtered_armor = _.cloneDeep(filtered);
+    },
+    showItem(item) {
+      this.shown_item = item;
     },
   },
   computed: {

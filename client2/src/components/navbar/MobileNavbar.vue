@@ -119,7 +119,7 @@
         <v-divider></v-divider>
 
         <!-- Profile Links -->
-        <v-list-group v-if='user && user.username'>
+        <v-list-group v-if='user.username'>
           <template v-slot:activator>
             <v-list-tile>
               <v-list-tile-avatar><v-icon>fa-user-circle</v-icon></v-list-tile-avatar>
@@ -137,11 +137,11 @@
         </v-list-group>
 
         <!-- Auth Links -->
-        <v-list-tile v-if='user && !user.username' :to='{ name: "login" }'>
+        <v-list-tile v-if='!user.username' :to='{ name: "login" }'>
           <v-list-tile-avatar><v-icon>fa-sign-in-alt</v-icon></v-list-tile-avatar>
           <v-list-tile-title class='nav-link'>Login</v-list-tile-title>
         </v-list-tile>
-        <v-list-tile v-if='user && !user.username' :to='{ name: "register" }'>
+        <v-list-tile v-if='!user.username' :to='{ name: "register" }'>
           <v-list-tile-avatar><v-icon>fa-user-plus</v-icon></v-list-tile-avatar>
           <v-list-tile-title class='nav-link'>Register</v-list-tile-title>
         </v-list-tile>
@@ -156,7 +156,7 @@ export default {
   name: 'mobile_navbar',
   props: {
     user: {
-      required: false,
+      required: true,
       type: Object,
     },
   },

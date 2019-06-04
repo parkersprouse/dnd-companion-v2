@@ -113,7 +113,7 @@
     <v-spacer></v-spacer>
 
     <!-- Profile Links -->
-    <v-toolbar-items v-if='user && user.username'>
+    <v-toolbar-items v-if='user.username'>
       <v-menu offset-y :open-on-hover='true'>
         <template v-slot:activator="{ on }">
           <v-btn v-on='on' flat>
@@ -136,7 +136,7 @@
     </v-toolbar-items>
 
     <!-- Auth Links -->
-    <v-toolbar-items v-else-if='user'>
+    <v-toolbar-items v-else>
       <v-btn exact flat :to='{ name: "login" }'>
         <v-icon left>fa-sign-in-alt</v-icon>Login
       </v-btn>
@@ -152,7 +152,7 @@ export default {
   name: 'desktop_navbar',
   props: {
     user: {
-      required: false,
+      required: true,
       type: Object,
     },
   },
@@ -160,6 +160,12 @@ export default {
 </script>
 
 <style lang='scss' scoped>
+#desktop-nav {
+  .v-btn {
+    text-transform: none;
+  }
+}
+
 .nav-link {
   color: rgba(0, 0, 0, .87) !important;
 }
