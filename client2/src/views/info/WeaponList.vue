@@ -44,7 +44,7 @@
             <td>{{ props.item.name }}</td>
             <td>{{ props.item.weapon_category  }}</td>
             <td>{{ props.item.weapon_range }}</td>
-            <td>{{ damage(props.item.damage) }}</td>
+            <td>{{ damage(props.item) }}</td>
             <td>{{ properties(props.item.properties) }}</td>
           </tr>
         </template>
@@ -120,15 +120,25 @@ export default {
       });
   },
   methods: {
-    damage(weapon_dmg) {
+    damage(weapon) {
       let dmg = '-';
-      if (weapon_dmg && weapon_dmg.damage_type) {
-        if (weapon_dmg.dice_value === 0) {
-          dmg = `${weapon_dmg.dice_count} ${weapon_dmg.damage_type.name}`;
+
+      if (weapon.damage && weapon.damage.damage_type) {
+        if (weapon.damage.dice_value === 0) {
+          dmg = `${weapon.damage.dice_count} ${weapon.damage.damage_type.name}`;
         } else {
-          dmg = `${weapon_dmg.dice_count}d${weapon_dmg.dice_value} ${weapon_dmg.damage_type.name}`;
+          dmg = `${weapon.damage.dice_count}d${weapon.damage.dice_value} ${weapon.damage.damage_type.name}`;
         }
       }
+
+      if (weapon['2h_damage'] && weapon['2h_damage'].damage_type) {
+        if (weapon['2h_damage'].dice_value === 0) {
+          dmg += ` (${weapon['2h_damage'].dice_count} ${weapon['2h_damage'].damage_type.name})`;
+        } else {
+          dmg += ` (${weapon['2h_damage'].dice_count}d${weapon['2h_damage'].dice_value} ${weapon['2h_damage'].damage_type.name})`;
+        }
+      }
+
       return dmg;
     },
 

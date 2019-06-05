@@ -118,6 +118,7 @@ export default {
   computed: {
     damage() {
       let dmg = '-';
+
       if (this.item.damage && this.item.damage.damage_type) {
         if (this.item.damage.dice_value === 0) {
           dmg = `${this.item.damage.dice_count} ${this.item.damage.damage_type.name}`;
@@ -125,6 +126,15 @@ export default {
           dmg = `${this.item.damage.dice_count}d${this.item.damage.dice_value} ${this.item.damage.damage_type.name}`;
         }
       }
+
+      if (this.item['2h_damage'] && this.item['2h_damage'].damage_type) {
+        if (this.item['2h_damage'].dice_value === 0) {
+          dmg += ` (${this.item['2h_damage'].dice_count} ${this.item['2h_damage'].damage_type.name})`;
+        } else {
+          dmg += ` (${this.item['2h_damage'].dice_count}d${this.item['2h_damage'].dice_value} ${this.item['2h_damage'].damage_type.name})`;
+        }
+      }
+
       return dmg;
     },
 

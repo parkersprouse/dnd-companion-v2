@@ -87,6 +87,13 @@ html {
             padding-left: 1rem;
           }
         }
+
+        &.whole {
+          > div {
+            width: 100%;
+            padding-left: 1rem;
+          }
+        }
       }
     }
   }
@@ -96,6 +103,8 @@ html {
   }
 
   .info-list {
+    background: transparent !important;
+
     .info-list-tile {
       .v-list__tile {
         padding-top: 1.5rem;
@@ -116,7 +125,7 @@ html {
         border-bottom: 1px solid rgba(0, 0, 0, 0.25);
 
         .v-list__tile__sub-title {
-          p:last-child {
+          div:last-child {
             margin-bottom: 0;
           }
         }

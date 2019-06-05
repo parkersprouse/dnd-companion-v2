@@ -1,6 +1,6 @@
 <template>
   <div id='info-page'>
-    <h1 style='margin-bottom: 1rem;'>Conditions</h1>
+    <h1 style='margin-bottom: 1rem;'>Damage Types</h1>
 
     <!-- List Loading Indicator -->
     <div v-if='!filtered_items' class='text-xs-center'>
@@ -8,7 +8,7 @@
     </div>
 
     <v-alert v-else-if='error' :value='true' type='error'>
-      Failed to load conditions
+      Failed to load damage types
     </v-alert>
 
     <!-- List Display -->
@@ -41,7 +41,7 @@
 import _ from 'lodash';
 
 export default {
-  name: 'conditions_list',
+  name: 'damage_types_list',
   data() {
     return {
       error: false,
@@ -51,11 +51,11 @@ export default {
     };
   },
   mounted() {
-    this.$http.get('/api/dnd/conditions')
+    this.$http.get('/api/dnd/damage_types')
       .then((response) => {
-        const conditions = _.sortBy(response.data.content, ['name']);
-        this.items = conditions;
-        this.filtered_items = conditions;
+        const damage_types = _.sortBy(response.data.content, ['name']);
+        this.items = damage_types;
+        this.filtered_items = damage_types;
       })
       .catch(() => {
         this.error = true;
