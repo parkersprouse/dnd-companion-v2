@@ -10,6 +10,18 @@ html {
   width: 100% !important;
 }
 
+.has-popover {
+  border-bottom: 1px dotted rgba(0, 0, 0, 0.8);
+  cursor: help;
+}
+
+.popover-card {
+  .headline {
+    font-weight: bold;
+    padding-bottom: 0;
+  }
+}
+
 #info-page {
   margin-left: auto;
   margin-right: auto;
@@ -82,22 +94,68 @@ html {
   .info-table-row {
     cursor: pointer;
   }
+
+  .info-list {
+    .info-list-tile {
+      .v-list__tile {
+        padding-top: 1.5rem;
+        padding-bottom: 1.5rem;
+
+        .v-list__tile__title {
+          margin-bottom: 1rem;
+        }
+
+        .v-list__tile__sub-title {
+          > div {
+            margin-bottom: 0.5rem;
+          }
+        }
+      }
+
+      &:not(:last-child) {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+
+        .v-list__tile__sub-title {
+          p:last-child {
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+  }
 }
 
-.info-dialog {
-  border-radius: 4px;
-  max-width: 550px;
+.info-list {
+  &.v-dialog {
+    border-radius: 4px;
+    max-width: 550px;
+  }
+
+  .info-list-tile {
+    .v-list__tile {
+      height: auto;
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+
+      .v-list__tile__title {
+        font-weight: bold;
+      }
+
+      .v-list__tile__sub-title {
+        flex-wrap: wrap;
+        padding-left: 15px;
+
+        > div {
+          display: block;
+          flex: 1 1 100%;
+          width: 100%;
+        }
+      }
+    }
+  }
 
   .v-card__title {
     font-weight: bold;
-  }
-
-  .v-list__tile__title {
-    font-weight: bold;
-  }
-
-  .v-list__tile__sub-title {
-    padding-left: 15px;
   }
 
   .close-dialog {

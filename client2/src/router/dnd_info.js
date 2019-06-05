@@ -14,11 +14,11 @@ export default [
   //   name: 'class_info',
   //   component: () => import(/* webpackChunkName: "class_info" */ '../views/info/ClassInfo.vue'),
   // },
-  // {
-  //   path: '/info/conditions',
-  //   name: 'condition_list',
-  //   component: () => import(/* webpackChunkName: "condition_list" */ '../views/info/ConditionsList.vue'),
-  // },
+  {
+    path: '/info/conditions',
+    name: 'condition_list',
+    component: () => import(/* webpackChunkName: "condition_list" */ '../views/info/ConditionsList.vue'),
+  },
   // {
   //   path: '/info/damage_types',
   //   name: 'damage_types_list',
@@ -69,9 +69,9 @@ export default [
   //   name: 'weapon_properties_list',
   //   component: () => import(/* webpackChunkName: "weapon_properties_list" */ '../views/info/WeaponPropertiesList.vue'),
   // },
-  // {
-  //   path: '/info/weapons',
-  //   name: 'weapons_list',
-  //   component: () => import(/* webpackChunkName: "weapons_list" */ '../views/info/WeaponsList.vue'),
-  // },
+  {
+    path: '/info/weapons',
+    name: 'weapon_list',
+    component: () => import(/* webpackChunkName: "weapon_list" */ '../views/info/WeaponList.vue'),
+  },
 ];

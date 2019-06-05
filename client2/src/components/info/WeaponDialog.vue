@@ -11,7 +11,7 @@
             <v-list-tile-content>
               <v-list-tile-title>Category</v-list-tile-title>
               <v-list-tile-sub-title class='text--primary'>
-                {{ item.armor_category  }}
+                {{ item.weapon_category   }}
               </v-list-tile-sub-title>
             </v-list-tile-content>
           </v-list-tile>
@@ -20,9 +20,9 @@
 
           <v-list-tile class='info-list-tile'>
             <v-list-tile-content>
-              <v-list-tile-title>Armor Class</v-list-tile-title>
+              <v-list-tile-title>Range</v-list-tile-title>
               <v-list-tile-sub-title class='text--primary'>
-                {{ armor_class }}
+                {{ item.weapon_range  }}
               </v-list-tile-sub-title>
             </v-list-tile-content>
           </v-list-tile>
@@ -31,9 +31,9 @@
 
           <v-list-tile class='info-list-tile'>
             <v-list-tile-content>
-              <v-list-tile-title>Stealth Disadvantage</v-list-tile-title>
+              <v-list-tile-title>Damage</v-list-tile-title>
               <v-list-tile-sub-title class='text--primary'>
-                {{ item.stealth_disadvantage ? 'Yes' : 'No'  }}
+                {{ damage  }}
               </v-list-tile-sub-title>
             </v-list-tile-content>
           </v-list-tile>
@@ -42,9 +42,11 @@
 
           <v-list-tile class='info-list-tile'>
             <v-list-tile-content>
-              <v-list-tile-title>Minimum Strength</v-list-tile-title>
+              <v-list-tile-title>Properties</v-list-tile-title>
               <v-list-tile-sub-title class='text--primary'>
-                {{ item.str_minimum || '0' }}
+                <div v-for='(prop, index) in item.properties' :key='index'>
+                  <weapon-property-popover :property='prop.name' />
+                </div>
               </v-list-tile-sub-title>
             </v-list-tile-content>
           </v-list-tile>
@@ -71,6 +73,17 @@
             </v-list-tile-content>
           </v-list-tile>
 
+          <v-divider v-if='item.special'></v-divider>
+
+          <v-list-tile v-if='item.special' class='info-list-tile'>
+            <v-list-tile-content>
+              <v-list-tile-title>Special Details</v-list-tile-title>
+              <v-list-tile-sub-title class='text--primary'>
+                <div v-for='special in item.special' :key='special'>{{ special }}</div>
+              </v-list-tile-sub-title>
+            </v-list-tile-content>
+          </v-list-tile>
+
         </v-list>
       </v-card-text>
     </v-card>
@@ -78,16 +91,22 @@
 </template>
 
 <script>
+import WeaponPropertyPopover from '@/components/info/WeaponPropertyPopover.vue';
+
 export default {
-  name: 'armor_dialog',
+  name: 'weapon_dialog',
   props: {
     value: {
       required: false,
       type: Object,
     },
   },
+  components: {
+    'weapon-property-popover': WeaponPropertyPopover,
+  },
   data() {
     return {
+      popover: false,
       show: false,
     };
   },
@@ -97,11 +116,16 @@ export default {
     },
   },
   computed: {
-    armor_class() {
-      if (!this.item.armor_class) return null;
-      const dex_modifier = this.item.armor_class.dex_bonus ? ' + dex. modifier' : '';
-      const max_bonus = this.item.armor_class.max_bonus ? `(max ${this.item.armor_class.max_bonus})` : '';
-      return `${this.item.armor_class.base} ${dex_modifier} ${max_bonus}`;
+    damage() {
+      let dmg = '-';
+      if (this.item.damage && this.item.damage.damage_type) {
+        if (this.item.damage.dice_value === 0) {
+          dmg = `${this.item.damage.dice_count} ${this.item.damage.damage_type.name}`;
+        } else {
+          dmg = `${this.item.damage.dice_count}d${this.item.damage.dice_value} ${this.item.damage.damage_type.name}`;
+        }
+      }
+      return dmg;
     },
 
     item() {

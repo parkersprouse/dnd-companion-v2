@@ -1,11 +1,15 @@
 <template>
   <div id='info-page'>
-    <h1 style='margin-bottom: 1rem;'>Armor List</h1>
+    <h1 style='margin-bottom: 1rem;'>Armor</h1>
 
     <!-- Table Loading Indicator -->
-    <div v-if='!filtered_armor' class='text-xs-center'>
+    <div v-if='!filtered_items' class='text-xs-center'>
       <v-progress-circular indeterminate :size='70' :width='7'></v-progress-circular>
     </div>
+
+    <v-alert v-else-if='error' :value='true' type='error'>
+      Failed to load armor
+    </v-alert>
 
     <!-- Table Display -->
     <div v-else>
@@ -32,8 +36,8 @@
       </div>
 
       <!-- Table -->
-      <v-data-table v-if='filtered_armor' class='elevation-1' :headers='headers' hide-actions
-                   :items='filtered_armor' must-sort :search='filter_name'
+      <v-data-table v-if='filtered_items' class='elevation-1' :headers='headers' hide-actions
+                   :items='filtered_items' must-sort :search='filter_name'
                     sort-icon='fa-arrow-up ml-2'>
         <template v-slot:items='props'>
           <tr class='info-table-row' @click.stop='showItem(props.item)'>
@@ -54,7 +58,7 @@
 
 <script>
 import _ from 'lodash';
-import ArmorDialog from '../../components/info/ArmorDialog.vue';
+import ArmorDialog from '@/components/info/ArmorDialog.vue';
 
 export default {
   name: 'armor_list',
@@ -63,21 +67,47 @@ export default {
   },
   data() {
     return {
-      armor: null,
-      filter_name: '',
+      error: false,
       filter_category: '',
+      filter_name: '',
       filter_stealth: '',
       filter_strength: '',
-      filtered_armor: null,
+      filtered_items: null,
+      items: null,
       shown_item: null,
+
+      filter_category_opts: [
+        { text: 'All', value: '' },
+        { text: 'Light', value: 'Light' },
+        { text: 'Medium', value: 'Medium' },
+        { text: 'Heavy', value: 'Heavy' },
+        { text: 'Shield', value: 'Shield' },
+      ],
+      filter_stealth_opts: [
+        { text: 'All', value: '' },
+        { text: 'Yes', value: 'Yes' },
+        { text: 'No', value: 'No' },
+      ],
+      filter_strength_opts: [
+        { text: 'All', value: '' },
+        { text: 'Yes', value: 'Yes' },
+        { text: 'No', value: 'No' },
+      ],
+      headers: [
+        { text: 'Name', value: 'name', class: 'info-table-column-header' },
+        { text: 'Category', value: 'armor_category', class: 'info-table-column-header' },
+        { text: 'Armor Class', value: 'armor_class.base', class: 'info-table-column-header' },
+        { text: 'Min. Strength', value: 'str_minimum', class: 'info-table-column-header' },
+        { text: 'Stealth', value: 'stealth_disadvantage', class: 'info-table-column-header' },
+      ],
     };
   },
   mounted() {
     this.$http.post('/api/dnd/equipment', { equipment_category: 'Armor' })
       .then((response) => {
-        const armor = _.sortBy(response.data.content, ['name']);
-        this.armor = armor;
-        this.filtered_armor = armor;
+        const items = _.sortBy(response.data.content, ['name']);
+        this.items = items;
+        this.filtered_items = items;
       })
       .catch(() => {
         this.error = true;
@@ -89,8 +119,9 @@ export default {
       const max_bonus = obj.max_bonus ? ` (max ${obj.max_bonus})` : '';
       return `${obj.base} ${dex_modifier} ${max_bonus}`;
     },
+
     filter() {
-      let filtered = _.cloneDeep(this.armor);
+      let filtered = _.cloneDeep(this.items);
 
       if (this.filter_category) {
         filtered = _.filter(filtered, { armor_category: this.filter_category });
@@ -110,53 +141,22 @@ export default {
         });
       }
 
-      this.filtered_armor = _.cloneDeep(filtered);
+      this.filtered_items = _.cloneDeep(filtered);
     },
+
     showItem(item) {
       this.shown_item = item;
-    },
-  },
-  computed: {
-    filter_category_opts() {
-      return [
-        { text: 'All', value: '' },
-        { text: 'Light', value: 'Light' },
-        { text: 'Medium', value: 'Medium' },
-        { text: 'Heavy', value: 'Heavy' },
-        { text: 'Shield', value: 'Shield' },
-      ];
-    },
-    filter_stealth_opts() {
-      return [
-        { text: 'All', value: '' },
-        { text: 'Yes', value: 'Yes' },
-        { text: 'No', value: 'No' },
-      ];
-    },
-    filter_strength_opts() {
-      return [
-        { text: 'All', value: '' },
-        { text: 'Yes', value: 'Yes' },
-        { text: 'No', value: 'No' },
-      ];
-    },
-    headers() {
-      return [
-        { text: 'Name', value: 'name', class: 'info-table-column-header' },
-        { text: 'Category', value: 'armor_category', class: 'info-table-column-header' },
-        { text: 'Armor Class', value: 'armor_class.base', class: 'info-table-column-header' },
-        { text: 'Min. Strength', value: 'str_minimum', class: 'info-table-column-header' },
-        { text: 'Stealth', value: 'stealth_disadvantage', class: 'info-table-column-header' },
-      ];
     },
   },
   watch: {
     filter_category() {
       this.filter();
     },
+
     filter_stealth() {
       this.filter();
     },
+
     filter_strength() {
       this.filter();
     },

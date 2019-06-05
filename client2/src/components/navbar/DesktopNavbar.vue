@@ -102,7 +102,7 @@
             <v-list-tile-avatar><v-icon>fa-list</v-icon></v-list-tile-avatar>
             <v-list-tile-title class='nav-link'>Weapon Properties</v-list-tile-title>
           </v-list-tile>
-          <v-list-tile :to='{ name: "weapons_list" }'>
+          <v-list-tile :to='{ name: "weapon_list" }'>
             <v-list-tile-avatar><v-icon>fa-list</v-icon></v-list-tile-avatar>
             <v-list-tile-title class='nav-link'>Weapons</v-list-tile-title>
           </v-list-tile>
