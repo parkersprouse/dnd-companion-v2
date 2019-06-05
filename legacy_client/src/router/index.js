@@ -2,12 +2,12 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import axios from 'axios';
 
-import { call } from '../lib';
-import store from '../store';
 import auth from './auth';
-// import characters from './characters';
+import { call } from '../lib';
+import characters from './characters';
 import dnd_info from './dnd_info';
-// import games from './games';
+import games from './games';
+import store from '../store';
 
 Vue.use(Router);
 
@@ -15,25 +15,25 @@ const router = new Router({
   mode: 'history',
   routes: [
     ...auth,
-    // ...characters,
+    ...characters,
     ...dnd_info,
-    // ...games,
+    ...games,
     {
       path: '/',
-      name: 'index',
-      component: () => import(/* webpackChunkName: "index" */ '../views/Home.vue'),
+      name: 'home',
+      component: () => import('../pages/Home.vue'),
     },
-    // {
-    //   path: '/profile',
-    //   name: 'profile',
-    //   component: () => import(/* webpackChunkName: "profile" */ '../views/Profile.vue'),
-    //   meta: { authorized: true },
-    // },
-    // {
-    //   path: '*',
-    //   name: 'not_found',
-    //   component: () => import(/* webpackChunkName: "not_found" */ '../views/NotFound.vue'),
-    // },
+    {
+      path: '/profile',
+      name: 'profile',
+      component: () => import('../pages/Profile.vue'),
+      meta: { authorized: true },
+    },
+    {
+      path: '*',
+      name: 'not-found',
+      component: () => import('../pages/NotFound.vue'),
+    },
   ],
 });
 
@@ -43,8 +43,9 @@ router.beforeEach(async (to, from, next) => {
   const [err, data] = await call(axios.get('/api/users/me'));
   if (data) {
     store.commit('setCurrentUser', data.data.content);
-  } else {
-    store.commit('setCurrentUser', {});
+  }
+  else {
+    store.commit('setCurrentUser', null);
   }
 
   // If the requested route is guest-only and the user is logged in
@@ -57,7 +58,7 @@ router.beforeEach(async (to, from, next) => {
     return next({ path: '/login', query: { n: to.fullPath } });
   }
 
-  return next();
+  next();
 });
 
 export default router;

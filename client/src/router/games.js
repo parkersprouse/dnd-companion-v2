@@ -1,20 +1,20 @@
 export default [
   {
     path: '/games',
-    name: 'my-games',
-    component: () => import('../pages/games/MyGames.vue'),
+    name: 'my_games',
+    component: () => import(/* webpackChunkName: "my_games" */ '../views/games/MyGames.vue'),
     meta: { authorized: true },
   },
   {
     path: '/games/new',
-    name: 'create-game',
-    component: () => import('../pages/games/CreateGame.vue'),
+    name: 'create_game',
+    component: () => import(/* webpackChunkName: "create_game" */ '../views/games/CreateGame.vue'),
     meta: { authorized: true },
   },
   {
     path: '/games/join',
-    name: 'join-game',
-    component: () => import('../pages/games/JoinGame.vue'),
+    name: 'join_game',
+    component: () => import(/* webpackChunkName: "join_game" */ '../views/games/JoinGame.vue'),
     meta: { authorized: true },
   },
 ];
