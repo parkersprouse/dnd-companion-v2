@@ -104,7 +104,7 @@ export default {
         { text: 'Category', value: 'weapon_category', class: 'info-table-column-header' },
         { text: 'Range', value: 'weapon_range', class: 'info-table-column-header' },
         { text: 'Damage', value: 'damage.dice_value', class: 'info-table-column-header' },
-        { text: 'Properties', sortable: false, class: 'info-table-column-header' },
+        { text: 'Properties', value: 'properties[0].name', class: 'info-table-column-header' },
       ],
     };
   },

@@ -29,16 +29,16 @@ export default [
   //   name: 'equipment_list',
   //   component: () => import(/* webpackChunkName: "equipment_list" */ '../views/info/EquipmentList.vue'),
   // },
-  // {
-  //   path: '/info/languages',
-  //   name: 'language_list',
-  //   component: () => import(/* webpackChunkName: "language_list" */ '../views/info/LanguagesList.vue'),
-  // },
-  // {
-  //   path: '/info/proficiencies',
-  //   name: 'proficiencies_list',
-  //   component: () => import(/* webpackChunkName: "proficiencies_list" */ '../views/info/ProficienciesList.vue'),
-  // },
+  {
+    path: '/info/languages',
+    name: 'language_list',
+    component: () => import(/* webpackChunkName: "language_list" */ '../views/info/LanguagesList.vue'),
+  },
+  {
+    path: '/info/proficiencies',
+    name: 'proficiencies_list',
+    component: () => import(/* webpackChunkName: "proficiencies_list" */ '../views/info/ProficienciesList.vue'),
+  },
   // {
   //   path: '/info/races',
   //   name: 'races_list',
@@ -59,11 +59,11 @@ export default [
   //   name: 'spell_list',
   //   component: () => import(/* webpackChunkName: "spell_list" */ '../views/info/SpellsList.vue'),
   // },
-  // {
-  //   path: '/info/trinkets',
-  //   name: 'trinket_list',
-  //   component: () => import(/* webpackChunkName: "trinket_list" */ '../views/info/TrinketsList.vue'),
-  // },
+  {
+    path: '/info/trinkets',
+    name: 'trinket_list',
+    component: () => import(/* webpackChunkName: "trinket_list" */ '../views/info/TrinketsList.vue'),
+  },
   {
     path: '/info/weapon_properties',
     name: 'weapon_properties_list',
