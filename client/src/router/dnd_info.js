@@ -54,11 +54,11 @@ export default [
     name: 'skills_list',
     component: () => import(/* webpackChunkName: "skills_list" */ '../views/info/SkillsList.vue'),
   },
-  // {
-  //   path: '/info/spells',
-  //   name: 'spell_list',
-  //   component: () => import(/* webpackChunkName: "spell_list" */ '../views/info/SpellsList.vue'),
-  // },
+  {
+    path: '/info/spells',
+    name: 'spell_list',
+    component: () => import(/* webpackChunkName: "spell_list" */ '../views/info/SpellsList.vue'),
+  },
   {
     path: '/info/trinkets',
     name: 'trinket_list',
