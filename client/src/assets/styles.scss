@@ -158,6 +158,12 @@ html {
           display: block;
           flex: 1 1 100%;
           width: 100%;
+
+          &.multiline {
+            &:not(:last-child) {
+              margin-bottom: 1rem;
+            }
+          }
         }
       }
     }

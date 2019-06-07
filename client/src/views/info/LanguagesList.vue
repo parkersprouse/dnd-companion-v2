@@ -63,11 +63,6 @@ export default {
       filtered_items: null,
       items: null,
 
-      filter_type_opts: [
-        { text: 'All', value: '' },
-        { text: 'Exotic', value: 'Exotic' },
-        { text: 'Standard', value: 'Standard' },
-      ],
       filter_script_opts: [
         { text: 'All', value: '' },
         { text: 'Celestial', value: 'Celestial' },
@@ -76,6 +71,11 @@ export default {
         { text: 'Dwarvish', value: 'Dwarvish' },
         { text: 'Elvish', value: 'Elvish' },
         { text: 'Infernal', value: 'Infernal' },
+      ],
+      filter_type_opts: [
+        { text: 'All', value: '' },
+        { text: 'Exotic', value: 'Exotic' },
+        { text: 'Standard', value: 'Standard' },
       ],
       headers: [
         { text: 'Name', value: 'name', class: 'info-table-column-header' },

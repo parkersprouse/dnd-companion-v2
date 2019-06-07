@@ -24,11 +24,11 @@ export default [
     name: 'damage_types_list',
     component: () => import(/* webpackChunkName: "damage_types_list" */ '../views/info/DamageTypesList.vue'),
   },
-  // {
-  //   path: '/info/equipment',
-  //   name: 'equipment_list',
-  //   component: () => import(/* webpackChunkName: "equipment_list" */ '../views/info/EquipmentList.vue'),
-  // },
+  {
+    path: '/info/equipment',
+    name: 'equipment_list',
+    component: () => import(/* webpackChunkName: "equipment_list" */ '../views/info/EquipmentList.vue'),
+  },
   {
     path: '/info/languages',
     name: 'language_list',
