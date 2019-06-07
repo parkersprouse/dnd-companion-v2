@@ -37,8 +37,8 @@
 
       <!-- Table -->
       <v-data-table v-if='filtered_items' class='elevation-1' :headers='headers' hide-actions
-                   :items='filtered_items' must-sort
-                   :search='filter_name' sort-icon='fa-arrow-up ml-2'>
+                   :items='filtered_items' must-sort :search='filter_name'
+                    sort-icon='fa-arrow-up ml-2'>
         <template v-slot:items='props'>
           <tr class='info-table-row' @click.stop='showItem(props.item)'>
             <td>{{ props.item.name }}</td>
@@ -53,20 +53,20 @@
       </v-data-table>
     </div>
 
-    <!-- <spell-dialog v-model='shown_item' /> -->
+    <spell-dialog v-model='shown_item' />
 
   </div>
 </template>
 
 <script>
 import _ from 'lodash';
-// import SpellDialog from '@/components/info/SpellDialog.vue';
+import SpellDialog from '@/components/info/SpellDialog.vue';
 
 export default {
-  name: 'armor_list',
-  // components: {
-  //   'spell-dialog': SpellDialog,
-  // },
+  name: 'spells_list',
+  components: {
+    'spell-dialog': SpellDialog,
+  },
   data() {
     return {
       error: false,

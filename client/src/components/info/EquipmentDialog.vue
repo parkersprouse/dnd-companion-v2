@@ -66,8 +66,8 @@
           <v-list-tile v-if='item.desc' class='info-list-tile'>
             <v-list-tile-content>
               <v-list-tile-title>Description</v-list-tile-title>
-              <v-list-tile-sub-title class='text--primary'>
-                <div v-for='item in item.desc' class='multiline' :key='item'>{{ item }}</div>
+              <v-list-tile-sub-title class='text--primary multiline'>
+                <div v-for='item in item.desc' :key='item'>{{ item }}</div>
               </v-list-tile-sub-title>
             </v-list-tile-content>
           </v-list-tile>

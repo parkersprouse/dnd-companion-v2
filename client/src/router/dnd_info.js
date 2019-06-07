@@ -56,8 +56,8 @@ export default [
   },
   {
     path: '/info/spells',
-    name: 'spell_list',
-    component: () => import(/* webpackChunkName: "spell_list" */ '../views/info/SpellsList.vue'),
+    name: 'spells_list',
+    component: () => import(/* webpackChunkName: "spells_list" */ '../views/info/SpellsList.vue'),
   },
   {
     path: '/info/trinkets',

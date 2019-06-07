@@ -154,16 +154,16 @@ html {
         flex-wrap: wrap;
         padding-left: 15px;
 
+        &.multiline {
+          > div:not(:last-child) {
+            margin-bottom: 1rem;
+          }
+        }
+
         > div {
           display: block;
           flex: 1 1 100%;
           width: 100%;
-
-          &.multiline {
-            &:not(:last-child) {
-              margin-bottom: 1rem;
-            }
-          }
         }
       }
     }
