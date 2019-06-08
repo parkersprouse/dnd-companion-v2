@@ -22,16 +22,14 @@
       </div>
 
       <!-- List -->
-      <v-list class='info-list' three-line>
-        <v-list-tile v-for='item in filtered_items' class='info-list-tile' :key='item.name'>
-          <v-list-tile-content>
-            <v-list-tile-title>{{ item.name }}</v-list-tile-title>
-            <v-list-tile-sub-title class='text--primary'>
-              <div v-for='entry in item.desc' :key='entry'>{{ entry }}</div>
-            </v-list-tile-sub-title>
-          </v-list-tile-content>
-        </v-list-tile>
-      </v-list>
+      <div class='info-list'>
+        <div v-for='item in filtered_items' class='info-list-entry' :key='item.name'>
+          <div class='info-list-entry-title'>{{ item.name }}</div>
+          <div class='info-list-entry-content'>
+            <div v-for='entry in item.desc' :key='entry'>{{ entry }}</div>
+          </div>
+        </div>
+      </div>
 
     </div>
   </div>
