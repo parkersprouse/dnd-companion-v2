@@ -38,8 +38,6 @@
 </template>
 
 <script>
-import _ from 'lodash';
-
 export default {
   name: 'trinkets_list',
   data() {

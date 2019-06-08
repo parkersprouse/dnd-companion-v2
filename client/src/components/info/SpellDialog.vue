@@ -11,7 +11,7 @@
             <div class='attribute-title'>Level</div>
             <div class='attribute-content'>{{ item.level || 'Cantrip'  }}</div>
           </div>
-          <div class='attribute'>
+          <div v-if='school' class='attribute'>
             <div class='attribute-title'>School</div>
             <div class='attribute-content'>
               <spell-school-popover :context='school' />

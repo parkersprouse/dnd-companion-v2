@@ -1,6 +1,6 @@
 <template>
   <v-menu v-model='show' :close-on-content-click='false' :open-on-hover='true' max-width='400'
-          offset-x offset-y right top>
+          offset-y>
     <template v-slot:activator='{ on }'>
       <span v-on='on' class='has-popover'>{{ context }}</span>
     </template>
@@ -18,8 +18,7 @@ export default {
   name: 'spell_school_popover',
   props: {
     context: {
-      default: '',
-      required: false,
+      required: true,
       type: String,
     },
   },
@@ -32,7 +31,6 @@ export default {
   mounted() {
     this.$http.post('/api/dnd/magic_schools', { name: this.context })
       .then((response) => {
-        console.log(response)
         this.details = response.data.content[0].desc;
       })
       .catch(() => {

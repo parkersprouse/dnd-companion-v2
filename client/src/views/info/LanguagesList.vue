@@ -81,8 +81,9 @@ export default {
         { text: 'Name', value: 'name', class: 'info-table-column-header' },
         { text: 'Type', value: 'type', class: 'info-table-column-header' },
         { text: 'Script', value: 'script', class: 'info-table-column-header' },
-        { text: 'Typical Speakers', value: 'typical_speakers[0]',
-          class: 'info-table-column-header' },
+        {
+          text: 'Typical Speakers', value: 'typical_speakers[0]', class: 'info-table-column-header',
+        },
       ],
     };
   },

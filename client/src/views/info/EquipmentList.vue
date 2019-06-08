@@ -56,7 +56,7 @@
 
 <script>
 import _ from 'lodash';
-import EquipmentDialog from '@/components/info/EquipmentDialog.vue'
+import EquipmentDialog from '@/components/info/EquipmentDialog.vue';
 
 export default {
   name: 'equipment_list',
@@ -99,8 +99,12 @@ export default {
       headers: [
         { text: 'Name', value: 'name', class: 'info-table-column-header' },
         { text: 'Category', value: 'equipment_category', class: 'info-table-column-header' },
-        { text: 'Subcategory', value: 'subcategory', sortable: false,
-          class: 'info-table-column-header' },
+        {
+          text: 'Subcategory',
+          value: 'subcategory',
+          sortable: false,
+          class: 'info-table-column-header',
+        },
       ],
     };
   },
