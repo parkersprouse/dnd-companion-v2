@@ -1,3 +1,6 @@
+@import './info_dialog.scss';
+@import './tooltip.scss';
+
 html {
   overflow-y: auto;
 }
@@ -131,52 +134,5 @@ html {
         }
       }
     }
-  }
-}
-
-.info-list {
-  &.v-dialog {
-    border-radius: 4px;
-    max-width: 550px;
-  }
-
-  .info-list-tile {
-    .v-list__tile {
-      height: auto;
-      padding-top: 1rem;
-      padding-bottom: 1rem;
-
-      .v-list__tile__title {
-        font-weight: bold;
-      }
-
-      .v-list__tile__sub-title {
-        flex-wrap: wrap;
-        padding-left: 15px;
-
-        &.multiline {
-          > div:not(:last-child) {
-            margin-bottom: 1rem;
-          }
-        }
-
-        > div {
-          display: block;
-          flex: 1 1 100%;
-          width: 100%;
-        }
-      }
-    }
-  }
-
-  .v-card__title {
-    font-weight: bold;
-  }
-
-  .close-dialog {
-    position: absolute;
-    top: 0;
-    right: 0;
-    margin: 0;
   }
 }

@@ -1,5 +1,5 @@
 <template>
-  <v-dialog v-model='show' content-class='info-list'>
+  <v-dialog v-model='show' content-class='info-dialog' scrollable>
     <v-card>
       <v-btn class='close-dialog' @click='show = false' icon><v-icon>fa-times</v-icon></v-btn>
       <v-card-title class='headline blue-grey lighten-5'>{{ item.name }}</v-card-title>
@@ -7,7 +7,7 @@
       <v-card-text>
         <v-list three-line>
 
-          <v-list-tile class='info-list-tile'>
+          <v-list-tile class='info-dialog-tile'>
             <v-list-tile-content>
               <v-list-tile-title>Category</v-list-tile-title>
               <v-list-tile-sub-title class='text--primary'>
@@ -18,7 +18,7 @@
 
           <v-divider></v-divider>
 
-          <v-list-tile class='info-list-tile'>
+          <v-list-tile class='info-dialog-tile'>
             <v-list-tile-content>
               <v-list-tile-title>Range</v-list-tile-title>
               <v-list-tile-sub-title class='text--primary'>
@@ -29,7 +29,7 @@
 
           <v-divider></v-divider>
 
-          <v-list-tile class='info-list-tile'>
+          <v-list-tile class='info-dialog-tile'>
             <v-list-tile-content>
               <v-list-tile-title>Damage</v-list-tile-title>
               <v-list-tile-sub-title class='text--primary'>
@@ -40,7 +40,7 @@
 
           <v-divider></v-divider>
 
-          <v-list-tile class='info-list-tile'>
+          <v-list-tile class='info-dialog-tile'>
             <v-list-tile-content>
               <v-list-tile-title>Properties</v-list-tile-title>
               <v-list-tile-sub-title class='text--primary'>
@@ -53,7 +53,7 @@
 
           <v-divider></v-divider>
 
-          <v-list-tile class='info-list-tile'>
+          <v-list-tile class='info-dialog-tile'>
             <v-list-tile-content>
               <v-list-tile-title>Price</v-list-tile-title>
               <v-list-tile-sub-title class='text--primary'>
@@ -64,7 +64,7 @@
 
           <v-divider></v-divider>
 
-          <v-list-tile class='info-list-tile'>
+          <v-list-tile class='info-dialog-tile'>
             <v-list-tile-content>
               <v-list-tile-title>Weight</v-list-tile-title>
               <v-list-tile-sub-title class='text--primary'>
@@ -75,7 +75,7 @@
 
           <v-divider v-if='item.special'></v-divider>
 
-          <v-list-tile v-if='item.special' class='info-list-tile'>
+          <v-list-tile v-if='item.special' class='info-dialog-tile'>
             <v-list-tile-content>
               <v-list-tile-title>Special Details</v-list-tile-title>
               <v-list-tile-sub-title class='text--primary'>

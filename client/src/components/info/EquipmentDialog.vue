@@ -1,5 +1,5 @@
 <template>
-  <v-dialog v-model='show' content-class='info-list'>
+  <v-dialog v-model='show' content-class='info-dialog' scrollable>
     <v-card>
       <v-btn class='close-dialog' @click='show = false' icon><v-icon>fa-times</v-icon></v-btn>
       <v-card-title class='headline blue-grey lighten-5'>{{ item.name }}</v-card-title>
@@ -7,7 +7,7 @@
       <v-card-text>
         <v-list three-line>
 
-          <v-list-tile class='info-list-tile'>
+          <v-list-tile class='info-dialog-tile'>
             <v-list-tile-content>
               <v-list-tile-title>Category</v-list-tile-title>
               <v-list-tile-sub-title class='text--primary'>
@@ -21,7 +21,7 @@
 
           <v-divider></v-divider>
 
-          <v-list-tile class='info-list-tile'>
+          <v-list-tile class='info-dialog-tile'>
             <v-list-tile-content>
               <v-list-tile-title>Price</v-list-tile-title>
               <v-list-tile-sub-title class='text--primary'>
@@ -32,7 +32,7 @@
 
           <v-divider v-if='item.weight || item.capacity'></v-divider>
 
-          <v-list-tile v-if='item.weight' class='info-list-tile'>
+          <v-list-tile v-if='item.weight' class='info-dialog-tile'>
             <v-list-tile-content>
               <v-list-tile-title>Weight</v-list-tile-title>
               <v-list-tile-sub-title class='text--primary'>
@@ -41,7 +41,7 @@
             </v-list-tile-content>
           </v-list-tile>
 
-          <v-list-tile v-else-if='item.capacity' class='info-list-tile'>
+          <v-list-tile v-else-if='item.capacity' class='info-dialog-tile'>
             <v-list-tile-content>
               <v-list-tile-title>Capacity</v-list-tile-title>
               <v-list-tile-sub-title class='text--primary'>
@@ -52,7 +52,7 @@
 
           <v-divider v-if='item.speed'></v-divider>
 
-          <v-list-tile v-if='item.speed' class='info-list-tile'>
+          <v-list-tile v-if='item.speed' class='info-dialog-tile'>
             <v-list-tile-content>
               <v-list-tile-title>Speed</v-list-tile-title>
               <v-list-tile-sub-title class='text--primary'>
@@ -63,7 +63,7 @@
 
           <v-divider v-if='item.desc'></v-divider>
 
-          <v-list-tile v-if='item.desc' class='info-list-tile'>
+          <v-list-tile v-if='item.desc' class='info-dialog-tile'>
             <v-list-tile-content>
               <v-list-tile-title>Description</v-list-tile-title>
               <v-list-tile-sub-title class='text--primary multiline'>
