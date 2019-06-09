@@ -1,10 +1,10 @@
 <template>
   <div id='info-page'>
-    <h1 class='page-title'>Conditions</h1>
+    <h1 class='page-title'>Classes</h1>
 
     <!-- Error Alert -->
     <v-alert v-if='error' :value='true' type='error'>
-      Failed to load conditions
+      Failed to load classes
     </v-alert>
 
     <!-- List Loading Indicator -->
@@ -23,12 +23,11 @@
       </div>
 
       <!-- List -->
-      <div class='info-list'>
-        <div v-for='item in filtered_items' class='info-list-entry' :key='item.name'>
-          <div class='info-list-entry-title'>{{ item.name }}</div>
-          <div class='info-list-entry-content'>
-            <div v-for='entry in item.desc' :key='entry'>{{ entry }}</div>
-          </div>
+      <div class='name-list'>
+        <div v-for='item in filtered_items' class='name-list-entry' :key='item.name'>
+          <router-link :to='{ name: "class_info", params: { class: item.name } }'>
+            {{ item.name }}
+          </router-link>
         </div>
       </div>
 
@@ -40,7 +39,7 @@
 import _ from 'lodash';
 
 export default {
-  name: 'conditions_list',
+  name: 'class_list',
   data() {
     return {
       error: false,
@@ -50,7 +49,7 @@ export default {
     };
   },
   mounted() {
-    this.$http.get('/api/dnd/conditions')
+    this.$http.get('/api/dnd/classes')
       .then((response) => {
         const items = _.sortBy(response.data.content, ['name']);
         this.items = items;

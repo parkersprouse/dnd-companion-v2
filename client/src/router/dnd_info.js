@@ -4,13 +4,13 @@ export default [
     name: 'armor_list',
     component: () => import(/* webpackChunkName: "armor_list" */ '../views/info/ArmorList.vue'),
   },
+  {
+    path: '/info/classes',
+    name: 'class_list',
+    component: () => import(/* webpackChunkName: "class_list" */ '../views/info/ClassList.vue'),
+  },
   // {
-  //   path: '/info/classes',
-  //   name: 'class_list',
-  //   component: () => import(/* webpackChunkName: "class_list" */ '../views/info/ClassList.vue'),
-  // },
-  // {
-  //   path: '/info/classes/:classname',
+  //   path: '/info/classes/:class',
   //   name: 'class_info',
   //   component: () => import(/* webpackChunkName: "class_info" */ '../views/info/ClassInfo.vue'),
   // },
@@ -39,16 +39,16 @@ export default [
     name: 'proficiencies_list',
     component: () => import(/* webpackChunkName: "proficiencies_list" */ '../views/info/ProficienciesList.vue'),
   },
-  // {
-  //   path: '/info/races',
-  //   name: 'races_list',
-  //   component: () => import(/* webpackChunkName: "races_list" */ '../views/info/RaceList.vue'),
-  // },
-  // {
-  //   path: '/info/races/:racename',
-  //   name: 'race_info',
-  //   component: () => import(/* webpackChunkName: "race_info" */ '../views/info/RaceInfo.vue'),
-  // },
+  {
+    path: '/info/races',
+    name: 'races_list',
+    component: () => import(/* webpackChunkName: "races_list" */ '../views/info/RaceList.vue'),
+  },
+  {
+    path: '/info/races/:race',
+    name: 'race_info',
+    component: () => import(/* webpackChunkName: "race_info" */ '../views/info/RaceInfo.vue'),
+  },
   {
     path: '/info/skills',
     name: 'skills_list',

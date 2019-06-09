@@ -102,4 +102,25 @@
       }
     }
   }
+
+  .name-list {
+    .name-list-entry {
+      &:not(:last-child) {
+        margin-bottom: 3rem;
+      }
+
+      font-weight: bold;
+      font-size: 3rem;
+      text-align: center;
+
+      a {
+        color: inherit;
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
 }

@@ -1,15 +1,16 @@
 <template>
   <div id='info-page'>
-    <h1 style='margin-bottom: 1rem;'>Weapon Properties</h1>
+    <h1 class='page-title'>Weapon Properties</h1>
 
-    <!-- List Loading Indicator -->
-    <div v-if='!filtered_items' class='text-xs-center'>
-      <v-progress-circular indeterminate :size='70' :width='7'></v-progress-circular>
-    </div>
-
-    <v-alert v-else-if='error' :value='true' type='error'>
+    <!-- Error Alert -->
+    <v-alert v-if='error' :value='true' type='error'>
       Failed to load weapon properties
     </v-alert>
+
+    <!-- List Loading Indicator -->
+    <div v-else-if='!filtered_items' class='text-xs-center'>
+      <v-progress-circular indeterminate :size='70' :width='7'></v-progress-circular>
+    </div>
 
     <!-- List Display -->
     <div v-else>
@@ -51,9 +52,9 @@ export default {
   mounted() {
     this.$http.get('/api/dnd/weapon_properties')
       .then((response) => {
-        const weapon_properties = _.sortBy(response.data.content, ['name']);
-        this.items = weapon_properties;
-        this.filtered_items = weapon_properties;
+        const items = _.sortBy(response.data.content, ['name']);
+        this.items = items;
+        this.filtered_items = items;
       })
       .catch(() => {
         this.error = true;
