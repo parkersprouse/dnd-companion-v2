@@ -142,8 +142,32 @@
       .details-info-entry-content {
         padding-left: 15px;
 
-        > div:not(:last-child) {
+        > *:not(:last-child) {
           margin-bottom: 0.5rem;
+        }
+
+        table {
+          width: 100%;
+
+          tbody {
+            tr {
+              td {
+                padding-left: 0.25rem;
+                padding-right: 0.25rem;
+
+                &:first-child {
+                  font-weight: bold;
+                  text-align: right;
+                  white-space: nowrap;
+                  width: 1px;
+                }
+
+                &:last-child {
+                  text-align: left;
+                }
+              }
+            }
+          }
         }
       }
     }

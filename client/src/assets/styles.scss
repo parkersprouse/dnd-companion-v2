@@ -30,3 +30,28 @@ html {
 .page-title {
   margin-bottom: 1rem;
 }
+
+ul {
+  &.list {
+    list-style: none;
+    padding: 0;
+
+    li {
+      padding-left: 1.3em;
+      display: flex;
+
+      &:before {
+        content: "\f0c8"; // FontAwesome Unicode
+        display: flex;
+        align-items: center;
+        font-family: "Font Awesome 5 Free";
+        font-size: 0.5rem;
+        font-style: normal;
+        font-variant: normal;
+        font-weight: 900; // 900 (Solid), 400 (Regular or Brands), 300 (Light)
+        margin-left: -1rem; // same as padding-left set on li
+        width: 1rem; // same as padding-left set on li
+      }
+    }
+  }
+}
