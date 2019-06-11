@@ -45,6 +45,7 @@
                 </tr>
               </tbody>
             </table>
+            <div v-if='race.ability_score_extra'>{{ race.ability_score_extra }}</div>
           </div>
         </div>
         <div class='details-info-entry'>
@@ -65,12 +66,6 @@
         <div class='details-info-entry'>
           <div class='details-info-entry-title'>Languages</div>
           <div class='details-info-entry-content'>
-            <div v-if='languages.length === 0'>None</div>
-            <ul v-else class='list'>
-              <li v-for='lang in languages' :key='lang.name'>
-                {{ lang.name }}
-              </li>
-            </ul>
             <div>{{ race.language_desc }}</div>
             <div v-if='lang_options.length > 0'>
               <div>Select {{ race.language_options.choose }} from:</div>
@@ -114,7 +109,7 @@
           <div class='details-info-entry-title'>Size / Speed</div>
           <div class='details-info-entry-content'>
             <div>{{ race.size_description }}</div>
-            <div>You can move {{ race.speed }} ft. per round by default</div>
+            <div>Your base walking speed is {{ race.speed }} feet.</div>
           </div>
         </div>
         <div class='details-info-entry'>
@@ -123,7 +118,9 @@
             <div v-if='subraces.length === 0'>None</div>
             <ul v-else class='list'>
               <li v-for='race in subraces' :key='race.name'>
-                {{ race.name }}
+                <span class='has-popover' @click='showItem(race.name)' tooltip='Click to Show'>
+                  {{ race.name }}
+                </span>
               </li>
             </ul>
           </div>
@@ -134,26 +131,44 @@
             <div v-if='traits.length === 0'>None</div>
             <ul v-else class='list'>
               <li v-for='trait in traits' :key='trait.name'>
-                {{ trait.name }}
+                <trait-popover :name='trait.name' />
               </li>
             </ul>
+
+            <div v-if='trait_options.length > 0'>
+              <div>Select {{ race.trait_options.choose }} from:</div>
+              <ul class='list'>
+                <li v-for='trait in trait_options' :key='trait.name'>
+                  <trait-popover :name='trait.name' />
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
 
     </div>
+
+    <subrace-dialog v-model='shown_item' />
   </div>
 </template>
 
 <script>
 import _ from 'lodash';
+import SubraceDialog from '@/components/info/SubraceDialog.vue';
+import TraitPopover from '@/components/info/TraitPopover.vue';
 
 export default {
   name: 'race_info',
+  components: {
+    'subrace-dialog': SubraceDialog,
+    'trait-popover': TraitPopover,
+  },
   data() {
     return {
       error: false,
       race: null,
+      shown_item: null,
     };
   },
   mounted() {
@@ -169,6 +184,10 @@ export default {
     ability_score(score) {
       if (score) return `+${score}`;
       return score;
+    },
+
+    showItem(item) {
+      this.shown_item = item;
     },
   },
   computed: {
@@ -190,6 +209,10 @@ export default {
 
     subraces() {
       return _.sortBy(this.race.subraces, ['name']);
+    },
+
+    trait_options() {
+      return _.sortBy(this.race.trait_options.from, ['name']);
     },
 
     traits() {

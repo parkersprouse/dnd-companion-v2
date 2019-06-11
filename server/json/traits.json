@@ -295,7 +295,7 @@
     ],
     "name": "Artificer's Lore",
     "desc": [
-      "Whenever you make an Intelligence (History) check related to magic items, alchemical objects, or technologoical devices, you can add twice your proficiency bonus, instead of any proficiency bonus you normally apply."
+      "Whenever you make an Intelligence (History) check related to magic items, alchemical objects, or technological devices, you can add twice your proficiency bonus, instead of any proficiency bonus you normally apply."
     ]
   },
   {
@@ -307,11 +307,11 @@
     ],
     "name": "Tinker",
     "desc": [
-      "You have proficiency with artisan's tools (tinker's tools). Using those tools ,you can spend 1 hour and 10 gp worth of materials to construct a Tiny clockwork device (AC 5, 1 hp). The devices ceases to function after 24 hours (unless you spend 1 hour repairing it to keep the device functioning), or when you use your action to dismantle it; t that time, you can reclaim the materils used to create it. You can have up to three such devices active at a time.",
+      "You have proficiency with artisan's tools (tinker's tools). Using those tools, you can spend 1 hour and 10 gp worth of materials to construct a Tiny clockwork device (AC 5, 1 hp). The device ceases to function after 24 hours (unless you spend 1 hour repairing it to keep the device functioning), or when you use your action to dismantle it; at that time, you can reclaim the materials used to create it. You can have up to three such devices active at a time.",
       "When you create a device, choose one of the following options:",
       "Clockwork Toy: This toy is a clockwork animal, monster, or person, such as a frog, mouse, bird, dragon, or soldier. When placed on the ground, the toy moves 5 feet across the ground on each of your turns in a random direction. It makes noises as appropriate to the creature it represents.",
       "Fire Starter: The device produces a miniature flame, which you can use to light a candle, torch, or campfire. Using the device requires your action.",
-      "Music Box: When opened, this music box plays a single song t a moderate volume. The box stops playing when it reaches the song's end or when it is closed."
+      "Music Box: When opened, this music box plays a single song at a moderate volume. The box stops playing when it reaches the song's end or when it is closed."
     ]
   },
   {
@@ -347,7 +347,7 @@
     ],
     "name": "Relentless Endurance",
     "desc": [
-      "When you are reduced to 0 hit points but not killed outright, you can drop to 1 hit point instead. you cannot use this feature again until you finish a long rest."
+      "When you are reduced to 0 hit points but not killed outright, you can drop to 1 hit point instead. You cannot use this feature again until you finish a long rest."
     ]
   },
   {
@@ -359,7 +359,7 @@
     ],
     "name": "Savage Attacks",
     "desc": [
-      "When you score a critical hit with a melee weapon attack, you can roll one of the weapon's damage dice one additional time and add it to the extra damge of the critical hit."
+      "When you score a critical hit with a melee weapon attack, you can roll one of the weapon's damage dice one additional time and add it to the extra damage of the critical hit."
     ]
   },
   {
@@ -381,9 +381,230 @@
         "name": "Tiefling"
       }
     ],
-    "name": "Internal Legacy",
+    "name": "Infernal Legacy",
     "desc": [
       "You know the thaumaturgy cantrip. When you reach 3rd level, you can cast the hellish rebuke spell as a 2nd-level spell once with this trait and regain the ability to do so when you finish a long rest. When you reach 5h level, you can cast the darkness spell once with this trait and regain the ability to do so when you finish a long rest. Charisma is your spellcasting ability for these spells."
+    ]
+  },
+
+  {
+    "index": 27,
+    "races": [
+      {
+        "name": "Dragonborn"
+      }
+    ],
+    "name": "Breath Weapon (Black)",
+    "desc": [
+      "Damage Type: Acid", "5 by 30 ft. line (Dex. save)"
+    ]
+  },
+  {
+    "index": 28,
+    "races": [
+      {
+        "name": "Dragonborn"
+      }
+    ],
+    "name": "Breath Weapon (Blue)",
+    "desc": [
+      "Damage Type: Lightning", "5 by 30 ft. line (Dex. save)"
+    ]
+  },
+  {
+    "index": 29,
+    "races": [
+      {
+        "name": "Dragonborn"
+      }
+    ],
+    "name": "Breath Weapon (Brass)",
+    "desc": [
+      "Damage Type: Fire", "5 by 30 ft. line (Dex. save)"
+    ]
+  },
+  {
+    "index": 30,
+    "races": [
+      {
+        "name": "Dragonborn"
+      }
+    ],
+    "name": "Breath Weapon (Bronze)",
+    "desc": [
+      "Damage Type: Lightning", "5 by 30 ft. line (Dex. save)"
+    ]
+  },
+  {
+    "index": 31,
+    "races": [
+      {
+        "name": "Dragonborn"
+      }
+    ],
+    "name": "Breath Weapon (Copper)",
+    "desc": [
+      "Damage Type: Acid", "5 by 30 ft. line (Dex. save)"
+    ]
+  },
+  {
+    "index": 32,
+    "races": [
+      {
+        "name": "Dragonborn"
+      }
+    ],
+    "name": "Breath Weapon (Gold)",
+    "desc": [
+      "Damage Type: Fire", "15 ft. cone (Dex. save)"
+    ]
+  },
+  {
+    "index": 33,
+    "races": [
+      {
+        "name": "Dragonborn"
+      }
+    ],
+    "name": "Breath Weapon (Green)",
+    "desc": [
+      "Damage Type: Poison", "15 ft. cone (Con. save)"
+    ]
+  },
+  {
+    "index": 34,
+    "races": [
+      {
+        "name": "Dragonborn"
+      }
+    ],
+    "name": "Breath Weapon (Red)",
+    "desc": [
+      "Damage Type: Fire", "15 ft. cone (Dex. save)"
+    ]
+  },
+  {
+    "index": 35,
+    "races": [
+      {
+        "name": "Dragonborn"
+      }
+    ],
+    "name": "Breath Weapon (Silver)",
+    "desc": [
+      "Damage Type: Cold", "15 ft. cone (Con. save)"
+    ]
+  },
+  {
+    "index": 36,
+    "races": [
+      {
+        "name": "Dragonborn"
+      }
+    ],
+    "name": "Breath Weapon (White)",
+    "desc": [
+      "Damage Type: Cold", "15 ft. cone (Con. save)"
+    ]
+  },
+
+  {
+    "index": 37,
+    "races": [
+      {
+        "name": "Dark Elf (Drow)"
+      }
+    ],
+    "name": "Superior Darkvision",
+    "desc": [
+      "Your darkvision has a radius of 120 feet."
+    ]
+  },
+  {
+    "index": 38,
+    "races": [
+      {
+        "name": "Dark Elf (Drow)"
+      }
+    ],
+    "name": "Sunlight Sensitivity",
+    "desc": [
+      "You have disadvantage on attack rolls and on Wisdom (Perception) checks that rely on sight when you, the target of your attack, or whatever you are trying to perceive is in direct sunlight."
+    ]
+  },
+  {
+    "index": 39,
+    "races": [
+      {
+        "name": "Dark Elf (Drow)"
+      }
+    ],
+    "name": "Drow Magic",
+    "desc": [
+      "You know the dancing lights cantrip. When you reach 3rd level, you can cast the faerie fire spell once per day. When you reach 5th level, you can also cast the darkness spell once per day. Charisma is your spellcasting ability for these spells."
+    ]
+  },
+
+  {
+    "index": 40,
+    "races": [
+      {
+        "name": "Wood Elf"
+      }
+    ],
+    "name": "Fleet of Foot",
+    "desc": [
+      "Your base walking speed increases to 35 feet."
+    ]
+  },
+  {
+    "index": 41,
+    "races": [
+      {
+        "name": "Wood Elf"
+      }
+    ],
+    "name": "Mask of the Wild",
+    "desc": [
+      "You can attempt to hide even when you are only lightly obscured by foliage, heavy rain, falling snow, mist, and other natural phenomena."
+    ]
+  },
+
+  {
+    "index": 42,
+    "races": [
+      {
+        "name": "Forest Gnome"
+      }
+    ],
+    "name": "Natural Illusionist",
+    "desc": [
+      "You know the minor illusion cantrip. Intelligence is your spellcasting ability for it."
+    ]
+  },
+  {
+    "index": 43,
+    "races": [
+      {
+        "name": "Forest Gnome"
+      }
+    ],
+    "name": "Speak with Small Beasts",
+    "desc": [
+      "Through sounds and gestures, you can communicate simple ideas with Small or smaller beasts. Forest gnomes love animals and often keep squirrels, badgers, rabbits, moles, woodpeckers, and other creatures as beloved pets."
+    ]
+  },
+
+  {
+    "index": 44,
+    "races": [
+      {
+        "name": "Stout Halfling"
+      }
+    ],
+    "name": "Stout Resilience",
+    "desc": [
+      "You have advantage on saving throws against poison, and you have resistance against poison damage."
     ]
   }
 ]

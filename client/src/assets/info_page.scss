@@ -202,10 +202,11 @@
 
       .details-info-entry {
         &:not(:first-child) {
-          padding-left: 0.5rem;
+          padding-left: 1rem;
         }
+
         &:not(:last-child) {
-          padding-right: 0.5rem;
+          padding-right: 1rem;
         }
       }
     }

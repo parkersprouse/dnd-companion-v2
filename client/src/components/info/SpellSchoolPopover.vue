@@ -1,5 +1,5 @@
 <template>
-  <v-menu v-model='show' :close-on-content-click='false' :open-on-hover='true' max-width='400'
+  <v-menu v-model='show' :close-on-content-click='true' :open-on-hover='true' max-width='400'
           offset-y>
     <template v-slot:activator='{ on }'>
       <span v-on='on' class='has-popover'>{{ context }}</span>
