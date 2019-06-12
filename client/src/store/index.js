@@ -15,9 +15,11 @@ export default new Vuex.Store({
     setCharacter(state, char) {
       state.character = char;
     },
+
     setCurrentUser(state, user) {
       state.current_user = user;
     },
+
     updateAttribute(state, payload) {
       state[payload.obj][payload.attribute] = payload.value;
     },

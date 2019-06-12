@@ -3326,7 +3326,7 @@
 		"quantity": 50,
 		"unit": "ft/round"
 	},
-	"capacity": "480 lb.",
+	"capacity": "480 lbs.",
 	"url": "/api/db/equipment/192"
 }, {
 	"index": 193,
@@ -3341,7 +3341,7 @@
 		"quantity": 40,
 		"unit": "ft/round"
 	},
-	"capacity": "420 lb.",
+	"capacity": "420 lbs.",
 	"url": "/api/db/equipment/193"
 }, {
 	"index": 194,
@@ -3356,7 +3356,7 @@
 		"quantity": 40,
 		"unit": "ft/round"
 	},
-	"capacity": "420 lb.",
+	"capacity": "420 lbs.",
 	"url": "/api/db/equipment/194"
 }, {
 	"index": 195,
@@ -3371,7 +3371,7 @@
 		"quantity": 40,
 		"unit": "ft/round"
 	},
-	"capacity": "1,320 lb.",
+	"capacity": "1,320 lbs.",
 	"url": "/api/db/equipment/195"
 }, {
 	"index": 196,
@@ -3386,7 +3386,7 @@
 		"quantity": 40,
 		"unit": "ft/round"
 	},
-	"capacity": "540 lb.",
+	"capacity": "540 lbs.",
 	"url": "/api/db/equipment/196"
 }, {
 	"index": 197,
@@ -3401,7 +3401,7 @@
 		"quantity": 60,
 		"unit": "ft/round"
 	},
-	"capacity": "480 lb.",
+	"capacity": "480 lbs.",
 	"url": "/api/db/equipment/197"
 }, {
 	"index": 198,
@@ -3416,7 +3416,7 @@
 		"quantity": 40,
 		"unit": "ft/round"
 	},
-	"capacity": "195 lb.",
+	"capacity": "195 lbs.",
 	"url": "/api/db/equipment/198"
 }, {
 	"index": 199,
@@ -3431,7 +3431,7 @@
 		"quantity": 40,
 		"unit": "ft/round"
 	},
-	"capacity": "225 lb.",
+	"capacity": "225 lbs.",
 	"url": "/api/db/equipment/199"
 }, {
 	"index": 200,
@@ -3446,7 +3446,7 @@
 		"quantity": 60,
 		"unit": "ft/round"
 	},
-	"capacity": "540 lb.",
+	"capacity": "540 lbs.",
 	"url": "/api/db/equipment/200"
 }, {
 	"index": 201,
