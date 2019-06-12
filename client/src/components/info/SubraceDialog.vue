@@ -114,7 +114,8 @@
             <div class='details-info-entry'>
               <div class='details-info-entry-title'>Traits</div>
               <div class='details-info-entry-content'>
-                <div v-if='traits.length === 0 && trait_options.length === 0'>None</div>
+                <div v-if='traits.length === 0 && trait_options.length === 0 &&
+                          !subrace.trait_options_desc'>None</div>
                 <ul v-if='traits.length > 0' class='list'>
                   <li v-for='trait in traits' :key='trait.name'>
                     <trait-popover :name='trait.name' />
