@@ -118,7 +118,7 @@
             <div v-if='subraces.length === 0'>None</div>
             <ul v-else class='list'>
               <li v-for='race in subraces' :key='race.name'>
-                <span class='has-popover' @click='showItem(race.name)' tooltip='Click to Show'>
+                <span class='has-popover' @click='showItem(race.name)' tooltip='View'>
                   {{ race.name }}
                 </span>
               </li>

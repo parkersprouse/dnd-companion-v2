@@ -23,6 +23,7 @@
 
       <div v-else class='container'>
         <div id='info-page'>
+          <h1 class='page-title'>{{ subrace.name }}</h1>
 
           <div class='details-info-row thirds'>
             <div class='details-info-entry'>

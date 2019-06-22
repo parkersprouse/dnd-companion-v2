@@ -9,11 +9,11 @@ export default [
     name: 'class_list',
     component: () => import(/* webpackChunkName: "class_list" */ '../views/info/ClassList.vue'),
   },
-  // {
-  //   path: '/info/classes/:class',
-  //   name: 'class_info',
-  //   component: () => import(/* webpackChunkName: "class_info" */ '../views/info/ClassInfo.vue'),
-  // },
+  {
+    path: '/info/classes/:class',
+    name: 'class_info',
+    component: () => import(/* webpackChunkName: "class_info" */ '../views/info/ClassInfo.vue'),
+  },
   {
     path: '/info/conditions',
     name: 'condition_list',
