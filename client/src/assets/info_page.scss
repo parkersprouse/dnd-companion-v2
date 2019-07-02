@@ -146,6 +146,16 @@
           margin-bottom: 0.5rem;
         }
 
+        .proficiency-list {
+          &:not(:last-child) {
+            margin-bottom: 0.5rem;
+          }
+        }
+
+        .select-from {
+          font-weight: bold;
+        }
+
         table {
           width: 100%;
 

@@ -76,7 +76,7 @@
                   </li>
                 </ul>
                 <div v-if='lang_options.length > 0'>
-                  <div>Select {{ subrace.language_options.choose }} from:</div>
+                  <div class='select-from'>Select {{ subrace.language_options.choose }} from:</div>
                   <ul class='list'>
                     <li v-for='lang in lang_options' :key='lang.name'>
                       {{ lang.name }}
@@ -103,7 +103,9 @@
               <div class='details-info-entry-content'>
                 <div v-if='proficiency_options.length === 0'>None</div>
                 <div v-else>
-                  <div>Select {{ subrace.starting_proficiency_options.choose }} from:</div>
+                  <div class='select-from'>
+                    Select {{ subrace.starting_proficiency_options.choose }} from:
+                  </div>
                   <ul class='list'>
                     <li v-for='prof in proficiency_options' :key='prof.name'>
                       {{ prof.name }}
@@ -123,7 +125,7 @@
                   </li>
                 </ul>
                 <div v-if='trait_options.length > 0'>
-                  <div>Select {{ subrace.trait_options.choose }} from:</div>
+                  <div class='select-from'>Select {{ subrace.trait_options.choose }} from:</div>
                   <ul class='list'>
                     <li v-for='trait in trait_options' :key='trait.name'>
                       <trait-popover :name='trait.name' />
