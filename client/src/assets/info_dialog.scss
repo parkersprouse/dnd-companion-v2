@@ -13,6 +13,11 @@
     font-weight: bold;
   }
 
+  .v-card__text {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+
   // Flex-based Dialogs
   .info-dialog-flex {
     .row {

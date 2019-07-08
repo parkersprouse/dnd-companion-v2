@@ -16,8 +16,6 @@
             </v-list-tile-content>
           </v-list-tile>
 
-          <v-divider></v-divider>
-
           <v-list-tile class='info-dialog-tile'>
             <v-list-tile-content>
               <v-list-tile-title>Armor Class</v-list-tile-title>
@@ -26,8 +24,6 @@
               </v-list-tile-sub-title>
             </v-list-tile-content>
           </v-list-tile>
-
-          <v-divider></v-divider>
 
           <v-list-tile class='info-dialog-tile'>
             <v-list-tile-content>
@@ -38,18 +34,14 @@
             </v-list-tile-content>
           </v-list-tile>
 
-          <v-divider></v-divider>
-
           <v-list-tile class='info-dialog-tile'>
             <v-list-tile-content>
               <v-list-tile-title>Minimum Strength</v-list-tile-title>
               <v-list-tile-sub-title class='text--primary'>
-                {{ item.str_minimum || '0' }}
+                {{ item.str_minimum || '-' }}
               </v-list-tile-sub-title>
             </v-list-tile-content>
           </v-list-tile>
-
-          <v-divider></v-divider>
 
           <v-list-tile class='info-dialog-tile'>
             <v-list-tile-content>
@@ -59,8 +51,6 @@
               </v-list-tile-sub-title>
             </v-list-tile-content>
           </v-list-tile>
-
-          <v-divider></v-divider>
 
           <v-list-tile class='info-dialog-tile'>
             <v-list-tile-content>

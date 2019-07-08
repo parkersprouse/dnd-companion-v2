@@ -16,18 +16,13 @@
             </v-list-tile-content>
           </v-list-tile>
 
-          <v-divider></v-divider>
-
           <v-list-tile class='info-dialog-tile'>
             <v-list-tile-content>
               <v-list-tile-title>Range</v-list-tile-title>
-              <v-list-tile-sub-title class='text--primary'>
-                {{ item.weapon_range  }}
+              <v-list-tile-sub-title class='text--primary' v-html='range'>
               </v-list-tile-sub-title>
             </v-list-tile-content>
           </v-list-tile>
-
-          <v-divider></v-divider>
 
           <v-list-tile class='info-dialog-tile'>
             <v-list-tile-content>
@@ -37,8 +32,6 @@
               </v-list-tile-sub-title>
             </v-list-tile-content>
           </v-list-tile>
-
-          <v-divider></v-divider>
 
           <v-list-tile class='info-dialog-tile'>
             <v-list-tile-content>
@@ -51,8 +44,6 @@
             </v-list-tile-content>
           </v-list-tile>
 
-          <v-divider></v-divider>
-
           <v-list-tile class='info-dialog-tile'>
             <v-list-tile-content>
               <v-list-tile-title>Price</v-list-tile-title>
@@ -62,8 +53,6 @@
             </v-list-tile-content>
           </v-list-tile>
 
-          <v-divider></v-divider>
-
           <v-list-tile class='info-dialog-tile'>
             <v-list-tile-content>
               <v-list-tile-title>Weight</v-list-tile-title>
@@ -72,8 +61,6 @@
               </v-list-tile-sub-title>
             </v-list-tile-content>
           </v-list-tile>
-
-          <v-divider v-if='item.special'></v-divider>
 
           <v-list-tile v-if='item.special' class='info-dialog-tile'>
             <v-list-tile-content>
@@ -150,6 +137,22 @@ export default {
       let price = 'N/A';
       if (this.item.cost) price = `${this.item.cost.quantity} ${this.item.cost.unit}`;
       return price;
+    },
+
+    range() {
+      let range = 'N/A';
+      if (this.item.weapon_range) {
+        range = `<div>${this.item.weapon_range}</div>`;
+
+        if (this.item.weapon_range === 'Ranged' && this.item.ammo_range) {
+          range = `<div>Ranged: ${this.item.ammo_range.normal} / ${this.item.ammo_range.long}</div>`;
+        }
+
+        if (this.item.throw_range) {
+          range += `<div>Thrown: ${this.item.throw_range.normal} / ${this.item.throw_range.long}</div>`;
+        }
+      }
+      return range;
     },
 
     weight() {

@@ -19,8 +19,6 @@
             </v-list-tile-content>
           </v-list-tile>
 
-          <v-divider></v-divider>
-
           <v-list-tile class='info-dialog-tile'>
             <v-list-tile-content>
               <v-list-tile-title>Price</v-list-tile-title>
@@ -29,8 +27,6 @@
               </v-list-tile-sub-title>
             </v-list-tile-content>
           </v-list-tile>
-
-          <v-divider v-if='item.weight || item.capacity'></v-divider>
 
           <v-list-tile v-if='item.weight' class='info-dialog-tile'>
             <v-list-tile-content>
@@ -50,8 +46,6 @@
             </v-list-tile-content>
           </v-list-tile>
 
-          <v-divider v-if='item.speed'></v-divider>
-
           <v-list-tile v-if='item.speed' class='info-dialog-tile'>
             <v-list-tile-content>
               <v-list-tile-title>Speed</v-list-tile-title>
@@ -60,8 +54,6 @@
               </v-list-tile-sub-title>
             </v-list-tile-content>
           </v-list-tile>
-
-          <v-divider v-if='item.desc'></v-divider>
 
           <v-list-tile v-if='item.desc' class='info-dialog-tile'>
             <v-list-tile-content>

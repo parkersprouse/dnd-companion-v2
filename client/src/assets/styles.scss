@@ -15,6 +15,10 @@ html {
   width: 100% !important;
 }
 
+.whitespace {
+  white-space: pre-wrap !important;
+}
+
 .has-popover {
   border-bottom: 1px dotted rgba(0, 0, 0, 0.8);
   cursor: help;
