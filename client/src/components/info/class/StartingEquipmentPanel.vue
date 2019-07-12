@@ -6,7 +6,12 @@
     <v-progress-circular indeterminate :size='40' :width='4'></v-progress-circular>
   </div>
   <div v-else>
-    
+    <div v-if='equipment.starting_equipment.length === 0'>None</div>
+    <ul v-else class='list'>
+      <li v-for='item in equipment.starting_equipment' :key='item.name'>
+        {{ item.name }}
+      </li>
+    </ul>
   </div>
 </template>
 

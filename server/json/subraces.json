@@ -1,361 +1,295 @@
 [
-	{
-		"index": 1,
-		"name": "Hill Dwarf",
-		"race": {
-			"url": "/api/db/races/1",
-			"name": "Dwarf"
-		},
-		"desc": "As a hill dwarf, you have keen senses, deep intuition, and remarkable resilience.",
-		"ability_bonuses": [
-			0,
-			0,
-			0,
-			0,
-			1,
-			0
-		],
-		"starting_proficiencies": [],
-		"starting_proficiency_options": {
-
-		},
-		"languages": [],
-		"language_options": {
-
-		},
-		"traits": [
-			{
-				"url": "/api/db/traits/4",
-				"name": "Dwarven Toughness"
-			}
-		],
-		"trait_options": {},
-		"url": "/api/db/subraces/1"
-	},
-	{
-		"index": 2,
-		"name": "High Elf",
-		"race": {
-			"url": "/api/db/races/2",
-			"name": "Elf"
-		},
-		"desc": "As a high elf, you have a keen mind and a mastery of at least the basics of magic. In many fantasy gaming worlds, there are two kinds of high elves. One type is haughty and reclusive, believing themselves to be superior to non-elves and even other elves. The other type is more common and more friendly, and often encountered among humans and other races.",
-		"ability_bonuses": [
-			0,
-			0,
-			0,
-			1,
-			0,
-			0
-		],
-		"starting_proficiencies": [
-			{
-				"url": "/api/db/proficiencies/42",
-				"name": "Longswords"
-			},
-			{
-				"url": "/api/db/proficiencies/48",
-				"name": "Shortswords"
-			},
-			{
-				"url": "/api/db/proficiencies/33",
-				"name": "Shortbows"
-			},
-			{
-				"url": "/api/db/proficiencies/56",
-				"name": "Longbows"
-			}
-		],
-		"starting_proficiency_options": {
-
-		},
-		"languages": [],
-		"language_options": {
-			"choose": 1,
-			"from": [
-				{
-					"url": "/api/db/languages",
-					"name": "Any"
-				}
-			],
-			"type": "language"
-		},
-		"traits": [],
-		"trait_options": {},
-		"trait_options_desc": "You know one cantrip of your choice from the wizard spell list. Intelligence is your spellcasting ability for it.",
-		"url": "/api/db/subraces/2"
-	},
-	{
-		"index": 3,
-		"name": "Lightfoot Halfling",
-		"race": {
-			"url": "/api/db/races/3",
-			"name": "Halfling"
-		},
-		"desc": "As a lightfoot halfling, you can easily hide from notice, even using other people as cover. You’re inclined to be affable and get along well with others. Lightfoots are more prone to wanderlust than other halflings, and often dwell alongside other races or take up a nomadic life.",
-		"ability_bonuses": [
-			0,
-			0,
-			0,
-			0,
-			0,
-			1
-		],
-		"starting_proficiencies": [],
-		"starting_proficiency_options": {
-
-		},
-		"languages": [],
-		"language_options": {
-
-		},
-		"traits": [
-			{
-				"url": "/api/db/traits/23",
-				"name": "Naturally Stealthy"
-			}
-		],
-		"trait_options": {},
-		"url": "/api/db/subraces/3"
-	},
-	{
-		"index": 4,
-		"name": "Mountain Dwarf",
-		"race": {
-			"url": "/api/db/races/1",
-			"name": "Dwarf"
-		},
-		"desc": "As a mountain dwarf, you're strong and hardy, accustomed to a difficult life in rugged terrain. You're probably on the tall side (for a dwarf), and tend toward lighter coloration.",
-		"ability_bonuses": [
-			2,
-			0,
-			0,
-			0,
-			0,
-			0
-		],
-		"starting_proficiencies": [
-			{
-				"url": "/api/db/proficiencies/2",
-				"name": "Medium armor"
-			},
-			{
-				"url": "/api/db/proficiencies/1",
-				"name": "Light armor"
-			}
-		],
-		"starting_proficiency_options": {},
-		"languages": [],
-		"language_options": {
-
-		},
-		"traits": [],
-		"trait_options": {},
-		"url": "/api/db/subraces/4"
-	},
-	{
-		"index": 5,
-		"name": "Wood Elf",
-		"race": {
-			"url": "/api/db/races/2",
-			"name": "Elf"
-		},
-		"desc": "As a wood elf, you have keen senses and intuition, and your fleet feet carry you quickly through your native forrests.",
-		"ability_bonuses": [
-			0,
-			0,
-			0,
-			0,
-			1,
-			0
-		],
-		"starting_proficiencies": [
-			{
-				"url": "/api/db/proficiencies/42",
-				"name": "Longswords"
-			},
-			{
-				"url": "/api/db/proficiencies/48",
-				"name": "Shortswords"
-			},
-			{
-				"url": "/api/db/proficiencies/33",
-				"name": "Shortbows"
-			},
-			{
-				"url": "/api/db/proficiencies/56",
-				"name": "Longbows"
-			}
-		],
-		"starting_proficiency_options": {},
-		"languages": [],
-		"language_options": {
-
-		},
-		"traits": [
-			{
-				"url": "/api/db/traits/37",
-				"name": "Fleet of Foot"
-			},
-			{
-				"url": "/api/db/traits/38",
-				"name": "Mask of the Wild"
-			}
-		],
-		"trait_options": {},
-		"url": "/api/db/subraces/5"
-	},
-	{
-		"index": 6,
-		"name": "Dark Elf (Drow)",
-		"race": {
-			"url": "/api/db/races/2",
-			"name": "Elf"
-		},
-		"desc": "Descended from an earlier subrace of dark-skinned elves, the drow were banished from the surface world for following the goddess Lolth down the path to evil and corruption. Now they have built their own civilization in the depths of the Underdark, patterned after the Way of Lolth. Also called dark elves, the drow have black skin that resembles polished obsidian and stark white or pale yellow hair. They commonly have very pale eyes (so pale as tO be mistaken for white) in shades of lilac, silver, pink, red, and blue. They tend to be smaller and thinner than most elves.",
-		"ability_bonuses": [
-			0,
-			0,
-			0,
-			0,
-			0,
-			1
-		],
-		"starting_proficiencies": [
-			{
-				"url": "/api/db/proficiencies/46",
-				"name": "Rapiers"
-			},
-			{
-				"url": "/api/db/proficiencies/48",
-				"name": "Shortswords"
-			},
-			{
-				"url": "/api/db/proficiencies/54",
-				"name": "Crossbows, hand"
-			}
-		],
-		"starting_proficiency_options": {},
-		"languages": [],
-		"language_options": {
-
-		},
-		"traits": [
-			{
-				"url": "/api/db/traits/39",
-				"name": "Superior Darkvision"
-			},
-			{
-				"url": "/api/db/traits/40",
-				"name": "Sunlight Sensitivity"
-			},
-			{
-				"url": "/api/db/traits/41",
-				"name": "Drow Magic"
-			}
-		],
-		"trait_options": {},
-		"url": "/api/db/subraces/6"
-	},
   {
-		"index": 7,
-		"name": "Forest Gnome",
-		"race": {
-			"url": "/api/db/races/6",
-			"name": "Gnome"
-		},
-		"desc": "As a forest gnome, you have a natural knack for illusion and inherent quickness and stealth.",
-		"ability_bonuses": [
-			0,
-			1,
-			0,
-			0,
-			0,
-			0
-		],
-		"starting_proficiencies": [],
-		"starting_proficiency_options": {},
-		"languages": [],
-		"language_options": {
-
-		},
-		"traits": [
-			{
-				"url": "/api/db/traits/23",
-				"name": "Natural Illusionist"
-			},
-			{
-				"url": "/api/db/traits/23",
-				"name": "Speak with Small Beasts"
-			}
-		],
-		"trait_options": {},
-		"url": "/api/db/subraces/7"
-	},
+    "index": 1,
+    "name": "Hill Dwarf",
+    "race": {
+      "name": "Dwarf"
+    },
+    "desc": "As a hill dwarf, you have keen senses, deep intuition, and remarkable resilience.",
+    "ability_bonuses": [
+      0,
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "starting_proficiencies": [],
+    "starting_proficiency_options": {},
+    "languages": [],
+    "language_options": {},
+    "traits": [
+      {
+        "name": "Dwarven Toughness"
+      }
+    ],
+    "trait_options": {}
+  },
   {
-		"index": 8,
-		"name": "Rock Gnome",
-		"race": {
-			"url": "/api/db/races/6",
-			"name": "Gnome"
-		},
-		"desc": "As a rock gnome, you have a natural inventiveness and hardiness beyond that of other gnomes.",
-		"ability_bonuses": [
-			0,
-			0,
-			1,
-			0,
-			0,
-			0
-		],
-		"starting_proficiencies": [],
-		"starting_proficiency_options": {},
-		"languages": [],
-		"language_options": {
-
-		},
-		"traits": [
-			{
-				"url": "/api/db/traits",
-				"name": "Artificer's Lore"
-			},
-			{
-				"url": "/api/db/traits",
-				"name": "Tinker"
-			}
-		],
-		"trait_options": {},
-		"url": "/api/db/subraces/8"
-	},
+    "index": 2,
+    "name": "High Elf",
+    "race": {
+      "name": "Elf"
+    },
+    "desc": "As a high elf, you have a keen mind and a mastery of at least the basics of magic. In many fantasy gaming worlds, there are two kinds of high elves. One type is haughty and reclusive, believing themselves to be superior to non-elves and even other elves. The other type is more common and more friendly, and often encountered among humans and other races.",
+    "ability_bonuses": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    "starting_proficiencies": [
+      {
+        "name": "Longswords"
+      },
+      {
+        "name": "Shortswords"
+      },
+      {
+        "name": "Shortbows"
+      },
+      {
+        "name": "Longbows"
+      }
+    ],
+    "starting_proficiency_options": {},
+    "languages": [],
+    "language_options": {
+      "choose": 1,
+      "from": [
+        {
+          "name": "Any"
+        }
+      ],
+      "type": "language"
+    },
+    "traits": [],
+    "trait_options": {},
+    "trait_options_desc": "You know one cantrip of your choice from the wizard spell list. Intelligence is your spellcasting ability for it."
+  },
   {
-		"index": 9,
-		"name": "Stout Halfling",
-		"race": {
-			"url": "/api/db/races/3",
-			"name": "Halfling"
-		},
-		"desc": "As a stout halfling. you're hardier than average and have some resistance to poison.",
-		"ability_bonuses": [
-			0,
-			0,
-			1,
-			0,
-			0,
-			0
-		],
-		"starting_proficiencies": [],
-		"starting_proficiency_options": {},
-		"languages": [],
-		"language_options": {
-
-		},
-		"traits": [
-			{
-				"url": "/api/db/traits",
-				"name": "Stout Resilience"
-			}
-		],
-		"trait_options": {},
-		"url": "/api/db/subraces/9"
-	}
+    "index": 3,
+    "name": "Lightfoot Halfling",
+    "race": {
+      "name": "Halfling"
+    },
+    "desc": "As a lightfoot halfling, you can easily hide from notice, even using other people as cover. You’re inclined to be affable and get along well with others. Lightfoots are more prone to wanderlust than other halflings, and often dwell alongside other races or take up a nomadic life.",
+    "ability_bonuses": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "starting_proficiencies": [],
+    "starting_proficiency_options": {},
+    "languages": [],
+    "language_options": {},
+    "traits": [
+      {
+        "name": "Naturally Stealthy"
+      }
+    ],
+    "trait_options": {}
+  },
+  {
+    "index": 4,
+    "name": "Mountain Dwarf",
+    "race": {
+      "name": "Dwarf"
+    },
+    "desc": "As a mountain dwarf, you're strong and hardy, accustomed to a difficult life in rugged terrain. You're probably on the tall side (for a dwarf), and tend toward lighter coloration.",
+    "ability_bonuses": [
+      2,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "starting_proficiencies": [
+      {
+        "name": "Medium armor"
+      },
+      {
+        "name": "Light armor"
+      }
+    ],
+    "starting_proficiency_options": {},
+    "languages": [],
+    "language_options": {},
+    "traits": [],
+    "trait_options": {}
+  },
+  {
+    "index": 5,
+    "name": "Wood Elf",
+    "race": {
+      "name": "Elf"
+    },
+    "desc": "As a wood elf, you have keen senses and intuition, and your fleet feet carry you quickly through your native forrests.",
+    "ability_bonuses": [
+      0,
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "starting_proficiencies": [
+      {
+        "name": "Longswords"
+      },
+      {
+        "name": "Shortswords"
+      },
+      {
+        "name": "Shortbows"
+      },
+      {
+        "name": "Longbows"
+      }
+    ],
+    "starting_proficiency_options": {},
+    "languages": [],
+    "language_options": {},
+    "traits": [
+      {
+        "name": "Fleet of Foot"
+      },
+      {
+        "name": "Mask of the Wild"
+      }
+    ],
+    "trait_options": {}
+  },
+  {
+    "index": 6,
+    "name": "Dark Elf (Drow)",
+    "race": {
+      "name": "Elf"
+    },
+    "desc": "Descended from an earlier subrace of dark-skinned elves, the drow were banished from the surface world for following the goddess Lolth down the path to evil and corruption. Now they have built their own civilization in the depths of the Underdark, patterned after the Way of Lolth. Also called dark elves, the drow have black skin that resembles polished obsidian and stark white or pale yellow hair. They commonly have very pale eyes (so pale as tO be mistaken for white) in shades of lilac, silver, pink, red, and blue. They tend to be smaller and thinner than most elves.",
+    "ability_bonuses": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "starting_proficiencies": [
+      {
+        "name": "Rapiers"
+      },
+      {
+        "name": "Shortswords"
+      },
+      {
+        "name": "Crossbows, hand"
+      }
+    ],
+    "starting_proficiency_options": {},
+    "languages": [],
+    "language_options": {},
+    "traits": [
+      {
+        "name": "Superior Darkvision"
+      },
+      {
+        "name": "Sunlight Sensitivity"
+      },
+      {
+        "name": "Drow Magic"
+      }
+    ],
+    "trait_options": {}
+  },
+  {
+    "index": 7,
+    "name": "Forest Gnome",
+    "race": {
+      "name": "Gnome"
+    },
+    "desc": "As a forest gnome, you have a natural knack for illusion and inherent quickness and stealth.",
+    "ability_bonuses": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "starting_proficiencies": [],
+    "starting_proficiency_options": {},
+    "languages": [],
+    "language_options": {},
+    "traits": [
+      {
+        "name": "Natural Illusionist"
+      },
+      {
+        "name": "Speak with Small Beasts"
+      }
+    ],
+    "trait_options": {}
+  },
+  {
+    "index": 8,
+    "name": "Rock Gnome",
+    "race": {
+      "name": "Gnome"
+    },
+    "desc": "As a rock gnome, you have a natural inventiveness and hardiness beyond that of other gnomes.",
+    "ability_bonuses": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "starting_proficiencies": [],
+    "starting_proficiency_options": {},
+    "languages": [],
+    "language_options": {},
+    "traits": [
+      {
+        "name": "Artificer's Lore"
+      },
+      {
+        "name": "Tinker"
+      }
+    ],
+    "trait_options": {}
+  },
+  {
+    "index": 9,
+    "name": "Stout Halfling",
+    "race": {
+      "name": "Halfling"
+    },
+    "desc": "As a stout halfling. you're hardier than average and have some resistance to poison.",
+    "ability_bonuses": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "starting_proficiencies": [],
+    "starting_proficiency_options": {},
+    "languages": [],
+    "language_options": {},
+    "traits": [
+      {
+        "name": "Stout Resilience"
+      }
+    ],
+    "trait_options": {}
+  }
 ]

@@ -386,7 +386,6 @@
       "You know the thaumaturgy cantrip. When you reach 3rd level, you can cast the hellish rebuke spell as a 2nd-level spell once with this trait and regain the ability to do so when you finish a long rest. When you reach 5h level, you can cast the darkness spell once with this trait and regain the ability to do so when you finish a long rest. Charisma is your spellcasting ability for these spells."
     ]
   },
-
   {
     "index": 27,
     "races": [
@@ -396,7 +395,8 @@
     ],
     "name": "Breath Weapon (Black)",
     "desc": [
-      "Damage Type: Acid", "5 by 30 ft. line (Dex. save)"
+      "Damage Type: Acid",
+      "5 by 30 ft. line (Dex. save)"
     ]
   },
   {
@@ -408,7 +408,8 @@
     ],
     "name": "Breath Weapon (Blue)",
     "desc": [
-      "Damage Type: Lightning", "5 by 30 ft. line (Dex. save)"
+      "Damage Type: Lightning",
+      "5 by 30 ft. line (Dex. save)"
     ]
   },
   {
@@ -420,7 +421,8 @@
     ],
     "name": "Breath Weapon (Brass)",
     "desc": [
-      "Damage Type: Fire", "5 by 30 ft. line (Dex. save)"
+      "Damage Type: Fire",
+      "5 by 30 ft. line (Dex. save)"
     ]
   },
   {
@@ -432,7 +434,8 @@
     ],
     "name": "Breath Weapon (Bronze)",
     "desc": [
-      "Damage Type: Lightning", "5 by 30 ft. line (Dex. save)"
+      "Damage Type: Lightning",
+      "5 by 30 ft. line (Dex. save)"
     ]
   },
   {
@@ -444,7 +447,8 @@
     ],
     "name": "Breath Weapon (Copper)",
     "desc": [
-      "Damage Type: Acid", "5 by 30 ft. line (Dex. save)"
+      "Damage Type: Acid",
+      "5 by 30 ft. line (Dex. save)"
     ]
   },
   {
@@ -456,7 +460,8 @@
     ],
     "name": "Breath Weapon (Gold)",
     "desc": [
-      "Damage Type: Fire", "15 ft. cone (Dex. save)"
+      "Damage Type: Fire",
+      "15 ft. cone (Dex. save)"
     ]
   },
   {
@@ -468,7 +473,8 @@
     ],
     "name": "Breath Weapon (Green)",
     "desc": [
-      "Damage Type: Poison", "15 ft. cone (Con. save)"
+      "Damage Type: Poison",
+      "15 ft. cone (Con. save)"
     ]
   },
   {
@@ -480,7 +486,8 @@
     ],
     "name": "Breath Weapon (Red)",
     "desc": [
-      "Damage Type: Fire", "15 ft. cone (Dex. save)"
+      "Damage Type: Fire",
+      "15 ft. cone (Dex. save)"
     ]
   },
   {
@@ -492,7 +499,8 @@
     ],
     "name": "Breath Weapon (Silver)",
     "desc": [
-      "Damage Type: Cold", "15 ft. cone (Con. save)"
+      "Damage Type: Cold",
+      "15 ft. cone (Con. save)"
     ]
   },
   {
@@ -504,10 +512,10 @@
     ],
     "name": "Breath Weapon (White)",
     "desc": [
-      "Damage Type: Cold", "15 ft. cone (Con. save)"
+      "Damage Type: Cold",
+      "15 ft. cone (Con. save)"
     ]
   },
-
   {
     "index": 37,
     "races": [
@@ -544,7 +552,6 @@
       "You know the dancing lights cantrip. When you reach 3rd level, you can cast the faerie fire spell once per day. When you reach 5th level, you can also cast the darkness spell once per day. Charisma is your spellcasting ability for these spells."
     ]
   },
-
   {
     "index": 40,
     "races": [
@@ -569,7 +576,6 @@
       "You can attempt to hide even when you are only lightly obscured by foliage, heavy rain, falling snow, mist, and other natural phenomena."
     ]
   },
-
   {
     "index": 42,
     "races": [
@@ -594,7 +600,6 @@
       "Through sounds and gestures, you can communicate simple ideas with Small or smaller beasts. Forest gnomes love animals and often keep squirrels, badgers, rabbits, moles, woodpeckers, and other creatures as beloved pets."
     ]
   },
-
   {
     "index": 44,
     "races": [
