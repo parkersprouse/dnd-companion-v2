@@ -6,9 +6,9 @@
     <v-progress-circular indeterminate :size='40' :width='4'></v-progress-circular>
   </div>
   <div v-else>
-    <div v-if='equipment.starting_equipment.length === 0'>None</div>
+    <div v-if='starting_equipment.length === 0'>None</div>
     <ul v-else class='list'>
-      <li v-for='item in equipment.starting_equipment' :key='item.name'>
+      <li v-for='item in starting_equipment' :key='item.name'>
         {{ item.name }}
       </li>
     </ul>
@@ -42,7 +42,10 @@ export default {
       });
   },
   computed: {
-
-  },
+    starting_equipment() {
+      if (!this.equipment || !this.equipment.starting_equipment) return [];
+      return _.sortBy(this.equipment.starting_equipment, ['name']);
+    }
+  }
 };
 </script>
