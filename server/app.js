@@ -1,5 +1,4 @@
 const cookie_parser = require('cookie-parser');
-const cors = require('cors');
 const express = require('express');
 const helmet = require('helmet');
 const morgan = require('morgan');
@@ -22,12 +21,8 @@ app.use(morgan(':remote-addr - :remote-user [:date[clf]] ":method :url HTTP/:htt
   skip: req => req.originalUrl.includes('websocket'),
 }));
 
-// Make the app use helmet to protect it from a number of vulnerabilities
+// Use helmet to protect from a number of vulnerabilities
 app.use(helmet());
-
-// Allow CORS
-app.use(cors());
-app.options('*', cors()); // Pre-flight
 
 // Parse application/json
 app.use(express.json());
