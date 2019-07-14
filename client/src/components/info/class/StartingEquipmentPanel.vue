@@ -45,7 +45,7 @@ export default {
     starting_equipment() {
       if (!this.equipment || !this.equipment.starting_equipment) return [];
       return _.sortBy(this.equipment.starting_equipment, ['name']);
-    }
-  }
+    },
+  },
 };
 </script>

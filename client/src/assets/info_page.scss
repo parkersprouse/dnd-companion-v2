@@ -180,6 +180,22 @@
           }
         }
       }
+
+      @media screen and (min-width: 768px) {
+        &.one-third {
+          width: 33.33%;
+          width: calc(100% / 3);
+        }
+
+        &.two-thirds {
+          width: 66.67%;
+          width: calc((100% / 3) * 2);
+        }
+
+        &.half {
+          width: 50%;
+        }
+      }
     }
 
     @media screen and (max-width: 767px) {

@@ -45,8 +45,8 @@
         </div>
       </div>
 
-      <div class='details-info-row thirds'>
-        <div class='details-info-entry'>
+      <div class='details-info-row'>
+        <div class='details-info-entry one-third'>
           <div class='details-info-entry-title'>Proficiencies</div>
           <div class='details-info-entry-content'>
             <div v-if='proficiencies.length === 0'>None</div>
@@ -57,7 +57,7 @@
             </ul>
           </div>
         </div>
-        <div class='details-info-entry'>
+        <div class='details-info-entry two-thirds'>
           <div class='details-info-entry-title'>Proficiency Options</div>
           <div class='details-info-entry-content'>
             <div v-if='!klass.proficiency_choices || klass.proficiency_choices.length === 0'>
@@ -78,23 +78,22 @@
             </div>
           </div>
         </div>
-        <div class='details-info-entry'>
+      </div>
+
+      <div class='details-info-row'>
+        <div class='details-info-entry one-third'>
           <div class='details-info-entry-title'>Starting Equipment</div>
           <div class='details-info-entry-content'>
             <starting-equipment-panel :klass='klass.name' />
           </div>
         </div>
-      </div>
-
-      <div class='details-info-row whole'>
-        <div class='details-info-entry'>
+        <div class='details-info-entry two-thirds'>
           <div class='details-info-entry-title'>Starting Equipment Options</div>
           <div class='details-info-entry-content'>
             <starting-equipment-options-panel :klass='klass.name' />
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </template>
