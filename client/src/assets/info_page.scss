@@ -146,9 +146,28 @@
           margin-bottom: 0.5rem;
         }
 
-        .proficiency-list {
-          &:not(:last-child) {
-            margin-bottom: 0.5rem;
+        .proficiency-list, .starting-equipment-list {
+          display: flex;
+          flex-wrap: wrap;
+
+          > div {
+            width: 100%;
+
+            &:not(:last-child) {
+              margin-bottom: 0.5rem;
+            }
+          }
+
+          .v-card {
+            background-color: transparent;
+            padding: 0.5rem;
+            margin: 0.5rem;
+          }
+
+          @media screen and (min-width: 768px) {
+            > div {
+              width: 50%;
+            }
           }
         }
 

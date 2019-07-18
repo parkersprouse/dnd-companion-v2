@@ -63,17 +63,24 @@
             <div v-if='!klass.proficiency_choices || klass.proficiency_choices.length === 0'>
               None
             </div>
-            <div v-else>
-              <div v-for='(category, index) in klass.proficiency_choices'
-                   class='proficiency-list' :key='index'>
-                <div class='select-from'>
-                  Select {{ klass.proficiency_choices[index].choose }} from:
-                </div>
-                <ul class='list'>
-                  <li v-for='prof in klass.proficiency_choices[index].from' :key='prof.name'>
-                    {{ prof.name }}
-                  </li>
-                </ul>
+            <div v-else class='proficiency-list'>
+              <div v-for='(category, index) in klass.proficiency_choices' :key='index'>
+                <v-card>
+                  <v-card-title primary-title>
+                    <div>
+                      <h3 class='headline'>Choice {{ index + 1 }}</h3>
+                      <div class='select-from'>
+                        Select {{ klass.proficiency_choices[index].choose }} from:
+                      </div>
+                      <ul class='list'>
+                        <li v-for='prof in klass.proficiency_choices[index].from' :key='prof.name'>
+                          {{ prof.name }}
+                        </li>
+                      </ul>
+                    </div>
+                  </v-card-title>
+
+                </v-card>
               </div>
             </div>
           </div>
@@ -149,3 +156,18 @@ export default {
   },
 };
 </script>
+
+<style lang='scss' scoped>
+  .headline {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  .v-card__title {
+    padding-top: 0;
+
+    > div {
+      width: 100%;
+    }
+  }
+</style>
