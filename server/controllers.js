@@ -1,18 +1,26 @@
 const express = require('express');
+const { check } = require('express-validator');
 const router = express.Router();
 
-const { verifyToken } = require('./lib');
+const { validateParams, verifyToken } = require('./lib');
 
 //------------------------------------------------------------------------
 // Authentication / Misc.
-const auth = require('./endpoints/auth');
-router.post('/login', auth.login);
-router.post('/register', auth.register);
+const auth = require('./controllers/auth');
+router.post('/login', [
+  check('email').isEmail().withMessage('Your e-mail or password was incorrect'),
+  check('password').not().isEmpty().withMessage('Your e-mail or password was incorrect'),
+], validateParams, auth.login);
+router.post('/register', [
+  check('email').isEmail().withMessage('Please make sure your e-mail is valid'),
+  check('password').isLength({ min: 8 }).withMessage('Your password must be at least 8 characters'),
+  check('password').custom((value, { req }) => value === req.body.confirm_password).withMessage('Please make sure the passwords match'),
+], auth.register);
 router.get('/logout', auth.logout);
 
 //------------------------------------------------------------------------
 // Characters
-const characters = require('./endpoints/characters');
+const characters = require('./controllers/characters');
 router.get('/characters', verifyToken, characters.getAll);
 router.get('/characters/me', verifyToken, characters.getMe);
 router.get('/characters/:id', verifyToken, characters.getByID);
@@ -22,13 +30,13 @@ router.delete('/characters/:id', verifyToken, characters.delete);
 
 //------------------------------------------------------------------------
 // D&D Data
-const dnd_data = require('./endpoints/dnd_data');
+const dnd_data = require('./controllers/dnd_data');
 router.get('/dnd/:data_type', dnd_data.getAll);
 router.post('/dnd/:data_type', dnd_data.getSpecific);
 
 //------------------------------------------------------------------------
 // Games
-const games = require('./endpoints/games');
+const games = require('./controllers/games');
 router.get('/games', verifyToken, games.getAll);
 router.get('/games/own', verifyToken, games.getOwned); // Games you created
 router.get('/games/play', verifyToken, games.getPlayed); // Games you play in
@@ -43,7 +51,7 @@ router.delete('/games/:id', verifyToken, games.delete);
 
 //------------------------------------------------------------------------
 // Messages
-const messages = require('./endpoints/messages');
+const messages = require('./controllers/messages');
 router.get('/messages', verifyToken, messages.getAll);
 router.get('/messages/:game_id', verifyToken, messages.getForGame);
 router.get('/messages/:game_id/:user_id', verifyToken, messages.getMineForGame);
@@ -53,7 +61,7 @@ router.delete('/messages/:id', verifyToken, messages.delete);
 
 //------------------------------------------------------------------------
 // Users
-const users = require('./endpoints/users');
+const users = require('./controllers/users');
 router.get('/users', verifyToken, users.getAll);
 router.get('/users/me', verifyToken, users.getMe);
 router.get('/users/:id', verifyToken, users.getByID);

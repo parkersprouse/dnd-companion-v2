@@ -1,4 +1,5 @@
 const crypto = require('crypto');
+const { validationResult } = require('express-validator');
 const jwt = require('jsonwebtoken');
 const Sentry = require('@sentry/node');
 
@@ -28,6 +29,14 @@ module.exports = {
 
   respond(res, status, message, content) {
     res.status(status).json({ message, content });
+  },
+
+  validateParams(req, res, next) {
+    const validation_errs = validationResult(req);
+    if (!validation_errs.isEmpty()) {
+      return module.exports.respond(res, http_bad_request, validation_errs.array()[0].msg);
+    }
+    next();
   },
 
   async verifyToken(req, res, next) {

@@ -6,7 +6,7 @@ const path = require('path');
 const Sentry = require('@sentry/node');
 
 const config = require('./config');
-const endpoints = require('./endpoints');
+const controllers = require('./controllers');
 
 //require('./event_system')();
 
@@ -30,8 +30,8 @@ app.use(express.json());
 // Set up our cookie parser to sign cookies with our secret
 app.use(cookie_parser(config.cookie_secret));
 
-// Setup our endpoints under the /api route
-app.use('/api', endpoints);
+// Setup our controllers under the /api route
+app.use('/api', controllers);
 
 // Serve static assets
 app.use(express.static(path.resolve(__dirname, '..', 'client', 'dist')));
