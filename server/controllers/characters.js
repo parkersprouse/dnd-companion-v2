@@ -36,17 +36,18 @@ module.exports = {
   },
 
   async getByID(req, res) {
-    const { id } = req.params;
-
-    const [char_err, char_data] = await call(Character.findOne({ where: { id } }));
-    if (char_err)
+    const [char_err, char_data] = await call(Character.findOne({
+      where: { id: req.params.id },
+    }));
+    if (char_err) {
       return respond(res, http_server_error, 'Failed to get character');
-    if (!char_data)
+    } else if (!char_data) {
       return respond(res, http_no_content, 'No character found');
+    }
 
     const [game_err, game_data] = await call(CharacterGameAssociation.findOne({
       where: { character_id: char_data.id },
-      include: [{ model: Game, required: true }]
+      include: [{ model: Game, required: true }],
     }));
 
     respond(res, http_ok, null, {
@@ -56,9 +57,6 @@ module.exports = {
   },
 
   async create(req, res) {
-    if (!req.body.name)
-      return respond(res, http_bad_request, 'Please make sure your character has a name');
-
     const char_data = { user_id: req.user_obj.id, ...req.body };
     const [err, data] = await call(Character.create(char_data));
     if (err)
@@ -68,23 +66,31 @@ module.exports = {
   },
 
   async update(req, res) {
-    const { id, name } = req.body;
+    const { id } = req.params;
 
-    if (name !== undefined && !name)
-      return respond(res, http_bad_request, 'Please make sure your character has a name');
+    // Make sure the character with the provided ID exists and belongs to the
+    // requesting user
+    const [find_err, find_data] = await call(Character.findOne({
+      where: { id },
+    }));
+    if (find_err) {
+      return respond(res, http_server_error,
+        'There was a problem updating your character');
+    } else if (!find_data || find_data.user_id !== req.user_obj.id) {
+      return respond(res, http_bad_request,
+        'No character found with the provided ID');
+    }
 
-    // Make sure the character with the provided ID exists and belongs to the requesting user
-    const [find_err, find_data] = await call(Character.findOne({ where: { id } }));
-    if (find_err)
-      return respond(res, http_server_error, 'There was a problem updating your character');
-    if (!find_data || find_data.user_id !== req.user_obj.id)
-      return respond(res, http_bad_request, 'No character found with the provided ID');
-
-    const [update_err, update_data] = await call(Character.update(req.body, { where: { id } }));
-    if (update_err)
-      return respond(res, http_server_error, 'There was a problem when updating your character');
-    if (!update_data[0])
-      return respond(res, http_bad_request, 'No character updated, check provided ID');
+    const [update_err, update_data] = await call(Character.update(req.body, {
+      where: { id },
+    }));
+    if (update_err) {
+      return respond(res, http_server_error,
+        'There was a problem when updating your character');
+    } else if (!update_data[0]) {
+      return respond(res, http_bad_request,
+        'No character updated, check provided ID');
+    }
 
     respond(res, http_ok);
   },
@@ -92,15 +98,24 @@ module.exports = {
   async delete(req, res) {
     const { id } = req.params;
 
-    // Make sure the character with the provided ID exists and belongs to the requesting user
-    const [find_err, find_data] = await call(Character.findOne({ where: { id } }));
-    if (find_err || !find_data || find_data.user_id !== req.user_obj.id)
-      return respond(res, http_server_error, 'There was a problem deleting your character');
+    // Make sure the character with the provided ID exists and belongs to the
+    // requesting user
+    const [find_err, find_data] = await call(Character.findOne({
+      where: { id },
+    }));
+    if (find_err || !find_data || find_data.user_id !== req.user_obj.id) {
+      return respond(res, http_server_error,
+        'There was a problem deleting your character');
+    }
 
     // Returns 0 or 1 to determine if row was deleted
-    const [delete_err, delete_data] = await call(Character.destroy({ where: { id } }));
-    if (delete_err || !delete_data)
-      return respond(res, http_server_error, 'There was a problem deleting your character');
+    const [delete_err, delete_data] = await call(Character.destroy({
+      where: { id },
+    }));
+    if (delete_err || !delete_data) {
+      return respond(res, http_server_error,
+        'There was a problem deleting your character');
+    }
 
     respond(res, http_ok);
   },

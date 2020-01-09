@@ -24,8 +24,17 @@ const characters = require('./controllers/characters');
 router.get('/characters', verifyToken, characters.getAll);
 router.get('/characters/me', verifyToken, characters.getMe);
 router.get('/characters/:id', verifyToken, characters.getByID);
-router.post('/characters', verifyToken, characters.create);
-router.patch('/characters', verifyToken, characters.update);
+router.post('/characters', [
+  check('name').not().isEmpty().withMessage('Please make sure your character has a name'),
+], validateParams, verifyToken, characters.create);
+router.patch('/characters/:id', [
+  check('name').custom((value, { req }) => {
+    // We only want to validate name if the user is updating it
+    const name_present = req.body.name !== undefined;
+    if (!name_present) return true;
+    return name_present && req.body.name;
+  }).withMessage('Please make sure your character has a name'),
+], validateParams,verifyToken, characters.update);
 router.delete('/characters/:id', verifyToken, characters.delete);
 
 //------------------------------------------------------------------------
