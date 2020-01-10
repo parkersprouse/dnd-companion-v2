@@ -43,6 +43,6 @@ module.exports = {
     const selected = _.filter(data, req.body);
     if (selected.length > 0) return respond(res, http_ok, null, selected);
     respond(res, http_not_found);
-  }
+  },
 
-}
+};

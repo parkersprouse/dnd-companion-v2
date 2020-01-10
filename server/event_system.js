@@ -7,10 +7,10 @@ module.exports = () => {
     key: config.pusher.key,
     secret: config.pusher.secret,
     cluster: 'us2',
-    encrypted: true
+    encrypted: true,
   });
-  
+
   pusher.trigger('my-channel', 'my-event', {
-    "message": "hello world"
+    'message': 'hello world',
   });
 };

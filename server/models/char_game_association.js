@@ -4,14 +4,16 @@ const Game = require('./game');
 const User = require('./user');
 
 const attributes = {
-  id: { type: Sequelize.INTEGER, autoIncrement: true, allowNull: false, unique: true, primaryKey: true }
+  id: {
+    type: Sequelize.INTEGER, autoIncrement: true, allowNull: false, unique: true, primaryKey: true,
+  },
 };
 
 // http://docs.sequelizejs.com/manual/tutorial/models-definition.html#configuration
 const table_config = {
-  timestamps:      true,
+  timestamps: true,
   freezeTableName: true,
-  underscored:     true
+  underscored: true,
 };
 
 const CharacterGameAssociation = db.define('character_game_assocations', attributes, table_config);

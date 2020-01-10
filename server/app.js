@@ -8,7 +8,7 @@ const Sentry = require('@sentry/node');
 const config = require('./config');
 const controllers = require('./controllers');
 
-//require('./event_system')();
+// require('./event_system')();
 
 const app = express();
 
@@ -18,7 +18,7 @@ app.use(Sentry.Handlers.errorHandler());
 
 // Setup logger
 app.use(morgan(':remote-addr - :remote-user [:date[clf]] ":method :url HTTP/:http-version" :status :res[content-length] :response-time ms', {
-  skip: req => req.originalUrl.includes('websocket'),
+  skip: (req) => req.originalUrl.includes('websocket'),
 }));
 
 // Use helmet to protect from a number of vulnerabilities

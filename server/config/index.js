@@ -7,8 +7,8 @@ module.exports = {
   pusher: {
     id: process.env.PUSHER_APP_ID,
     key: process.env.PUSHER_APP_KEY,
-    secret: process.env.PUSHER_APP_SECRET
+    secret: process.env.PUSHER_APP_SECRET,
   },
   sentry_url: process.env.SENTRY_URL,
-  sparkpost_api_key: process.env.SPARKPOST_API_KEY
+  sparkpost_api_key: process.env.SPARKPOST_API_KEY,
 };

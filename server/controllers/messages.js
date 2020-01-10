@@ -13,7 +13,7 @@ module.exports = {
       include: [
         { model: Game, required: true },
         { model: User, required: true, attributes: ['id', 'email', 'username', 'name'] },
-      ]
+      ],
     }));
     if (err) return respond(res, http_server_error, 'Failed to get all messages');
 
@@ -26,7 +26,9 @@ module.exports = {
       where: { game_id: req.params.game_id },
       include: [
         {
-          model: Message, required: true, include: [
+          model: Message,
+          required: true,
+          include: [
             { model: Game, required: true },
             { model: User, required: true, attributes: ['id', 'email', 'username', 'name'] },
           ],
@@ -44,9 +46,12 @@ module.exports = {
       where: { game_id: req.params.game_id },
       include: [
         {
-          model: Message, required: true, where: { user_id: req.params.user_id }, include: [
+          model: Message,
+          required: true,
+          where: { user_id: req.params.user_id },
+          include: [
             { model: Game, required: true },
-            { model: User, required: true, attributes: ['id', 'email', 'username', 'name'] }
+            { model: User, required: true, attributes: ['id', 'email', 'username', 'name'] },
           ],
         },
       ],
@@ -60,26 +65,24 @@ module.exports = {
   async create(req, res) {
     const msg_data = { user_id: req.user_obj.id, ...req.body };
     let new_msg = null;
-    const [err] = await call(db.transaction((t) => {
-      return Message.create(msg_data, { transaction: t })
-        .then((data) => {
-          new_msg = data.dataValues;
-          const associations = [];
-          for (let i = 0; i < req.body.receiver_ids.length; i++) {
-            associations.push(
-              MessageReceiverAssociation.create(
-                {
-                  game_id: req.body.game_id,
-                  message_id: data.id,
-                  user_id: req.body.receiver_ids[i],
-                },
-                { transaction: t }
-              ),
-            );
-          }
-          return Promise.all(associations);
-        });
-    }));
+    const [err] = await call(db.transaction((t) => Message.create(msg_data, { transaction: t })
+      .then((data) => {
+        new_msg = data.dataValues;
+        const associations = [];
+        for (let i = 0; i < req.body.receiver_ids.length; i++) {
+          associations.push(
+            MessageReceiverAssociation.create(
+              {
+                game_id: req.body.game_id,
+                message_id: data.id,
+                user_id: req.body.receiver_ids[i],
+              },
+              { transaction: t },
+            ),
+          );
+        }
+        return Promise.all(associations);
+      })));
     if (err) return respond(res, http_server_error, 'There was a problem sending your message');
 
     respond(res, http_ok, null, new_msg);
@@ -94,14 +97,16 @@ module.exports = {
     }));
     if (find_err) {
       return respond(res, http_server_error, 'There was a problem updating your message');
-    } else if (!find_data) {
+    }
+    if (!find_data) {
       return respond(res, http_bad_request, 'No message found with the provided ID');
     }
 
     const [update_err, update_data] = await call(Message.update(req.body, { where: { id } }));
     if (update_err) {
       return respond(res, http_server_error, 'There was a problem when updating your message');
-    } else if (!update_data[0]) {
+    }
+    if (!update_data[0]) {
       return respond(res, http_bad_request, 'No message updated, check provided ID');
     }
 

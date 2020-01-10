@@ -13,8 +13,7 @@ module.exports = {
 
   async getAll(req, res) {
     const [err, data] = await call(Character.findAll());
-    if (err)
-      return respond(res, http_server_error, 'Failed to get all characters');
+    if (err) return respond(res, http_server_error, 'Failed to get all characters');
 
     const chars = data.map((char) => char.get({ plain: true }));
     respond(res, http_ok, null, chars);
@@ -23,15 +22,14 @@ module.exports = {
   async getMe(req, res) {
     const user_id = req.user_obj.id;
     const [err, data] = await call(Character.findAll({ where: { user_id } }));
-    if (err)
-      return respond(res, http_server_error, 'Failed to get your characters');
+    if (err) return respond(res, http_server_error, 'Failed to get your characters');
 
     const chars = [];
     for (let i = 0; i < data.length; i++) {
-      let [game_err, game_data] = await(call(CharacterGameAssociation.findOne({
+      const [game_err, game_data] = await call(CharacterGameAssociation.findOne({
         where: { character_id: data[i].id },
         include: [{ model: Game, required: true }],
-      })));
+      }));
       const char = { data: data[i].get({ plain: true }) };
       if (game_data) char.game = game_data.game;
       chars.push(char);
@@ -46,7 +44,8 @@ module.exports = {
     }));
     if (char_err) {
       return respond(res, http_server_error, 'Failed to get character');
-    } else if (!char_data) {
+    }
+    if (!char_data) {
       return respond(res, http_no_content, 'No character found');
     }
 
@@ -64,8 +63,9 @@ module.exports = {
   async create(req, res) {
     const char_data = { user_id: req.user_obj.id, ...req.body };
     const [err, data] = await call(Character.create(char_data));
-    if (err)
+    if (err) {
       return respond(res, http_server_error, 'There was a problem when creating your character');
+    }
 
     respond(res, http_ok, null, data.id);
   },
@@ -79,22 +79,20 @@ module.exports = {
       where: { id },
     }));
     if (find_err) {
-      return respond(res, http_server_error,
-        'There was a problem updating your character');
-    } else if (!find_data || find_data.user_id !== req.user_obj.id) {
-      return respond(res, http_bad_request,
-        'No character found with the provided ID');
+      return respond(res, http_server_error, 'There was a problem updating your character');
+    }
+    if (!find_data || find_data.user_id !== req.user_obj.id) {
+      return respond(res, http_bad_request, 'No character found with the provided ID');
     }
 
     const [update_err, update_data] = await call(Character.update(req.body, {
       where: { id },
     }));
     if (update_err) {
-      return respond(res, http_server_error,
-        'There was a problem when updating your character');
-    } else if (!update_data[0]) {
-      return respond(res, http_bad_request,
-        'No character updated, check provided ID');
+      return respond(res, http_server_error, 'There was a problem when updating your character');
+    }
+    if (!update_data[0]) {
+      return respond(res, http_bad_request, 'No character updated, check provided ID');
     }
 
     respond(res, http_ok);

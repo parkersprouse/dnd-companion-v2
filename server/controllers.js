@@ -1,5 +1,8 @@
+/* eslint max-len: 0 */
+
 const express = require('express');
 const { check } = require('express-validator');
+
 const router = express.Router();
 
 const { validateParams, verifyToken } = require('./lib');

@@ -1,6 +1,8 @@
 const bcrypt = require('bcrypt');
 
-const { buildToken, call, isEmail, respond } = require('../lib');
+const {
+  buildToken, call, isEmail, respond,
+} = require('../lib');
 const {
   cookie_token,
   db_err_duplicate,
@@ -50,12 +52,12 @@ module.exports = {
     if (err) {
       return respond(res, http_server_error, 'There was an unknown problem logging you in',
         err.message);
-    } else if (!data) {
+    }
+    if (!data) {
       return respond(res, http_bad_request, 'Your e-mail or password was incorrect');
     }
     const match = bcrypt.compareSync(req.body.password, data.pw_hash);
-    if (!match)
-      return respond(res, http_bad_request, 'Your e-mail or password was incorrect');
+    if (!match) return respond(res, http_bad_request, 'Your e-mail or password was incorrect');
 
     res.cookie(cookie_token, buildToken(data.id), {
       httpOnly: true,

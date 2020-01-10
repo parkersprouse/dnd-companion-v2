@@ -3,16 +3,18 @@ const Game = require('./game');
 const User = require('./user');
 
 const attributes = {
-  id:   { type: Sequelize.INTEGER, autoIncrement: true, allowNull: false, unique: true, primaryKey: true },
+  id: {
+    type: Sequelize.INTEGER, autoIncrement: true, allowNull: false, unique: true, primaryKey: true,
+  },
   body: { type: Sequelize.TEXT, allowNull: false },
-  type: { type: Sequelize.ENUM, allowNull: false, values: ['private', 'group', 'table'] }
+  type: { type: Sequelize.ENUM, allowNull: false, values: ['private', 'group', 'table'] },
 };
 
 // http://docs.sequelizejs.com/manual/tutorial/models-definition.html#configuration
 const table_config = {
-  timestamps:      true,
+  timestamps: true,
   freezeTableName: true,
-  underscored:     true
+  underscored: true,
 };
 
 const Message = db.define('messages', attributes, table_config);

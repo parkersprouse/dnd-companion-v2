@@ -32,7 +32,7 @@ module.exports = {
   async getPlayed(req, res) {
     const [err, data] = await call(CharacterGameAssociation.findAll({
       where: { user_id: req.user_obj.id },
-      include: [{ model: Game, required: true }]
+      include: [{ model: Game, required: true }],
     }));
     if (err) return respond(res, http_server_error, 'Failed to get your games');
 
@@ -43,7 +43,7 @@ module.exports = {
   async getCharacters(req, res) {
     const [err, data] = await call(CharacterGameAssociation.findAll({
       where: { game_id: req.params.id },
-      include: [{ model: Character, required: true }]
+      include: [{ model: Character, required: true }],
     }));
     if (err) {
       return respond(res, http_server_error, "There was a problem finding the game's characters");
@@ -80,7 +80,7 @@ module.exports = {
     const game_data = {
       code: crypto.randomBytes(8).toString('hex'),
       user_id: req.user_obj.id,
-      ...req.body
+      ...req.body,
     };
     const [err, data] = await call(Game.create(game_data));
     if (err) {
@@ -98,7 +98,8 @@ module.exports = {
     const [find_game_err, find_game_data] = await call(Game.findOne({ where: { code } }));
     if (find_game_err) {
       return respond(res, http_server_error, 'There was a problem joining the game');
-    } else if (!find_game_data) {
+    }
+    if (!find_game_data) {
       return respond(res, http_bad_request, 'No game found with the provided code');
     }
 
@@ -116,7 +117,8 @@ module.exports = {
     }));
     if (existing_game_err) {
       return respond(res, http_server_error, 'There was a problem joining the game');
-    } else if (existing_game_data) {
+    }
+    if (existing_game_data) {
       return respond(res, http_bad_request, 'This character is already in another game');
     }
 
@@ -171,14 +173,16 @@ module.exports = {
     }));
     if (find_err) {
       return respond(res, http_server_error, 'There was a problem updating your game');
-    } else if (!find_data) {
+    }
+    if (!find_data) {
       return respond(res, http_bad_request, 'No game found with the provided ID');
     }
 
     const [update_err, update_data] = await call(Game.update(req.body, { where: { id } }));
     if (update_err) {
       return respond(res, http_server_error, 'There was a problem updating your game');
-    } else if (!update_data[0]) {
+    }
+    if (!update_data[0]) {
       return respond(res, http_bad_request, 'No game updated, check provided ID');
     }
 

@@ -50,7 +50,8 @@ module.exports = {
     if (find_err) {
       return respond(res, http_bad_request,
         'There was an unexpected error when attempting to send the e-mail');
-    } else if (!find_data) {
+    }
+    if (!find_data) {
       return respond(res, http_ok);
     }
 
@@ -103,10 +104,11 @@ module.exports = {
       let message = 'There was an unknown problem when updating your account';
       if (update_err.name === db_err_duplicate) {
         const error = update_err.errors[0];
-        if (error.path.indexOf('username') > -1)
+        if (error.path.includes('username')) {
           message = 'An account with that username already exists';
-        else if (error.path.indexOf('email') > -1)
+        } else if (error.path.includes('email')) {
           message = 'An account with that e-mail address already exists';
+        }
       }
       return respond(res, http_bad_request, message);
     }
@@ -137,7 +139,7 @@ module.exports = {
     }
 
     const match = bcrypt.compareSync(req.body.current_password, match_data.pw_hash);
-    if (!match)  return respond(res, http_bad_request, 'Current password incorrect');
+    if (!match) return respond(res, http_bad_request, 'Current password incorrect');
 
     const pw_hash = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync());
     const [update_err, update_data] = await call(User.update({ pw_hash }, { where: { id } }));
