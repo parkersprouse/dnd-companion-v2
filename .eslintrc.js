@@ -15,6 +15,7 @@ module.exports = {
     'max-len': [2, { code: 100 }],
     'function-paren-newline': 'off',
     'consistent-return': 'off',
+    'object-curly-newline': 'off',
   },
   parserOptions: {
     ecmaVersion: 2018,
