@@ -4,6 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node server",
+    "lint": "eslint --ext .js server/",
+    "lint:fix": "eslint --ext .js server/ --fix",
     "db:create": "node server/bin/setup_db",
     "dev-build": "cd client && npm run build && cd .. && node server",
     "dev": "concurrently \"npm start\" \"cd client && npm start\" ",
@@ -33,6 +35,9 @@
     "validator": "^10.9.0"
   },
   "devDependencies": {
-    "concurrently": "^4.1.0"
+    "concurrently": "^4.1.0",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.19.1"
   }
 }
