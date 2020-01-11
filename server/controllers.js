@@ -12,12 +12,13 @@ const { validateParams, verifyToken } = require('./lib');
 const auth = require('./controllers/auth');
 
 router.post('/login', [
-  check('email').isEmail().withMessage('Your e-mail or password was incorrect'),
-  check('password').not().isEmpty().withMessage('Your e-mail or password was incorrect'),
+  check('username').not().isEmpty().withMessage('Your username or password was incorrect'),
+  check('password').not().isEmpty().withMessage('Your username or password was incorrect'),
 ], validateParams, auth.login);
 
 router.post('/register', [
   check('email').isEmail().withMessage('Please make sure your e-mail is valid'),
+  check('username').not().isEmpty().withMessage('Please provide a username'),
   check('password').isLength({ min: 8 }).withMessage('Your password must be at least 8 characters'),
   check('password').custom((value, { req }) => value === req.body.confirm_password).withMessage('Please make sure the passwords match'),
 ], validateParams, auth.register);

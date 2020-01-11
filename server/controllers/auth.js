@@ -20,6 +20,7 @@ module.exports = {
       email: req.body.email,
       name: req.body.name,
       pw_hash,
+      username: req.body.username,
     }));
     if (err) {
       let message = 'There was an unknown problem when creating your account';
@@ -45,17 +46,17 @@ module.exports = {
 
   async login(req, res) {
     const [err, data] = await call(User.findOne({
-      where: { email: { [Op.iLike]: req.body.email } },
+      where: { username: { [Op.iLike]: req.body.username } },
     }));
     if (err) {
       return respond(res, http_server_error, 'There was an unknown problem logging you in',
         err.message);
     }
     if (!data) {
-      return respond(res, http_bad_request, 'Your e-mail or password was incorrect');
+      return respond(res, http_bad_request, 'Your username or password was incorrect');
     }
     const match = bcrypt.compareSync(req.body.password, data.pw_hash);
-    if (!match) return respond(res, http_bad_request, 'Your e-mail or password was incorrect');
+    if (!match) return respond(res, http_bad_request, 'Your username or password was incorrect');
 
     res.cookie(cookie_token, buildToken(data.id), {
       httpOnly: true,

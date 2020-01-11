@@ -2,22 +2,39 @@ const { db, Sequelize } = require('../config/db');
 const User = require('./user');
 
 const attributes = {
-  id: {
-    type: Sequelize.INTEGER, autoIncrement: true, allowNull: false, unique: true, primaryKey: true,
+  code: {
+    allowNull: false,
+    type: Sequelize.TEXT,
+    unique: true,
   },
-  code: { type: Sequelize.TEXT, allowNull: false, unique: true },
-  name: { type: Sequelize.TEXT, allowNull: false },
-  description: { type: Sequelize.TEXT },
+  description: {
+    type: Sequelize.TEXT,
+  },
+  id: {
+    allowNull: false,
+    autoIncrement: true,
+    primaryKey: true,
+    type: Sequelize.INTEGER,
+    unique: true,
+  },
+  name: {
+    allowNull: false,
+    type: Sequelize.TEXT,
+  },
 };
 
 // http://docs.sequelizejs.com/manual/tutorial/models-definition.html#configuration
 const table_config = {
-  timestamps: true,
   freezeTableName: true,
+  timestamps: true,
   underscored: true,
 };
 
 const Game = db.define('games', attributes, table_config);
-Game.belongsTo(User, { foreignKey: { allowNull: false, name: 'user_id' }, onDelete: 'cascade', hooks: true }); // user_id, the user who created the game
+Game.belongsTo(User, {
+  foreignKey: { allowNull: false, name: 'user_id' }, // the user who created the game
+  hooks: true,
+  onDelete: 'cascade',
+});
 
 module.exports = Game;
