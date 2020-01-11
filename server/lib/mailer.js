@@ -19,10 +19,10 @@ function sendMail({ subject, html_content, raw_content, addresses }, callback) {
     },
     recipients,
   })
-    .then((data) => {
+    .then(() => {
       callback(true);
     })
-    .catch((err) => {
+    .catch(() => {
       callback(false);
     });
 }

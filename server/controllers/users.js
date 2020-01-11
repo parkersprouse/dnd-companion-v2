@@ -1,7 +1,7 @@
 const bcrypt = require('bcrypt');
 const crypto = require('crypto');
 
-const { call, isEmail, respond } = require('../lib');
+const { call, respond } = require('../lib');
 const {
   db_err_duplicate,
   http_ok,
@@ -71,11 +71,11 @@ module.exports = {
                      e-mail address.<br /><br />\
                      Your username is: <b>${username}</b><br /><br />\
                      To reset your password, visit \
-                     <a href='https://dnd.parkersprouse.me/account_recovery?key=${key}'>\
-                     https://dnd.parkersprouse.me/account_recovery?key=${key}</a>`,
+                     <a href='https://dnd.parkersprouse.me/account_recovery?key=${pw_reset_key}'>\
+                     https://dnd.parkersprouse.me/account_recovery?key=${pw_reset_key}</a>`,
       raw_content: `A request was made to recover the account information associated with this \
                     e-mail address. Your username is: ${username}. To reset your password, \
-                    please visit https://dnd.parkersprouse.me/account_recovery?key=${key}`,
+                    please visit https://dnd.parkersprouse.me/account_recovery?key=${pw_reset_key}`,
       addresses: [email],
     }, (success) => {
       if (!success) {

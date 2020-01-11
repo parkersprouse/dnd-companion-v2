@@ -17,7 +17,8 @@ app.use(Sentry.Handlers.requestHandler());
 app.use(Sentry.Handlers.errorHandler());
 
 // Setup logger
-app.use(morgan(':remote-addr - :remote-user [:date[clf]] ":method :url HTTP/:http-version" :status :res[content-length] :response-time ms', {
+app.use(morgan(':remote-addr - :remote-user [:date[clf]] ":method :url HTTP/:http-version"'
+             + ':status :res[content-length] :response-time ms', {
   skip: (req) => req.originalUrl.includes('websocket'),
 }));
 

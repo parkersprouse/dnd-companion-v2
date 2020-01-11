@@ -1,11 +1,10 @@
 /* eslint max-len: 0 */
 
-const crypto = require('crypto');
 const { validationResult } = require('express-validator');
 const jwt = require('jsonwebtoken');
 const Sentry = require('@sentry/node');
 
-const { cookie_token, http_unauthorized } = require('../config/constants');
+const { cookie_token, http_bad_request, http_unauthorized } = require('../config/constants');
 const config = require('../config');
 const User = require('../models/user');
 
@@ -22,11 +21,6 @@ module.exports = {
         Sentry.captureException(err);
         return [err];
       });
-  },
-
-  isEmail(text) {
-    // W3C email regex: /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
-    return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(text);
   },
 
   respond(res, status, message, content) {

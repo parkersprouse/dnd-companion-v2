@@ -69,7 +69,7 @@ module.exports = {
       .then((data) => {
         new_msg = data.dataValues;
         const associations = [];
-        for (let i = 0; i < req.body.receiver_ids.length; i++) {
+        for (let i = 0; i < req.body.receiver_ids.length; i += 1) {
           associations.push(
             MessageReceiverAssociation.create(
               {

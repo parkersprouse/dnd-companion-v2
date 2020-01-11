@@ -1,3 +1,5 @@
+/* eslint import/no-dynamic-require: 0, global-require: 0 */
+
 const _ = require('lodash');
 
 const { respond } = require('../lib');

@@ -25,8 +25,8 @@ module.exports = {
     if (err) return respond(res, http_server_error, 'Failed to get your characters');
 
     const chars = [];
-    for (let i = 0; i < data.length; i++) {
-      const [game_err, game_data] = await call(CharacterGameAssociation.findOne({
+    for (let i = 0; i < data.length; i += 1) {
+      const [, game_data] = await call(CharacterGameAssociation.findOne({
         where: { character_id: data[i].id },
         include: [{ model: Game, required: true }],
       }));
@@ -49,7 +49,7 @@ module.exports = {
       return respond(res, http_no_content, 'No character found');
     }
 
-    const [game_err, game_data] = await call(CharacterGameAssociation.findOne({
+    const [, game_data] = await call(CharacterGameAssociation.findOne({
       where: { character_id: char_data.id },
       include: [{ model: Game, required: true }],
     }));
