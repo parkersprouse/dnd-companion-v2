@@ -18,9 +18,9 @@
     "core-js": "^2.6.5",
     "lodash": "^4.17.14",
     "pusher-js": "^4.4.0",
+    "tailwindcss": "^1.1.4",
     "vue": "^2.6.10",
     "vue-router": "^3.0.7",
-    "vuetify": "^1.5.16",
     "vuex": "^3.0.1"
   },
   "devDependencies": {
