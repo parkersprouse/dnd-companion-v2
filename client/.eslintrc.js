@@ -14,7 +14,7 @@ module.exports = {
     'quote-props': 'off',
     'global-require': 'off',
     'import/no-extraneous-dependencies': 'off',
-    'consistent-return': 'off'
+    'consistent-return': 'off',
   },
   parserOptions: {
     parser: 'babel-eslint',
