@@ -12,12 +12,8 @@ export default new Vuex.Store({
     current_user: null,
   },
   mutations: {
-    setCharacter(state, char) {
-      state.character = char;
-    },
-
-    setCurrentUser(state, user) {
-      state.current_user = user;
+    setState(state, { name, value }) {
+      state[name] = value;
     },
 
     updateAttribute(state, payload) {

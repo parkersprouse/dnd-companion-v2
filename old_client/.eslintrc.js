@@ -13,8 +13,7 @@ module.exports = {
     'camelcase': 'off',
     'quote-props': 'off',
     'global-require': 'off',
-    'import/no-extraneous-dependencies': 'off',
-    'consistent-return': 'off'
+    'import/no-extraneous-dependencies': 'off'
   },
   parserOptions: {
     parser: 'babel-eslint',

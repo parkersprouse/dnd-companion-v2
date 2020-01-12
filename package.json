@@ -12,8 +12,8 @@
     "heroku-postbuild": "cd client && npm install && npm install --only=dev && npm run build"
   },
   "engines": {
-    "node": "10.15.3",
-    "npm": "6.9.0"
+    "node": "12.14.1",
+    "npm": "6.13.4"
   },
   "dependencies": {
     "@sentry/node": "^4.4.1",

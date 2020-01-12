@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import Router from 'vue-router';
+import VueRouter from 'vue-router';
 import axios from 'axios';
 
 import { call } from '../lib';
@@ -9,10 +9,11 @@ import auth from './auth';
 import dnd_info from './dnd_info';
 // import games from './games';
 
-Vue.use(Router);
+Vue.use(VueRouter);
 
-const router = new Router({
+const router = new VueRouter({
   mode: 'history',
+  base: process.env.BASE_URL,
   routes: [
     ...auth,
     // ...characters,
@@ -21,7 +22,7 @@ const router = new Router({
     {
       path: '/',
       name: 'index',
-      component: () => import(/* webpackChunkName: "index" */ '../views/Home.vue'),
+      component: () => import(/* webpackChunkName: "index" */ '../views/Index.vue'),
     },
     // {
     //   path: '/profile',
@@ -42,9 +43,9 @@ router.beforeEach(async (to, from, next) => {
   // If the user isn't logged in, a 401 Unauthorized error will be returned.
   const [err, data] = await call(axios.get('/api/users/me'));
   if (data) {
-    store.commit('setCurrentUser', data.data.content);
+    store.commit('setState', { name: 'current_user', value: data.data.content });
   } else {
-    store.commit('setCurrentUser', {});
+    store.commit('setState', { name: 'current_user', value: {} });
   }
 
   // If the requested route is guest-only and the user is logged in
@@ -57,7 +58,7 @@ router.beforeEach(async (to, from, next) => {
     return next({ path: '/login', query: { n: to.fullPath } });
   }
 
-  return next();
+  next();
 });
 
 export default router;
