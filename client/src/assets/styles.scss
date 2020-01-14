@@ -5,6 +5,14 @@
 @import './button.scss';
 @import './tooltip.scss';
 
+*, *:focus {
+  outline: none !important;
+}
+
+*::-moz-focus-inner {
+  border: 0 !important;
+}
+
 @responsive {
   .flex-basis-full {
     flex-basis: 100%;
@@ -38,5 +46,5 @@
 }
 
 .input {
-  @apply border border-gray-500 border-solid rounded p-1;
+  @apply border border-gray-500 border-solid rounded px-2 py-1;
 }
