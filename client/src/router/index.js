@@ -4,9 +4,9 @@ import axios from 'axios';
 
 import { call } from '../lib';
 import store from '../store';
-import auth from './auth';
+// import auth from './auth';
 // import characters from './characters';
-import dnd_info from './dnd_info';
+// import dnd_info from './dnd_info';
 // import games from './games';
 
 Vue.use(VueRouter);
@@ -15,9 +15,9 @@ const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [
-    ...auth,
+    // ...auth,
     // ...characters,
-    ...dnd_info,
+    // ...dnd_info,
     // ...games,
     {
       path: '/',

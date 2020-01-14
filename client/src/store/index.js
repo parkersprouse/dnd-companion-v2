@@ -11,6 +11,11 @@ export default new Vuex.Store({
     character: null,
     current_user: null,
   },
+  getters: {
+    logged_in(state) {
+      return !!state.current_user.id;
+    },
+  },
   mutations: {
     setState(state, { name, value }) {
       state[name] = value;
