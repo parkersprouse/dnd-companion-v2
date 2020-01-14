@@ -2,5 +2,41 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
+@import './button.scss';
 @import './tooltip.scss';
 
+@responsive {
+  .flex-basis-full {
+    flex-basis: 100%;
+  }
+
+  .flex-basis-auto {
+    flex-basis: auto;
+  }
+}
+
+.box {
+  @apply p-4 border border-gray-500 border-solid rounded-sm;
+}
+
+.form-header {
+  @apply font-semibold text-2xl border-b mb-6;
+}
+
+.form-v {
+  .form-v__label {
+    @apply block;
+  }
+
+  .form-v__input {
+    @apply w-full;
+
+    &:not(:last-child) {
+      @apply mb-4;
+    }
+  }
+}
+
+.input {
+  @apply border border-gray-500 border-solid rounded p-1;
+}
