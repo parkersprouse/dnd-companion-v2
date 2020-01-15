@@ -1,0 +1,70 @@
+.form-header {
+  @apply font-semibold text-2xl border-b mb-6;
+}
+
+.form-v {
+  .form-v__label {
+    @apply block;
+  }
+
+  .form-v__input {
+    @apply w-full;
+
+    &:not(:last-child) {
+      @apply mb-4;
+    }
+  }
+
+  .form-v__link {
+    @apply text-center mt-4;
+  }
+}
+
+.input {
+  @apply border border-gray-500 border-solid rounded px-2 py-1;
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
+// .input {
+//   display: inline-flex;
+//   position: relative;
+//
+//   > input {
+//     flex: 1 0 auto;
+//     line-height: 1.21428571em;
+//     margin: 0;
+//     max-width: 100%;
+//     padding: .67857143em 1em;
+//     padding-right: 1em;
+//     padding-left: 1em;
+//     text-align: left;
+//   }
+// }
+//
+// .ui[class*="left icon"].input > input {
+//   padding-left: 2.67142857em !important;
+//   padding-right: 1em !important;
+// }
+//
+// .ui.icon.input > input {
+//   padding-right: 2.67142857em !important;
+// }
+//
+// .ui[class*="left icon"].input > i.icon {
+//   left: 1px;
+//   right: auto;
+// }
+//
+// .ui.icon.input > i.icon {
+//   cursor: default;
+//   position: absolute;
+//   line-height: 1;
+//   text-align: center;
+//   top: 0;
+//   right: 0;
+//   margin: 0;
+//   height: 100%;
+//   width: 2.67142857em;
+//   opacity: .5;
+// }

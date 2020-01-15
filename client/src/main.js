@@ -7,6 +7,7 @@ import './assets/styles.scss';
 
 import bus from './lib/EventBus';
 import App from './App.vue';
+import Alert from './components/Alert.vue';
 import router from './router';
 import store from './store';
 
@@ -14,6 +15,7 @@ Vue.prototype.$event_bus = bus;
 Vue.prototype.$http = axios;
 
 Vue.component('popper', Popper);
+Vue.component('alert', Alert);
 
 Vue.config.productionTip = false;
 new Vue({

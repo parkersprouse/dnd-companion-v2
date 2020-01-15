@@ -2,7 +2,9 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
+@import './alert.scss';
 @import './button.scss';
+@import './input.scss';
 @import './tooltip.scss';
 
 *, *:focus {
@@ -27,24 +29,10 @@
   @apply p-4 border border-gray-500 border-solid rounded-sm;
 }
 
-.form-header {
-  @apply font-semibold text-2xl border-b mb-6;
-}
+.link {
+  @apply text-blue-500 cursor-pointer;
 
-.form-v {
-  .form-v__label {
-    @apply block;
+  &:hover {
+    @apply underline;
   }
-
-  .form-v__input {
-    @apply w-full;
-
-    &:not(:last-child) {
-      @apply mb-4;
-    }
-  }
-}
-
-.input {
-  @apply border border-gray-500 border-solid rounded px-2 py-1;
 }
