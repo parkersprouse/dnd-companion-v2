@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import axios from 'axios';
 import Popper from 'vue-popperjs';
+import cookies from 'js-cookie';
 
 import 'vue-popperjs/dist/vue-popper.css';
 import './assets/styles.scss';
@@ -8,14 +9,17 @@ import './assets/styles.scss';
 import bus from './lib/EventBus';
 import App from './App.vue';
 import Alert from './components/Alert.vue';
+import Loader from './components/Loader.vue';
 import router from './router';
 import store from './store';
 
+Vue.prototype.$cookies = cookies;
 Vue.prototype.$event_bus = bus;
 Vue.prototype.$http = axios;
 
-Vue.component('popper', Popper);
 Vue.component('alert', Alert);
+Vue.component('loader', Loader);
+Vue.component('popper', Popper);
 
 Vue.config.productionTip = false;
 new Vue({
