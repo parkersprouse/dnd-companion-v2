@@ -1,9 +1,10 @@
 <template>
-  <div>
-    <div v-if='show_register' class='box'>
+  <div class='flex flex-row flex-wrap items-stretch content-center
+              justify-center'>
+    <div v-if='show_register' class='box flex-basis-full md:flex-basis-half'>
       <register-form @show_login='show_register = false' />
     </div>
-    <div v-else class='box'>
+    <div v-else class='box flex-basis-full md:flex-basis-half'>
       <login-form @show_register='show_register = true' />
     </div>
   </div>

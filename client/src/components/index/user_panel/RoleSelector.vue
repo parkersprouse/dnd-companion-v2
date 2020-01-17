@@ -1,9 +1,11 @@
 <template>
-  <div class='box w-full text-center'>
+  <div class='box flex-basis-full md:flex-basis-half  text-center'>
     <h1 class='block font-semibold text-3xl mb-6 border-b'>
       What role are you performing today?
     </h1>
-    <button class='hero-btn mb-6 mr-0 md:mb-0 md:mr-6' @click='setRole("dm")'>DM</button>
+    <button class='hero-btn mb-6 mr-0 md:mb-0 md:mr-6' @click='setRole("dm")'>
+      DM
+    </button>
     <button class='hero-btn' @click='setRole("player")'>Player</button>
   </div>
 </template>
@@ -14,7 +16,7 @@ export default {
   methods: {
     setRole(role) {
       this.$cookies.set('role', role, { expires: 365 });
-      this.$emit('selected', role);
+      this.$emit('updateRole', role);
     },
   },
 };

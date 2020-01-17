@@ -1,9 +1,9 @@
 <template>
   <div class='flex flex-row flex-wrap items-stretch content-center justify-center'>
     <loader v-if='!role' />
-    <role-selector v-else-if='role === "none"' @selected='updateRole' />
-    <games-panel v-else-if='role === "dm"' />
-    <characters-panel v-else />
+    <role-selector v-else-if='role === "none"' @updateRole='updateRole' />
+    <games-panel v-else-if='role === "dm"' @updateRole='updateRole' />
+    <characters-panel v-else @updateRole='updateRole' />
   </div>
 </template>
 
@@ -25,10 +25,7 @@ export default {
     };
   },
   mounted() {
-    const role = this.$cookies.get('role');
-    if (!role) this.role = 'none';
-    else if (role === 'dm') this.role = 'dm';
-    else this.role = 'player';
+    this.role = this.$cookies.get('role') || 'none';
   },
   methods: {
     updateRole(role) {
