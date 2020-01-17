@@ -1,5 +1,5 @@
 .btn {
-  @apply rounded bg-gray-400 px-4 py-1 shadow text-black font-bold;
+  @apply rounded bg-gray-400 px-4 py-1 shadow text-black;
 
   &:hover, &:focus {
     @apply bg-gray-500;
@@ -50,14 +50,14 @@
 }
 
 .btn--primary {
-  @apply bg-indigo-400 text-white;
+  @apply bg-purple-400 text-white;
 
   &:hover, &:focus {
-    @apply bg-indigo-500;
+    @apply bg-purple-500;
   }
 
   &:active {
-    @apply bg-indigo-600;
+    @apply bg-purple-600;
   }
 }
 
