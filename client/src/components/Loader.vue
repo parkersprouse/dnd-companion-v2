@@ -1,3 +1,5 @@
+<!-- Loader from https://loading.io/css/ -->
+
 <template>
   <div class='loader-container'>
     <div class='lds-grid'>
@@ -11,7 +13,7 @@
       <div></div>
       <div></div>
     </div>
-    Loading
+    <slot>Loading</slot>
   </div>
 </template>
 

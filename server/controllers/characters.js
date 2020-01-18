@@ -2,7 +2,7 @@ const { call, respond } = require('../lib');
 const {
   http_ok,
   http_bad_request,
-  http_no_content,
+  http_not_found,
   http_server_error,
 } = require('../config/constants');
 const Character = require('../models/character');
@@ -46,7 +46,7 @@ module.exports = {
       return respond(res, http_server_error, 'Failed to get character');
     }
     if (!char_data) {
-      return respond(res, http_no_content, 'No character found');
+      return respond(res, http_not_found, `Character with ID ${req.params.id} not found`);
     }
 
     const [, game_data] = await call(CharacterGameAssociation.findOne({

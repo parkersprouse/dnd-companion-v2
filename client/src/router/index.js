@@ -1,11 +1,13 @@
+/* eslint-disable */
+
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import axios from 'axios';
 
 import { call } from '../lib';
 import store from '../store';
-// import auth from './auth';
-// import characters from './characters';
+import auth from './auth';
+import characters from './characters';
 // import dnd_info from './dnd_info';
 // import games from './games';
 
@@ -15,8 +17,8 @@ const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [
-    // ...auth,
-    // ...characters,
+    ...auth,
+    ...characters,
     // ...dnd_info,
     // ...games,
     {
