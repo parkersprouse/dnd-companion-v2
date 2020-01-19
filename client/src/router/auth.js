@@ -22,7 +22,7 @@ export default [
     name: 'logout',
     beforeEnter: async (to, from, next) => {
       await call(axios.get('/api/logout'));
-      next('/');
+      window.location.reload();
     },
   },
 ];
