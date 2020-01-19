@@ -1,7 +1,7 @@
 <template>
   <div>
-    <desktop-navbar class='hidden md:block' />
-    <mobile-navbar class='block md:hidden' />
+    <desktop-navbar class='hidden md:flex' />
+    <mobile-navbar class='flex md:hidden' />
   </div>
 </template>
 
