@@ -13,7 +13,7 @@ export default new Vuex.Store({
   },
   getters: {
     logged_in(state) {
-      return !!state.current_user.id;
+      return !!state.current_user && !!state.current_user.id;
     },
   },
   mutations: {

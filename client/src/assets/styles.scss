@@ -40,3 +40,11 @@
     @apply underline;
   }
 }
+
+.icon--left {
+  @apply mr-2;
+}
+
+.icon--right {
+  @apply ml-2;
+}

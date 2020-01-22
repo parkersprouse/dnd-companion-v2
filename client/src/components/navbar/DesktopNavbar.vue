@@ -6,18 +6,37 @@
         D&D Companion
       </router-link>
       <div class='navbar__link navbar__dropdown'>
-        <div class='navbar__dropdown__trigger'>Info</div>
+        <div class='navbar__dropdown__trigger'>
+          Info<i class='fas fa-caret-down icon--right'></i>
+        </div>
         <div class='navbar__dropdown__content'>
-          <a href="#">Link 1</a>
-          <a href="#">Link 2</a>
-          <a href="#">Link 3</a>
+          <router-link :to='{ name: "armor_list" }'>Armor</router-link>
+          <router-link :to='{ name: "class_list" }'>Classes</router-link>
+          <router-link :to='{ name: "condition_list" }'>Conditions</router-link>
+          <router-link :to='{ name: "damage_types_list" }'>Damage Types</router-link>
+          <router-link :to='{ name: "equipment_list" }'>Equipment</router-link>
+          <router-link :to='{ name: "language_list" }'>Languages</router-link>
+          <router-link :to='{ name: "proficiencies_list" }'>Proficiencies</router-link>
+          <router-link :to='{ name: "races_list" }'>Races</router-link>
+          <router-link :to='{ name: "skills_list" }'>Skills</router-link>
+          <router-link :to='{ name: "spells_list" }'>Spells</router-link>
+          <router-link :to='{ name: "trinket_list" }'>Trinkets</router-link>
+          <router-link :to='{ name: "weapon_properties_list" }'>Weapon Properties</router-link>
+          <router-link :to='{ name: "weapon_list" }'>Weapons</router-link>
         </div>
       </div>
     </div>
     <div class='navbar__right'>
-      <router-link class='navbar__link' :to='{ name: "logout" }'>
-        Logout
-      </router-link>
+      <div v-if='$store.getters.logged_in' class='navbar__link navbar__dropdown'>
+        <div class='navbar__dropdown__trigger'>
+          {{ $store.state.current_user.username }}<i class='fas fa-caret-down icon--right'></i>
+        </div>
+        <div class='navbar__dropdown__content'>
+          <router-link :to='{ name: "logout" }'>
+            Logout
+          </router-link>
+        </div>
+      </div>
     </div>
   </nav>
 </template>
@@ -34,10 +53,18 @@ export default {
 
   .navbar__left {
     @apply flex flex-1;
+
+    .navbar__dropdown__content {
+      left: 0;
+    }
   }
 
   .navbar__right {
     @apply flex;
+
+    .navbar__dropdown__content {
+      right: 0;
+    }
   }
 
   .navbar__link {
@@ -66,11 +93,12 @@ export default {
     }
 
     .navbar__dropdown__content {
-      display: none;
-      position: absolute;
       background-color: #f1f1f1;
-      min-width: 160px;
       box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+      display: none;
+      min-width: 160px;
+      position: absolute;
+      white-space: nowrap;
       z-index: 1;
 
       a {
@@ -79,9 +107,9 @@ export default {
         }
 
         color: black;
+        display: block;
         padding: 12px 16px;
         text-decoration: none;
-        display: block;
       }
     }
   }
