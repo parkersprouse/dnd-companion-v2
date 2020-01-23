@@ -32,9 +32,7 @@
           {{ $store.state.current_user.username }}<i class='fas fa-caret-down icon--right'></i>
         </div>
         <div class='navbar__dropdown__content'>
-          <router-link :to='{ name: "logout" }'>
-            Logout
-          </router-link>
+          <router-link :to='{ name: "logout" }'>Logout</router-link>
         </div>
       </div>
     </div>
@@ -47,33 +45,9 @@ export default {
 };
 </script>
 
-<style lang='scss'>
+<style lang='scss' scoped>
 .navbar {
-  @apply px-6 border-t border-b;
-
-  .navbar__left {
-    @apply flex flex-1;
-
-    .navbar__dropdown__content {
-      left: 0;
-    }
-  }
-
-  .navbar__right {
-    @apply flex;
-
-    .navbar__dropdown__content {
-      right: 0;
-    }
-  }
-
-  .navbar__link {
-    @apply p-4 cursor-pointer;
-
-    &:hover {
-      background-color: rgba(167,182,194,.3);
-    }
-  }
+  @apply px-6;
 
   .navbar__dropdown {
     padding: 0;

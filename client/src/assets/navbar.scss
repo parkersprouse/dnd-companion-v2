@@ -1,0 +1,27 @@
+.navbar {
+  @apply border-t border-b;
+
+  .navbar__left {
+    @apply flex flex-1;
+
+    .navbar__dropdown__content {
+      left: 0;
+    }
+  }
+
+  .navbar__right {
+    @apply flex;
+
+    .navbar__dropdown__content {
+      right: 0;
+    }
+  }
+
+  .navbar__link {
+    @apply p-4 cursor-pointer;
+
+    &:hover {
+      background-color: rgba(167,182,194,.3);
+    }
+  }
+}
