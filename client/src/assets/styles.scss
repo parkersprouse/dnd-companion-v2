@@ -49,3 +49,8 @@
 .icon--right {
   @apply ml-2;
 }
+
+.body-blocked {
+  height: 100vh;
+  overflow: hidden;
+}
