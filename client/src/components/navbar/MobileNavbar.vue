@@ -1,6 +1,5 @@
 <template>
-  <nav class='w-full flex flex-row flex-no-wrap items-center justify-between
-              navbar'>
+  <nav class='navbar'>
     <div class='navbar__left'>
       <router-link class='navbar__link' :to='{ name: "index" }'>
         D&D Companion
