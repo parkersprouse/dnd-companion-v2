@@ -19,6 +19,14 @@
         <router-link class='navbar__mobile__link' :to="{ name: 'index' }">
           Home
         </router-link>
+        <router-link v-if='$store.getters.logged_in' class='navbar__mobile__link'
+                    :to="{ name: 'profile' }">
+          Profile
+        </router-link>
+        <router-link v-if='$store.getters.logged_in' class='navbar__mobile__link'
+                    :to="{ name: 'logout' }">
+          Logout
+        </router-link>
       </div>
     </div>
   </nav>
