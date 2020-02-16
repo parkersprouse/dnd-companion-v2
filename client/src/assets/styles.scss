@@ -16,6 +16,10 @@
   border: 0 !important;
 }
 
+html, body {
+  // background-color: #394b59;
+}
+
 @responsive {
   .flex-basis-full {
     flex-basis: 100%;
