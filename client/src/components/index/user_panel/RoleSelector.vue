@@ -15,7 +15,6 @@ export default {
   name: 'role_selector',
   methods: {
     setRole(role) {
-      this.$cookies.set('role', role, { expires: 365 });
       this.$emit('updateRole', role);
     },
   },

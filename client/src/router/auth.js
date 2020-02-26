@@ -20,9 +20,6 @@ export default [
   {
     path: '/logout',
     name: 'logout',
-    beforeEnter: async (to, from, next) => {
-      await call(axios.get('/api/logout'));
-      window.location.reload();
-    },
+    component: () => import(/* webpackChunkName: "logout" */ '../views/Logout.vue'),
   },
 ];

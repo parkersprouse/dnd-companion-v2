@@ -5,7 +5,7 @@
       <form class='form-v' @submit.prevent='submit'>
         <alert type='info'>
           Once you've created your character by giving it a name, you will be redirected to
-          the character sheet to finish filling out its information.
+          the character sheet to finish filling out its details.
         </alert>
         <alert v-if='error' type='error'>{{ error }}</alert>
 

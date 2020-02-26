@@ -1,5 +1,5 @@
 .btn {
-  @apply rounded bg-gray-400 px-4 py-1 text-black;
+  @apply rounded bg-gray-400 px-4 py-2 text-black;
 
   &:hover, &:focus {
     @apply bg-gray-500;
@@ -50,7 +50,8 @@
 }
 
 .btn--primary {
-  @apply bg-purple-600 text-white;
+  @apply text-white; // bg-purple-600
+  background-color: #394b59;
 
   &:hover, &:focus {
     @apply bg-purple-700;

@@ -60,34 +60,28 @@ export default {
 <style lang='scss' scoped>
 .navbar {
   .navbar__mobile {
-    @apply inset-0;
-    background-color: white;
-    display: none;
-    position: fixed;
+    @apply bg-white fixed hidden inset-0;
     z-index: 100;
 
     &.navbar__mobile--shown {
-      align-items: center;
-      display: flex;
+      @apply flex items-center;
     }
 
     .navbar__mobile__close {
-      cursor: pointer;
-      position: absolute;
-      width: fit-content;
+      @apply absolute cursor-pointer;
       height: fit-content;
-      top: 10px;
       right: 10px;
+      top: 10px;
+      width: fit-content;
       z-index: 101;
     }
 
     .navbar__mobile__content {
-      background-color: whitesmoke;
-      width: 100%;
+      @apply bg-gray-100 w-full;
+      // background-color: whitesmoke;
 
       .navbar__mobile__link {
-        @apply px-2 py-3 block;
-        text-align: center;
+        @apply block px-2 py-3 text-center;
       }
     }
   }
