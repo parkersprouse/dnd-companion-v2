@@ -8,7 +8,7 @@ import { call } from '../lib';
 import store from '../store';
 import auth from './auth';
 import characters from './characters';
-// import dnd_info from './dnd_info';
+import dnd_info from './dnd_info';
 // import games from './games';
 
 Vue.use(VueRouter);
@@ -19,7 +19,7 @@ const router = new VueRouter({
   routes: [
     ...auth,
     ...characters,
-    // ...dnd_info,
+    ...dnd_info,
     // ...games,
     {
       path: '/',

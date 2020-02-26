@@ -20,7 +20,7 @@ router.post('/register', [
   check('email').isEmail().withMessage('Please make sure your e-mail is valid'),
   check('username').not().isEmpty().withMessage('Please provide a username'),
   check('password').isLength({ min: 8 }).withMessage('Your password must be at least 8 characters'),
-  check('password').custom((value, { req }) => value === req.body.confirm_password).withMessage('Please make sure the passwords match'),
+  check('password').custom((value, { req }) => value === req.body.password_confirm).withMessage('Please make sure the passwords match'),
 ], validateParams, auth.register);
 
 router.get('/logout', auth.logout);
@@ -145,13 +145,13 @@ router.patch('/users', [
 
 router.patch('/users/update_password', [
   check('password').isLength({ min: 8 }).withMessage('Your password must be at least 8 characters'),
-  check('password').custom((value, { req }) => value === req.body.confirm_password).withMessage('Please make sure the passwords match'),
+  check('password').custom((value, { req }) => value === req.body.password_confirm).withMessage('Please make sure the passwords match'),
 ], validateParams, verifyToken, users.updatePassword);
 
 router.patch('/users/reset_password', [
   check('pw_reset_key').not().isEmpty().withMessage('No reset key provided'),
   check('password').isLength({ min: 8 }).withMessage('Your password must be at least 8 characters'),
-  check('password').custom((value, { req }) => value === req.body.confirm_password).withMessage('Please make sure the passwords match'),
+  check('password').custom((value, { req }) => value === req.body.password_confirm).withMessage('Please make sure the passwords match'),
 ], validateParams, users.resetPassword);
 
 module.exports = router;

@@ -6,6 +6,7 @@
 @import './button.scss';
 @import './input.scss';
 @import './navbar.scss';
+@import './table.scss';
 @import './tooltip.scss';
 
 *, *:focus {
@@ -30,16 +31,13 @@
   }
 }
 
-.box {
-  @apply p-4 border border-gray-500 border-solid rounded-sm;
+.body-blocked {
+  height: 100vh;
+  overflow: hidden;
 }
 
-.link {
-  @apply text-blue-500 cursor-pointer;
-
-  &:hover {
-    @apply underline;
-  }
+.box {
+  @apply p-4 border border-gray-500 border-solid rounded-sm;
 }
 
 .icon--left {
@@ -50,7 +48,14 @@
   @apply ml-2;
 }
 
-.body-blocked {
-  height: 100vh;
-  overflow: hidden;
+.link {
+  @apply text-blue-500 cursor-pointer;
+
+  &:hover {
+    @apply underline;
+  }
+}
+
+.page-title {
+  @apply border-b-2 font-bold mb-6 text-4xl;
 }
