@@ -4,7 +4,58 @@
       {{ item.name }}
     </template>
     <template v-slot:content>
-      Content
+
+      <div class='list'>
+        <div class='list__item'>
+          <div class='list__item__title'>
+            Category
+          </div>
+          <div class='list__item__body'>
+            {{ item.armor_category }}
+          </div>
+        </div>
+        <div class='list__item'>
+          <div class='list__item__title'>
+            Armor Class
+          </div>
+          <div class='list__item__body'>
+            {{ armor_class }}
+          </div>
+        </div>
+        <div class='list__item'>
+          <div class='list__item__title'>
+            Stealth Disadvantage
+          </div>
+          <div class='list__item__body'>
+            {{ item.stealth_disadvantage ? 'Yes' : 'No'  }}
+          </div>
+        </div>
+        <div class='list__item'>
+          <div class='list__item__title'>
+            Minimum Strength
+          </div>
+          <div class='list__item__body'>
+            {{ item.str_minimum || '-' }}
+          </div>
+        </div>
+        <div class='list__item'>
+          <div class='list__item__title'>
+            Price
+          </div>
+          <div class='list__item__body'>
+            {{ price }}
+          </div>
+        </div>
+        <div class='list__item'>
+          <div class='list__item__title'>
+            Weight
+          </div>
+          <div class='list__item__body'>
+            {{ weight }}
+          </div>
+        </div>
+      </div>
+
     </template>
   </modal>
 </template>

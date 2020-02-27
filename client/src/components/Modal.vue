@@ -84,23 +84,28 @@ export default {
 
     .modal__header {
       @apply bg-gray-100 border-gray-500;
+      align-items: flex-start;
       border-width: 0;
       border-bottom-width: 1px;
       border-top-left-radius: 5px;
       border-top-right-radius: 5px;
       display: flex;
-      justify-content: space-between;
+      justify-content: flex-start;
       min-height: 1.5rem;
-      padding: 0.5rem;
+      padding: 0.5rem 0.5rem 0.5rem 1rem;
 
       .modal__title {
-        flex-grow: 1;
+        flex: 1 1 auto;
+        font-size: 1.5rem;
+        font-weight: bold;
       }
 
       .modal__close {
         cursor: pointer;
+        flex: 0 0 auto;
+        line-height: 1;
+        padding: 0 0.25rem 0.25rem 0.25rem;
         text-align: center;
-        width: 20px;
       }
     }
 
@@ -108,7 +113,7 @@ export default {
       @apply bg-gray-200;
       border-bottom-left-radius: 5px;
       border-bottom-right-radius: 5px;
-      padding: 1rem;
+      padding: 2rem;
     }
   }
 }

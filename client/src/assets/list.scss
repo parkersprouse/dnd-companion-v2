@@ -1,0 +1,17 @@
+.list {
+  width: 100%;
+
+  .list__item {
+    &:not(:last-child) {
+      margin-bottom: 1rem;
+    }
+
+    .list__item__title {
+      font-weight: 700;
+    }
+
+    .list__item__body {
+      padding-left: 1rem;
+    }
+  }
+}
