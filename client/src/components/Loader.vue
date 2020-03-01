@@ -1,6 +1,6 @@
 <template>
   <div class='loader-container'>
-    <div class="la-ball-8bits la-dark la-3x">
+    <div class='la-ball-8bits la-dark la-3x'>
       <div></div>
       <div></div>
       <div></div>
@@ -23,8 +23,10 @@
 
 <style lang='scss' scoped>
 .loader-container {
-  @apply absolute text-center font-bold;
+  font-weight: bold;
   left: 50%;
+  position: absolute;
+  text-align: center;
   top: 50%;
 
   /*!
@@ -35,8 +37,6 @@
   .la-ball-8bits,
   .la-ball-8bits > div {
     position: relative;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
     box-sizing: border-box;
   }
   .la-ball-8bits {
@@ -65,110 +65,55 @@
     height: 4px;
     border-radius: 0;
     opacity: 0;
-    -webkit-transform: translate(100%, 100%);
-    -moz-transform: translate(100%, 100%);
-    -ms-transform: translate(100%, 100%);
-    -o-transform: translate(100%, 100%);
     transform: translate(100%, 100%);
-    -webkit-animation: ball-8bits 1s 0s ease infinite;
-    -moz-animation: ball-8bits 1s 0s ease infinite;
-    -o-animation: ball-8bits 1s 0s ease infinite;
     animation: ball-8bits 1s 0s ease infinite;
   }
   .la-ball-8bits > div:nth-child(1) {
-    -webkit-animation-delay: -.9375s;
-    -moz-animation-delay: -.9375s;
-    -o-animation-delay: -.9375s;
     animation-delay: -.9375s;
   }
   .la-ball-8bits > div:nth-child(2) {
-    -webkit-animation-delay: -.875s;
-    -moz-animation-delay: -.875s;
-    -o-animation-delay: -.875s;
     animation-delay: -.875s;
   }
   .la-ball-8bits > div:nth-child(3) {
-    -webkit-animation-delay: -.8125s;
-    -moz-animation-delay: -.8125s;
-    -o-animation-delay: -.8125s;
     animation-delay: -.8125s;
   }
   .la-ball-8bits > div:nth-child(4) {
-    -webkit-animation-delay: -.75s;
-    -moz-animation-delay: -.75s;
-    -o-animation-delay: -.75s;
     animation-delay: -.75s;
   }
   .la-ball-8bits > div:nth-child(5) {
-    -webkit-animation-delay: -.6875s;
-    -moz-animation-delay: -.6875s;
-    -o-animation-delay: -.6875s;
     animation-delay: -.6875s;
   }
   .la-ball-8bits > div:nth-child(6) {
-    -webkit-animation-delay: -.625s;
-    -moz-animation-delay: -.625s;
-    -o-animation-delay: -.625s;
     animation-delay: -.625s;
   }
   .la-ball-8bits > div:nth-child(7) {
-    -webkit-animation-delay: -.5625s;
-    -moz-animation-delay: -.5625s;
-    -o-animation-delay: -.5625s;
     animation-delay: -.5625s;
   }
   .la-ball-8bits > div:nth-child(8) {
-    -webkit-animation-delay: -.5s;
-    -moz-animation-delay: -.5s;
-    -o-animation-delay: -.5s;
     animation-delay: -.5s;
   }
   .la-ball-8bits > div:nth-child(9) {
-    -webkit-animation-delay: -.4375s;
-    -moz-animation-delay: -.4375s;
-    -o-animation-delay: -.4375s;
     animation-delay: -.4375s;
   }
   .la-ball-8bits > div:nth-child(10) {
-    -webkit-animation-delay: -.375s;
-    -moz-animation-delay: -.375s;
-    -o-animation-delay: -.375s;
     animation-delay: -.375s;
   }
   .la-ball-8bits > div:nth-child(11) {
-    -webkit-animation-delay: -.3125s;
-    -moz-animation-delay: -.3125s;
-    -o-animation-delay: -.3125s;
     animation-delay: -.3125s;
   }
   .la-ball-8bits > div:nth-child(12) {
-    -webkit-animation-delay: -.25s;
-    -moz-animation-delay: -.25s;
-    -o-animation-delay: -.25s;
     animation-delay: -.25s;
   }
   .la-ball-8bits > div:nth-child(13) {
-    -webkit-animation-delay: -.1875s;
-    -moz-animation-delay: -.1875s;
-    -o-animation-delay: -.1875s;
     animation-delay: -.1875s;
   }
   .la-ball-8bits > div:nth-child(14) {
-    -webkit-animation-delay: -.125s;
-    -moz-animation-delay: -.125s;
-    -o-animation-delay: -.125s;
     animation-delay: -.125s;
   }
   .la-ball-8bits > div:nth-child(15) {
-    -webkit-animation-delay: -.0625s;
-    -moz-animation-delay: -.0625s;
-    -o-animation-delay: -.0625s;
     animation-delay: -.0625s;
   }
   .la-ball-8bits > div:nth-child(16) {
-    -webkit-animation-delay: 0s;
-    -moz-animation-delay: 0s;
-    -o-animation-delay: 0s;
     animation-delay: 0s;
   }
   .la-ball-8bits > div:nth-child(1) {

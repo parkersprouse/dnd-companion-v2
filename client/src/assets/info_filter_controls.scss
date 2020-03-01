@@ -1,0 +1,49 @@
+.filter-controls {
+  align-items: end;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 1rem 0;
+
+  .filter-controls__search {
+    width: 100%;
+
+    input {
+      width: 100%;
+    }
+  }
+
+  .filter-controls__filters {
+    width: 100%;
+
+    > div {
+      width: 100%;
+
+      > select {
+        width: 100%;
+      }
+    }
+  }
+
+  @media (min-width: 768px) {
+    .filter-controls__search {
+      padding-right: 0.5rem;
+      width: 50%;
+    }
+
+    .filter-controls__filters {
+      display: flex;
+      flex-wrap: wrap;
+      padding-left: 0.5rem;
+      width: 50%;
+
+      > div {
+        flex: 1;
+
+        &:not(:last-child) {
+          padding-right: 0.5rem;
+        }
+      }
+    }
+  }
+}

@@ -1,24 +1,37 @@
 .navbar {
-  @apply border-t border-b w-full flex-row flex-no-wrap items-center justify-between px-4;
+  align-items: center;
+  border-bottom-width: 1px;
+  border-top-width: 1px;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  width: 100%;
 
   .navbar__left {
-    @apply flex flex-1 justify-start;
+    display: flex;
+    flex: 1;
+    justify-content: flex-start;
 
     .navbar__dropdown__content {
-      @apply left-0;
+      left: 0;
     }
   }
 
   .navbar__right {
-    @apply flex flex-1 justify-end;
+    display: flex;
+    flex: 1;
+    justify-content: flex-end;
 
     .navbar__dropdown__content {
-      @apply right-0;
+      right: 0;
     }
   }
 
   .navbar__link {
-    @apply p-4 cursor-pointer;
+    cursor: pointer;
+    padding: 1rem;
 
     &:hover {
       background-color: rgba(167, 182, 194, .3);

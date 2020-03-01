@@ -2,8 +2,10 @@ import Vue from 'vue';
 import axios from 'axios';
 import Popper from 'vue-popperjs';
 import cookies from 'js-cookie';
+import VueSelect from 'vue-select';
 
 import 'vue-popperjs/dist/vue-popper.css';
+import 'vue-select/dist/vue-select.css';
 import './assets/styles.scss';
 
 import bus from './lib/EventBus';
@@ -20,6 +22,7 @@ Vue.prototype.$http = axios;
 Vue.component('alert', Alert);
 Vue.component('loader', Loader);
 Vue.component('popper', Popper);
+Vue.component('v-select', VueSelect);
 
 Vue.config.productionTip = false;
 new Vue({

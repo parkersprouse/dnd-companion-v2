@@ -57,10 +57,10 @@ export default {
     }
 
     .navbar__dropdown__trigger {
-      @apply p-4;
-      font-size: 16px;
-      width: 100%;
       border: none;
+      font-size: 16px;
+      padding: 1rem;
+      width: 100%;
     }
 
     .navbar__dropdown__content {

@@ -1,27 +1,35 @@
 .form-header {
-  @apply font-semibold text-2xl border-b mb-6;
+  border-bottom-width: 1px;
+  font-weight: 600;
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .form-v {
-  .form-v__label {
-    @apply block;
+  .form__label {
+    display: block;
   }
 
-  .form-v__input {
-    @apply w-full;
+  .form__input {
+    width: 100%;
 
     &:not(:last-child) {
-      @apply mb-4;
+      margin-bottom: 1rem;
     }
   }
 
-  .form-v__link {
-    @apply text-center mt-4;
+  .form__link {
+    margin-top: 1rem;
+    text-align: center;
   }
 }
 
 .input {
-  @apply border border-gray-500 border-solid rounded px-2 py-1;
+  @apply border-gray-500;
+  border-radius: 0.25rem;
+  border-style: solid;
+  border-width: 1px;
+  padding: 0.25rem 0.5rem;
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////

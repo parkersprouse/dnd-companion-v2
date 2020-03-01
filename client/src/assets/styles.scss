@@ -2,8 +2,8 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
-@import './alert.scss';
 @import './button.scss';
+@import './info_filter_controls.scss';
 @import './input.scss';
 @import './list.scss';
 @import './navbar.scss';
@@ -42,25 +42,33 @@ html, body {
 }
 
 .box {
-  @apply p-4 border border-gray-500 border-solid rounded-sm;
+  @apply border-gray-500;
+  border-radius: 0.125rem;
+  border-style: solid;
+  border-width: 1px;
+  padding: 1rem;
 }
 
 .icon--left {
-  @apply mr-2;
+  margin-right: 0.5rem;
 }
 
 .icon--right {
-  @apply ml-2;
+  margin-left: 0.5rem;
 }
 
 .link {
-  @apply text-blue-500 cursor-pointer;
+  @apply text-blue-500;
+  cursor: pointer;
 
   &:hover {
-    @apply underline;
+    text-decoration: underline;
   }
 }
 
 .page-title {
-  @apply border-b-2 font-bold mb-6 text-4xl;
+  border-bottom-width: 2px;
+  font-weight: bold;
+  font-size: 2.25rem;
+  margin-bottom: 1.5rem;
 }

@@ -4,18 +4,18 @@
     <form class='form-v' @submit.prevent='submit'>
       <alert v-if='error' type='error'>{{ error }}</alert>
 
-      <label class='form-v__label' for='username'>Username</label>
-      <input v-model='username' class='input form-v__input' id='username' type='text' />
+      <label class='form__label' for='username'>Username</label>
+      <input v-model='username' class='input form__input' id='username' type='text' />
 
-      <label class='form-v__label' for='password'>Password</label>
-      <input v-model='password' class='input form-v__input' id='password' type='password' />
+      <label class='form__label' for='password'>Password</label>
+      <input v-model='password' class='input form__input' id='password' type='password' />
 
       <button class='btn btn--primary w-full' :class='{ loading }' :disabled='loading'
               type='submit'>
         Login
       </button>
 
-      <div class='form-v__link'>
+      <div class='form__link'>
         <a class='link' @click='$emit("show_register")'>Register</a>
       </div>
     </form>

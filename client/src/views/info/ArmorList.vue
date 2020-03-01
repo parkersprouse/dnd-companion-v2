@@ -4,9 +4,7 @@
     <alert v-if='error' type='error'>Failed to load armor</alert>
     <loader v-else-if='!items' />
     <div v-else>
-      <div class='filter-controls'>
-
-      </div>
+      <filter-controls @filter='filter' :items='filtered_items' />
 
       <div class='items-list'>
         <table class='items-list__table'>
@@ -31,12 +29,14 @@
 <script>
 import _ from 'lodash';
 import ArmorModal from '@/components/info/armor/ArmorModal.vue';
+import FilterControls from '@/components/info/armor/FilterControls.vue';
 import TableHeader from '@/components/info/armor/TableHeader.vue';
 
 export default {
   name: 'armor_list',
   components: {
     'armor-modal': ArmorModal,
+    'filter-controls': FilterControls,
     'table-header': TableHeader,
   },
   data() {
